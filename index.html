@@ -45,11 +45,10 @@
             --transition-normal: 0.25s ease;
         }
 
-        /* Dark Mode Theme - True OLED Black */
+        /* Dark Mode Theme */
         [data-theme="dark"] {
-            --ios-bg: #000000;
-            --ios-card-bg: #1c1c1e;
-            --ios-secondary-bg: #2c2c2e;
+            --ios-bg: #1c1c1e;
+            --ios-card-bg: #2c2c2e;
             --ios-separator: #48484a;
             --ios-label: #ffffff;
             --ios-secondary-label: #ffffff;
@@ -66,18 +65,13 @@
 
         [data-theme="dark"] .step-card,
         [data-theme="dark"] .breadcrumb,
-        [data-theme="dark"] .results-section {
+        [data-theme="dark"] .results-section,
+        [data-theme="dark"] .question-card {
             background: var(--ios-card-bg);
         }
 
-        [data-theme="dark"] .question-card {
-            background: #1c1c1e;
-            border: 1px solid rgba(255,255,255,0.06);
-        }
-
         [data-theme="dark"] .level-card {
-            background: #1c1c1e;
-            border: 1px solid rgba(255,255,255,0.08);
+            background: #3a3a3c;
         }
 
         [data-theme="dark"] .step-progress {
@@ -224,13 +218,6 @@
             color: #FFEBCF;
         }
 
-        /* Logo - Dark Mode (无背景) */
-        [data-theme="dark"] .logo-section img {
-            background: transparent;
-            border: none;
-            box-shadow: none;
-        }
-
         * {
             margin: 0;
             padding: 0;
@@ -246,17 +233,14 @@
             min-height: 100vh;
         }
 
-        /* Header - iOS Glassmorphism */
+        /* Header */
         .header {
-            background: rgba(224, 41, 35, 0.95);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            background: linear-gradient(135deg, var(--heritage-red) 0%, var(--heritage-red-dark) 100%);
             padding: 14px 24px;
             position: sticky;
             top: 0;
             z-index: 100;
             box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
 
         .header-content {
@@ -274,20 +258,13 @@
         }
 
         .logo-section img {
-            height: 48px;
+            height: 44px;
             width: auto;
-            /* 无背景 - 直接显示在 header 上 */
-            background: transparent;
-            padding: 0;
-            border-radius: 0;
-            box-shadow: none;
-            border: none;
-            transition: all 0.2s ease;
-        }
-
-        /* Logo Hover 效果 - 轻微放大 */
-        .logo-section img:hover {
-            transform: scale(1.02);
+            background: rgba(255,255,255,0.95);
+            padding: 6px 10px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
 
         .logo-text h1 {
@@ -473,17 +450,17 @@
             font-weight: 300;
         }
 
-        /* Step Progress Indicator - iOS Style */
+        /* Step Progress Indicator */
         .step-progress {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 0;
             margin-bottom: 32px;
-            padding: 32px;
+            padding: 24px;
             background: white;
-            border-radius: 20px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-card);
         }
 
         .step-item {
@@ -496,15 +473,15 @@
         }
 
         .step-circle {
-            width: 56px;
-            height: 56px;
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
-            background: #f5f5f7;
-            border: none;
+            background: var(--ios-bg);
+            border: 3px solid var(--ios-separator);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 700;
             color: var(--ios-tertiary-label);
             transition: all var(--transition-normal);
@@ -513,9 +490,10 @@
         }
 
         .step-item.active .step-circle {
-            background: linear-gradient(135deg, var(--heritage-red) 0%, var(--heritage-red-light) 100%);
+            background: var(--heritage-red);
+            border-color: var(--heritage-red);
             color: white;
-            box-shadow: 0 6px 20px rgba(224, 41, 35, 0.35);
+            box-shadow: 0 4px 12px rgba(224, 41, 35, 0.3);
         }
 
         .step-item.completed .step-circle {
@@ -543,9 +521,8 @@
 
         .step-connector {
             flex: 1;
-            height: 4px;
-            background: #e5e5ea;
-            border-radius: 2px;
+            height: 3px;
+            background: var(--ios-separator);
             margin: 0 -20px;
             margin-bottom: 28px;
             position: relative;
@@ -553,7 +530,7 @@
         }
 
         .step-connector.completed {
-            background: linear-gradient(90deg, var(--rich-purple) 0%, var(--rich-purple-light) 100%);
+            background: var(--rich-purple);
         }
 
         /* Step Cards */
@@ -638,44 +615,41 @@
         }
 
         .level-card {
-            background: white;
+            background: var(--ios-bg);
             border: 2px solid transparent;
-            border-radius: 20px;
-            padding: 28px 24px;
+            border-radius: var(--radius-md);
+            padding: 24px;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transition: all var(--transition-normal);
             text-align: center;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.06);
         }
 
         .level-card:hover {
-            transform: translateY(-4px) scale(1.01);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.04);
+            background: var(--bright-eggshell-light);
+            transform: translateY(-2px);
         }
 
         .level-card.selected {
-            background: linear-gradient(white, white) padding-box,
-                        linear-gradient(135deg, var(--heritage-red), var(--heritage-red-light)) border-box;
-            border: 2px solid transparent;
-            box-shadow: 0 8px 32px rgba(224, 41, 35, 0.15), 0 2px 8px rgba(224, 41, 35, 0.1);
+            background: white;
+            border-color: var(--heritage-red);
+            box-shadow: 0 4px 16px rgba(224, 41, 35, 0.15);
         }
 
         .level-icon {
-            width: 72px;
-            height: 72px;
-            border-radius: 22px;
-            background: linear-gradient(135deg, #f8f8f8 0%, #ffffff 100%);
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: white;
             margin: 0 auto 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 32px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.8);
+            font-size: 28px;
+            box-shadow: var(--shadow-sm);
         }
 
         .level-card.selected .level-icon {
-            background: linear-gradient(135deg, var(--heritage-red) 0%, var(--heritage-red-light) 100%);
-            box-shadow: 0 4px 12px rgba(224, 41, 35, 0.3);
+            background: var(--heritage-red);
         }
 
         .level-card.selected .level-icon span {
@@ -861,35 +835,33 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            padding: 12px 20px;
+            padding: 10px 16px;
             background: white;
-            border: 1.5px solid rgba(0,0,0,0.08);
-            border-radius: 100px;
+            border: 2px solid var(--ios-separator);
+            border-radius: 24px;
             cursor: pointer;
-            transition: all 0.2s ease;
-            font-size: 15px;
-            font-weight: 500;
+            transition: all var(--transition-fast);
+            font-size: 14px;
             color: var(--ios-label);
         }
 
         .dimension-chip:hover {
-            background: rgba(224, 41, 35, 0.06);
-            border-color: rgba(224, 41, 35, 0.3);
+            border-color: var(--heritage-red-light);
+            background: var(--bright-eggshell-light);
         }
 
         .dimension-chip.selected {
             background: var(--heritage-red);
             border-color: var(--heritage-red);
             color: white;
-            box-shadow: 0 4px 12px rgba(224, 41, 35, 0.25);
+            box-shadow: 0 2px 8px rgba(224, 41, 35, 0.3);
         }
 
         .dimension-chip .check-icon {
-            width: 20px;
-            height: 20px;
+            width: 18px;
+            height: 18px;
             border-radius: 50%;
-            background: rgba(0,0,0,0.06);
-            border: none;
+            border: 2px solid var(--ios-separator);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -898,13 +870,7 @@
 
         .dimension-chip.selected .check-icon {
             background: white;
-            animation: checkPop 0.2s ease;
-        }
-
-        @keyframes checkPop {
-            0% { transform: scale(0); }
-            50% { transform: scale(1.2); }
-            100% { transform: scale(1); }
+            border-color: white;
         }
 
         .dimension-chip.selected .check-icon svg {
@@ -1116,20 +1082,13 @@
             display: block;
         }
 
-        /* Question Cards - iOS Style */
+        /* Question Cards */
         .question-card {
-            background: white;
-            border-radius: 16px;
-            padding: 24px;
+            background: var(--ios-bg);
+            border-radius: var(--radius-md);
+            padding: 20px;
             margin-bottom: 12px;
             position: relative;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-            border: 1px solid rgba(0,0,0,0.04);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .question-card:hover {
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
         }
 
         .question-card:last-child {
@@ -1147,12 +1106,12 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 32px;
-            height: 32px;
-            background: linear-gradient(135deg, var(--heritage-red) 0%, var(--heritage-red-light) 100%);
+            width: 28px;
+            height: 28px;
+            background: var(--heritage-red);
             color: white;
-            border-radius: 10px;
-            font-size: 14px;
+            border-radius: 50%;
+            font-size: 13px;
             font-weight: 600;
             flex-shrink: 0;
         }
@@ -1213,11 +1172,10 @@
         }
 
         .question-main {
-            font-size: 17px;
+            font-size: 16px;
             font-weight: 500;
             color: var(--ios-label);
-            line-height: 1.65;
-            letter-spacing: -0.01em;
+            line-height: 1.6;
             margin: 12px 0 16px 0;
         }
 
@@ -1487,8 +1445,8 @@
         }
 
         .detail-block {
-            background: var(--ios-bg);
-            border-radius: 12px;
+            background: white;
+            border-radius: var(--radius-sm);
             padding: 16px;
             border-left: 3px solid;
         }
@@ -1501,8 +1459,6 @@
         .detail-label {
             font-size: 12px;
             font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
             margin-bottom: 8px;
             display: flex;
             align-items: center;
@@ -1520,57 +1476,6 @@
             line-height: 1.6;
         }
 
-        /* Toggle button - hidden on desktop by default */
-        .details-toggle {
-            display: none;
-        }
-
-        /* Mobile Bottom Bar - hidden on desktop by default */
-        .mobile-bottom-bar {
-            display: none;
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: var(--card-bg);
-            border-top: 1px solid rgba(0,0,0,0.08);
-            padding: 8px 16px;
-            padding-bottom: calc(8px + env(safe-area-inset-bottom, 0px));
-            z-index: 1000;
-            box-shadow: 0 -2px 10px rgba(0,0,0,0.08);
-        }
-
-        [data-theme="dark"] .mobile-bottom-bar {
-            border-top-color: rgba(255,255,255,0.08);
-        }
-
-        .mobile-bar-btn {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 4px;
-            padding: 8px 4px;
-            background: transparent;
-            border: none;
-            color: var(--heritage-red);
-            font-size: 11px;
-            font-weight: 500;
-            cursor: pointer;
-            border-radius: 8px;
-            transition: background 0.2s ease;
-        }
-
-        .mobile-bar-btn:hover,
-        .mobile-bar-btn:active {
-            background: rgba(224, 41, 35, 0.08);
-        }
-
-        .mobile-bar-btn svg {
-            width: 22px;
-            height: 22px;
-        }
-
         /* Footer */
         .footer {
             text-align: center;
@@ -1579,14 +1484,9 @@
             font-size: 13px;
         }
 
-        /* Animations & Micro-interactions - iOS Style */
+        /* Animations & Micro-interactions */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
@@ -1596,36 +1496,26 @@
         }
 
         .results-section.visible {
-            animation: fadeInUp 0.4s ease;
+            animation: fadeIn 0.3s ease-out;
         }
 
         .dimension-group {
-            animation: fadeInUp 0.4s ease;
+            animation: fadeIn 0.3s ease-out;
         }
 
-        .step-card {
-            animation: fadeInUp 0.4s ease;
-            transition: opacity 0.3s ease, transform 0.3s ease;
-        }
-
-        /* Button press effect - iOS style */
         .level-card:active {
-            transform: scale(0.97);
+            transform: scale(0.98);
         }
 
         .dimension-chip:active {
-            transform: scale(0.97);
-        }
-
-        button:active {
-            transform: scale(0.97);
+            transform: scale(0.96);
         }
 
         .btn:active,
         .toolbar-btn:active,
         .copy-btn:active,
         .copy-all-btn:active {
-            transform: scale(0.97);
+            transform: scale(0.96);
         }
 
         .level-card.selected {
@@ -1634,6 +1524,10 @@
 
         .dimension-chip.selected {
             animation: pulse 0.2s ease-out;
+        }
+
+        .step-card {
+            transition: opacity 0.3s ease, transform 0.3s ease;
         }
 
         .step-card.inactive {
@@ -1687,346 +1581,25 @@
             border: 0;
         }
 
-        /* ========================================
-           RESPONSIVE DESIGN - Mobile First
-           ======================================== */
-
-        /* Base touch targets - ensure 44px minimum for all interactive elements */
-        .lang-btn,
-        .theme-toggle,
-        .toolbar-btn,
-        .copy-btn,
-        .expand-btn {
-            min-height: 44px;
-            min-width: 44px;
-        }
-
-        .dimension-chip {
-            min-height: 44px;
-        }
-
-        /* Tablet breakpoint (768px) */
+        /* Responsive */
         @media (max-width: 768px) {
             .level-cards {
                 grid-template-columns: 1fr;
             }
-
+            
             .step-progress {
-                flex-direction: column;
-                align-items: stretch;
-                gap: 0;
-                padding: 24px;
-            }
-
-            .step-item {
-                flex-direction: row;
-                align-items: center;
+                flex-wrap: wrap;
                 gap: 16px;
-                padding: 16px 0;
             }
-
+            
             .step-connector {
                 display: none;
             }
-
-            /* Vertical connector for mobile */
-            .step-item:not(:last-child)::after {
-                content: '';
-                position: absolute;
-                left: 28px;
-                top: 72px;
-                width: 3px;
-                height: calc(100% - 56px);
-                background: #e5e5ea;
-                border-radius: 2px;
-            }
-
-            .step-item.completed:not(:last-child)::after {
-                background: linear-gradient(180deg, var(--rich-purple) 0%, var(--rich-purple-light) 100%);
-            }
-
-            .step-item {
-                position: relative;
-            }
-
-            .step-circle {
-                flex-shrink: 0;
-            }
-
-            .step-content {
-                text-align: left;
-            }
-
+            
             .selection-summary {
                 flex-direction: column;
                 gap: 16px;
                 text-align: center;
-            }
-
-            /* Header mobile optimization */
-            .header {
-                padding: 12px 16px;
-            }
-
-            .header-left h1 {
-                font-size: 16px;
-            }
-
-            .logo-container img {
-                height: 32px;
-            }
-
-            .version-badge {
-                display: none;
-            }
-
-            .header-right {
-                gap: 8px;
-            }
-
-            /* Dimension chips - better touch targets */
-            .dimension-chip {
-                padding: 14px 18px;
-                font-size: 14px;
-            }
-
-            /* Question cards - reduce padding on mobile */
-            .question-card {
-                padding: 20px 16px;
-            }
-
-            .question-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 12px;
-            }
-
-            .question-actions {
-                width: 100%;
-                justify-content: flex-end;
-            }
-
-            /* Detail blocks - full width on mobile */
-            .detail-block {
-                padding: 14px;
-            }
-
-            /* Main container padding */
-            .main-container {
-                padding: 16px;
-            }
-
-            .step-card {
-                padding: 20px 16px;
-            }
-        }
-
-        /* Mobile breakpoint (480px) */
-        @media (max-width: 480px) {
-            /* Header further compacted */
-            .header {
-                padding: 10px 12px;
-            }
-
-            .header-left h1 {
-                font-size: 14px;
-            }
-
-            .logo-container img {
-                height: 28px;
-            }
-
-            .lang-btn {
-                padding: 8px 10px;
-                font-size: 12px;
-            }
-
-            /* Level cards - full width with reduced padding */
-            .level-card {
-                padding: 20px 16px;
-            }
-
-            .level-icon {
-                width: 56px;
-                height: 56px;
-                border-radius: 16px;
-                font-size: 24px;
-            }
-
-            .level-title {
-                font-size: 18px;
-            }
-
-            /* Step progress - more compact */
-            .step-progress {
-                padding: 16px;
-            }
-
-            .step-circle {
-                width: 48px;
-                height: 48px;
-                font-size: 18px;
-            }
-
-            .step-label {
-                font-size: 13px;
-            }
-
-            /* Dimension chips - wrap better */
-            .dimension-list {
-                gap: 8px;
-            }
-
-            .dimension-chip {
-                padding: 12px 14px;
-                font-size: 13px;
-            }
-
-            /* Questions - more compact */
-            .question-main {
-                font-size: 15px;
-            }
-
-            .detail-label {
-                font-size: 11px;
-            }
-
-            .detail-content {
-                font-size: 13px;
-            }
-
-            /* Mobile collapsible details */
-            .details-toggle {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                gap: 6px;
-                width: 100%;
-                padding: 12px;
-                margin-top: 12px;
-                background: var(--ios-bg);
-                border: 1px solid rgba(0,0,0,0.06);
-                border-radius: 10px;
-                color: var(--heritage-red);
-                font-size: 13px;
-                font-weight: 500;
-                cursor: pointer;
-                transition: all 0.2s ease;
-            }
-
-            .details-toggle:hover {
-                background: rgba(224, 41, 35, 0.06);
-            }
-
-            .details-toggle svg {
-                transition: transform 0.3s ease;
-            }
-
-            .details-toggle.expanded svg {
-                transform: rotate(180deg);
-            }
-
-            .question-details {
-                display: none;
-                animation: slideDown 0.3s ease;
-            }
-
-            .question-details.show {
-                display: flex;
-            }
-
-            @keyframes slideDown {
-                from {
-                    opacity: 0;
-                    transform: translateY(-10px);
-                }
-                to {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            }
-
-            /* Toolbar - full width buttons */
-            .questions-toolbar {
-                flex-direction: column;
-                gap: 12px;
-            }
-
-            .toolbar-left,
-            .toolbar-right {
-                width: 100%;
-                justify-content: center;
-            }
-
-            /* View questions button - full width */
-            .view-questions-btn {
-                width: 100%;
-                justify-content: center;
-            }
-
-            /* Toast notifications - bottom center (above mobile bar) */
-            .toast-container {
-                left: 12px;
-                right: 12px;
-                bottom: 80px;
-            }
-
-            .toast {
-                max-width: 100%;
-            }
-
-            /* Show mobile bottom bar */
-            .mobile-bottom-bar {
-                display: flex;
-            }
-
-            /* Add bottom padding to main content for mobile bar */
-            .main-container {
-                padding-bottom: 80px;
-            }
-
-            /* Hide desktop toolbar buttons on mobile (use bottom bar instead) */
-            .toolbar-right {
-                display: none;
-            }
-
-            .toolbar-left {
-                flex-direction: column;
-            }
-        }
-
-        /* Small mobile (360px) */
-        @media (max-width: 360px) {
-            .header-left h1 {
-                font-size: 12px;
-            }
-
-            .logo-container img {
-                height: 24px;
-            }
-
-            .level-icon {
-                width: 48px;
-                height: 48px;
-                font-size: 20px;
-            }
-
-            .step-circle {
-                width: 40px;
-                height: 40px;
-                font-size: 16px;
-            }
-        }
-
-        /* Large screens (1024px+) */
-        @media (min-width: 1024px) {
-            .level-cards {
-                grid-template-columns: repeat(3, 1fr);
-            }
-
-            .main-container {
-                max-width: 1200px;
-                margin: 0 auto;
             }
         }
 
@@ -2174,7 +1747,7 @@
     <header class="header" role="banner">
         <div class="header-content">
             <div class="logo-section">
-                <img src="halo-logo.png" alt="Lee Kum Kee">
+                <img src="logo tou.png" alt="Lee Kum Kee">
                 <div class="logo-text">
                     <h1>面试官题库</h1>
                     <h2>Interviewer Question Bank</h2>
@@ -2386,37 +1959,6 @@
     </footer>
     <script>document.getElementById('footerYear').textContent = new Date().getFullYear();</script>
 
-    <!-- Mobile Bottom Toolbar (hidden on desktop) -->
-    <div class="mobile-bottom-bar" id="mobileBottomBar">
-        <button class="mobile-bar-btn" onclick="exportToPDF()">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
-                <path d="M14 2v6h6M12 18v-6M9 15l3 3 3-3"/>
-            </svg>
-            <span id="mobileExportPdf">PDF</span>
-        </button>
-        <button class="mobile-bar-btn" onclick="exportToWord()">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
-                <path d="M14 2v6h6M9 13h6M9 17h6"/>
-            </svg>
-            <span id="mobileExportWord">Word</span>
-        </button>
-        <button class="mobile-bar-btn" onclick="resetAll()">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
-                <path d="M3 3v5h5"/>
-            </svg>
-            <span id="mobileResetBtn">重选</span>
-        </button>
-        <button class="mobile-bar-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M18 15l-6-6-6 6"/>
-            </svg>
-            <span id="mobileScrollTop">顶部</span>
-        </button>
-    </div>
-
     <script>
         // ==================== LANGUAGE SYSTEM ====================
         let currentLang = localStorage.getItem('lkk_lang') || 'zh-CN';
@@ -2529,12 +2071,6 @@
                 copyBtn: '复制',
                 copyAllBtn: '复制全部',
                 questionPrefix: '问题',
-                showDetails: '展开详情',
-                hideDetails: '收起详情',
-
-                // Mobile bottom bar
-                mobileReset: '重选',
-                mobileTop: '顶部',
 
                 // Toast messages
                 toastCopySuccess: '复制成功',
@@ -2667,12 +2203,6 @@
                 copyBtn: '複製',
                 copyAllBtn: '複製全部',
                 questionPrefix: '問題',
-                showDetails: '展開詳情',
-                hideDetails: '收起詳情',
-
-                // Mobile bottom bar
-                mobileReset: '重選',
-                mobileTop: '頂部',
 
                 // Toast messages
                 toastCopySuccess: '複製成功',
@@ -2797,12 +2327,6 @@
                 copyBtn: 'Copy',
                 copyAllBtn: 'Copy All',
                 questionPrefix: 'Question',
-                showDetails: 'Show Details',
-                hideDetails: 'Hide Details',
-
-                // Mobile bottom bar
-                mobileReset: 'Reset',
-                mobileTop: 'Top',
 
                 // Toast messages
                 toastCopySuccess: 'Copied',
@@ -2957,10 +2481,6 @@
             document.getElementById('exportPdfText').textContent = getText('exportPDF');
             document.getElementById('exportWordText').textContent = getText('exportWord');
             document.getElementById('resetAllText').textContent = getText('resetAll');
-
-            // Mobile bottom bar
-            document.getElementById('mobileResetBtn').textContent = getText('mobileReset');
-            document.getElementById('mobileScrollTop').textContent = getText('mobileTop');
 
             // Count labels - handle English singular/plural
             const dimCount = selectedDimensions ? selectedDimensions.size : 0;
@@ -6663,16 +6183,6 @@
             if (scenarioSimulation) copyText += `\n\n${getText('scenarioLabel')}：${scenarioSimulation}`;
             if (evaluationCriteria) copyText += `\n\n${getText('evaluationLabel')}：${evaluationCriteria}`;
 
-            // Generate toggle button HTML for mobile (only if there are details)
-            const toggleBtn = detailsHtml ? `
-                <button class="details-toggle" onclick="toggleDetails(this)">
-                    <span class="toggle-text">${getText('showDetails')}</span>
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                        <polyline points="6 9 12 15 18 9"/>
-                    </svg>
-                </button>
-            ` : '';
-
             return `
                 <div class="question-card" data-question="${encodeURIComponent(copyText)}">
                     <div class="question-header">
@@ -6686,7 +6196,6 @@
                         </button>
                     </div>
                     <div class="question-main">${initialPrompt}</div>
-                    ${toggleBtn}
                     ${detailsHtml ? `<div class="question-details">${detailsHtml}</div>` : ''}
                 </div>
             `;
@@ -6718,23 +6227,6 @@
                     `;
                 }, 2000);
             });
-        }
-
-        // Toggle question details (mobile only)
-        function toggleDetails(btn) {
-            const card = btn.closest('.question-card');
-            const details = card.querySelector('.question-details');
-            const textSpan = btn.querySelector('.toggle-text');
-
-            if (details.classList.contains('show')) {
-                details.classList.remove('show');
-                btn.classList.remove('expanded');
-                textSpan.textContent = getText('showDetails');
-            } else {
-                details.classList.add('show');
-                btn.classList.add('expanded');
-                textSpan.textContent = getText('hideDetails');
-            }
         }
 
         // Copy All Questions in a Dimension

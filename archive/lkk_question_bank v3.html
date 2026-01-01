@@ -1,0 +1,2492 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEE KUM KEE | 面试题库 Interview Question Bank v1.0</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* LKK Brand Colors */
+            --heritage-red: #E02923;
+            --heritage-red-light: #FF4D47;
+            --heritage-red-dark: #B81E1A;
+            --rich-purple: #5C087E;
+            --rich-purple-light: #7A1A9E;
+            --bright-eggshell: #FFEBCF;
+            --bright-eggshell-light: #FFF5E6;
+            --legacy-gold: #E0A63D;
+            --legacy-gold-light: #F0C060;
+            
+            /* iOS System Colors */
+            --ios-bg: #F2F2F7;
+            --ios-card: #FFFFFF;
+            --ios-separator: rgba(60, 60, 67, 0.12);
+            --ios-label: #000000;
+            --ios-secondary-label: rgba(60, 60, 67, 0.6);
+            --ios-tertiary-label: rgba(60, 60, 67, 0.3);
+            
+            /* Shadows */
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+            --shadow-lg: 0 8px 24px rgba(0,0,0,0.12);
+            --shadow-card: 0 2px 8px rgba(0,0,0,0.06);
+            
+            /* Border Radius */
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 20px;
+            
+            /* Transitions */
+            --transition-fast: 0.15s ease;
+            --transition-normal: 0.25s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--ios-bg);
+            color: var(--ios-label);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--heritage-red) 0%, var(--heritage-red-dark) 100%);
+            padding: 14px 24px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .logo-section img {
+            height: 44px;
+            width: auto;
+            background: rgba(255,255,255,0.95);
+            padding: 6px 10px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .logo-text h1 {
+            color: white;
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin: 0;
+            line-height: 1.2;
+        }
+
+        .logo-text h2 {
+            color: rgba(255,255,255,0.85);
+            font-size: 12px;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            margin: 0;
+            line-height: 1.3;
+            white-space: nowrap;
+        }
+        .logo-text p {
+            color: rgba(255,255,255,0.8);
+            font-size: 12px;
+        }
+        .version-badge {
+            background: rgba(255,255,255,0.2);
+            color: rgba(255,255,255,0.95);
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        /* Main Container */
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 24px;
+        }
+
+        /* Step Progress Indicator */
+        .step-progress {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+            margin-bottom: 32px;
+            padding: 24px;
+            background: white;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-card);
+        }
+
+        .step-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            flex: 1;
+            max-width: 200px;
+        }
+
+        .step-circle {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--ios-bg);
+            border: 3px solid var(--ios-separator);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--ios-tertiary-label);
+            transition: all var(--transition-normal);
+            position: relative;
+            z-index: 2;
+        }
+
+        .step-item.active .step-circle {
+            background: var(--heritage-red);
+            border-color: var(--heritage-red);
+            color: white;
+            box-shadow: 0 4px 12px rgba(224, 41, 35, 0.3);
+        }
+
+        .step-item.completed .step-circle {
+            background: var(--rich-purple);
+            border-color: var(--rich-purple);
+            color: white;
+        }
+
+        .step-label {
+            margin-top: 8px;
+            font-size: 13px;
+            color: var(--ios-secondary-label);
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .step-item.active .step-label {
+            color: var(--heritage-red);
+            font-weight: 600;
+        }
+
+        .step-item.completed .step-label {
+            color: var(--rich-purple);
+        }
+
+        .step-connector {
+            flex: 1;
+            height: 3px;
+            background: var(--ios-separator);
+            margin: 0 -20px;
+            margin-bottom: 28px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-connector.completed {
+            background: var(--rich-purple);
+        }
+
+        /* Step Cards */
+        .step-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-card);
+            margin-bottom: 24px;
+            overflow: hidden;
+            transition: all var(--transition-normal);
+        }
+
+        .step-card.inactive {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        .step-header {
+            padding: 20px 24px;
+            background: linear-gradient(135deg, var(--bright-eggshell-light) 0%, var(--bright-eggshell) 100%);
+            border-bottom: 1px solid var(--ios-separator);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .step-number {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--heritage-red);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .step-card.completed .step-number {
+            background: var(--rich-purple);
+        }
+
+        .step-title {
+            flex: 1;
+        }
+
+        .step-title h2 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--ios-label);
+        }
+
+        .step-title p {
+            font-size: 13px;
+            color: var(--ios-secondary-label);
+            margin-top: 2px;
+        }
+
+        .step-status {
+            font-size: 13px;
+            color: var(--ios-secondary-label);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .step-status.selected {
+            color: var(--rich-purple);
+            font-weight: 600;
+        }
+
+        .step-content {
+            padding: 24px;
+        }
+
+        /* Level Selector - Step 1 */
+        .level-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .level-card {
+            background: var(--ios-bg);
+            border: 2px solid transparent;
+            border-radius: var(--radius-md);
+            padding: 24px;
+            cursor: pointer;
+            transition: all var(--transition-normal);
+            text-align: center;
+        }
+
+        .level-card:hover {
+            background: var(--bright-eggshell-light);
+            transform: translateY(-2px);
+        }
+
+        .level-card.selected {
+            background: white;
+            border-color: var(--heritage-red);
+            box-shadow: 0 4px 16px rgba(224, 41, 35, 0.15);
+        }
+
+        .level-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: white;
+            margin: 0 auto 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .level-card.selected .level-icon {
+            background: var(--heritage-red);
+        }
+
+        .level-card.selected .level-icon span {
+            filter: grayscale(1) brightness(10);
+        }
+
+        .level-name {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--ios-label);
+            margin-bottom: 4px;
+        }
+
+        .level-name-en {
+            font-size: 13px;
+            color: var(--ios-secondary-label);
+            margin-bottom: 12px;
+        }
+
+        .level-desc {
+            font-size: 12px;
+            color: var(--ios-secondary-label);
+            line-height: 1.6;
+        }
+
+        .level-card.selected .level-name {
+            color: var(--heritage-red);
+        }
+
+        /* Framework Display - Step 2 */
+        .framework-intro {
+            background: linear-gradient(135deg, var(--bright-eggshell-light) 0%, white 100%);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            margin-bottom: 24px;
+            border-left: 4px solid var(--legacy-gold);
+        }
+
+        .framework-intro h3 {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--ios-label);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .framework-intro p {
+            font-size: 13px;
+            color: var(--ios-secondary-label);
+            line-height: 1.6;
+        }
+
+        .framework-categories {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .framework-category {
+            background: var(--ios-bg);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+        }
+
+        .framework-category.unavailable {
+            opacity: 0.4;
+            pointer-events: none;
+        }
+
+        .category-header {
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: white;
+            border-bottom: 1px solid var(--ios-separator);
+        }
+
+        .category-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .category-icon.values { background: rgba(224, 41, 35, 0.1); }
+        .category-icon.leadership { background: rgba(92, 8, 126, 0.1); }
+        .category-icon.leading_change { background: rgba(224, 166, 61, 0.1); }
+        .category-icon.motivation { background: rgba(0, 122, 255, 0.1); }
+
+        .category-info {
+            flex: 1;
+        }
+
+        .category-name {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--ios-label);
+        }
+
+        .category-name-en {
+            font-size: 12px;
+            color: var(--ios-secondary-label);
+        }
+
+        .category-badge {
+            font-size: 11px;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-weight: 600;
+        }
+
+        .category-badge.available {
+            background: rgba(52, 199, 89, 0.15);
+            color: #34C759;
+        }
+
+        .category-badge.unavailable {
+            background: var(--ios-separator);
+            color: var(--ios-tertiary-label);
+        }
+
+        .dimension-list {
+            padding: 16px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .dimension-chip {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            background: white;
+            border: 2px solid var(--ios-separator);
+            border-radius: 24px;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            font-size: 14px;
+            color: var(--ios-label);
+        }
+
+        .dimension-chip:hover {
+            border-color: var(--heritage-red-light);
+            background: var(--bright-eggshell-light);
+        }
+
+        .dimension-chip.selected {
+            background: var(--heritage-red);
+            border-color: var(--heritage-red);
+            color: white;
+            box-shadow: 0 2px 8px rgba(224, 41, 35, 0.3);
+        }
+
+        .dimension-chip .check-icon {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            border: 2px solid var(--ios-separator);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all var(--transition-fast);
+        }
+
+        .dimension-chip.selected .check-icon {
+            background: white;
+            border-color: white;
+        }
+
+        .dimension-chip.selected .check-icon svg {
+            stroke: var(--heritage-red);
+        }
+
+        /* Selection Summary */
+        .selection-summary {
+            background: linear-gradient(135deg, var(--rich-purple) 0%, #7A1A9E 100%);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            margin-top: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .summary-info {
+            color: white;
+        }
+
+        .summary-info h4 {
+            font-size: 14px;
+            font-weight: 500;
+            opacity: 0.9;
+            margin-bottom: 4px;
+        }
+
+        .summary-info .count {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .summary-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border-radius: var(--radius-sm);
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--rich-purple);
+        }
+
+        .btn-primary:hover {
+            background: var(--bright-eggshell);
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.2);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        /* Results Section */
+        .results-section {
+            display: none;
+        }
+
+        .results-section.visible {
+            display: block;
+        }
+
+        .results-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .results-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .results-title h2 {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .results-count {
+            background: var(--heritage-red);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 16px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .back-btn {
+            background: var(--ios-bg);
+            border: none;
+            padding: 10px 16px;
+            border-radius: var(--radius-sm);
+            font-size: 14px;
+            color: var(--ios-secondary-label);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .back-btn:hover {
+            background: var(--ios-separator);
+        }
+
+        /* Question Groups */
+        .dimension-group {
+            background: white;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-card);
+            margin-bottom: 16px;
+            overflow: hidden;
+        }
+
+        .dimension-header {
+            padding: 20px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            transition: background var(--transition-fast);
+        }
+
+        .dimension-header:hover {
+            background: var(--ios-bg);
+        }
+
+        .dimension-info {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .dimension-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .dimension-icon.values { background: rgba(224, 41, 35, 0.1); }
+        .dimension-icon.leadership { background: rgba(92, 8, 126, 0.1); }
+        .dimension-icon.leading_change { background: rgba(224, 166, 61, 0.1); }
+        .dimension-icon.motivation { background: rgba(0, 122, 255, 0.1); }
+
+        .dimension-title h3 {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .dimension-title p {
+            font-size: 13px;
+            color: var(--ios-secondary-label);
+        }
+
+        .dimension-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .question-count {
+            background: var(--ios-bg);
+            padding: 6px 12px;
+            border-radius: 16px;
+            font-size: 13px;
+            color: var(--ios-secondary-label);
+        }
+
+        .expand-icon {
+            width: 20px;
+            height: 20px;
+            color: var(--ios-tertiary-label);
+            transition: transform var(--transition-normal);
+        }
+
+        .dimension-group.expanded .expand-icon {
+            transform: rotate(180deg);
+        }
+
+        .questions-container {
+            display: none;
+            padding: 0 24px 24px;
+        }
+
+        .dimension-group.expanded .questions-container {
+            display: block;
+        }
+
+        /* Question Cards */
+        .question-card {
+            background: var(--ios-bg);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            margin-bottom: 12px;
+            position: relative;
+        }
+
+        .question-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .question-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .question-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            background: var(--heritage-red);
+            color: white;
+            border-radius: 50%;
+            font-size: 13px;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .copy-btn {
+            background: white;
+            border: 1px solid var(--ios-separator);
+            border-radius: 8px;
+            padding: 6px 12px;
+            font-size: 12px;
+            color: var(--ios-secondary-label);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            flex-shrink: 0;
+        }
+
+        .copy-btn:hover {
+            background: var(--heritage-red);
+            color: white;
+            border-color: var(--heritage-red);
+        }
+
+        .copy-btn.copied {
+            background: #34C759;
+            color: white;
+            border-color: #34C759;
+        }
+
+        .question-main {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--ios-label);
+            line-height: 1.6;
+            margin: 12px 0 16px 0;
+        }
+
+        /* Toolbar Styles */
+        .results-toolbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding: 16px;
+            background: white;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            flex-wrap: wrap;
+        }
+
+        .toolbar-left {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .toolbar-right {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .toolbar-btn {
+            background: var(--ios-bg);
+            border: 1px solid var(--ios-separator);
+            border-radius: 8px;
+            padding: 8px 14px;
+            font-size: 13px;
+            color: var(--ios-label);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 500;
+        }
+
+        .toolbar-btn:hover {
+            background: var(--heritage-red);
+            color: white;
+            border-color: var(--heritage-red);
+        }
+
+        .toolbar-btn.active {
+            background: var(--heritage-red);
+            color: white;
+            border-color: var(--heritage-red);
+        }
+
+        .toolbar-btn svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: var(--ios-bg);
+            border: 1px solid var(--ios-separator);
+            border-radius: 8px;
+            padding: 0 12px;
+            min-width: 200px;
+            transition: all var(--transition-fast);
+        }
+
+        .search-box:focus-within {
+            border-color: var(--heritage-red);
+            box-shadow: 0 0 0 3px rgba(224, 41, 35, 0.1);
+        }
+
+        .search-box svg {
+            width: 16px;
+            height: 16px;
+            color: var(--ios-secondary-label);
+            flex-shrink: 0;
+        }
+
+        .search-box input {
+            border: none;
+            background: transparent;
+            padding: 8px;
+            font-size: 13px;
+            width: 100%;
+            outline: none;
+        }
+
+        .search-box input::placeholder {
+            color: var(--ios-tertiary-label);
+        }
+
+        /* Print Styles */
+        @media print {
+            .header, .step-progress, .step-card, .results-toolbar, .footer, .copy-btn {
+                display: none !important;
+            }
+
+            .results-section {
+                display: block !important;
+                padding: 0 !important;
+            }
+
+            .dimension-group {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+
+            .question-card {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+
+            .questions-container {
+                display: block !important;
+            }
+
+            body {
+                background: white !important;
+            }
+        }
+
+        /* No Results Message */
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            color: var(--ios-secondary-label);
+        }
+
+        .no-results svg {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 16px;
+            opacity: 0.5;
+        }
+
+        .highlight {
+            background: rgba(224, 41, 35, 0.15);
+            padding: 1px 2px;
+            border-radius: 2px;
+        }
+
+        .question-details {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .detail-block {
+            background: white;
+            border-radius: var(--radius-sm);
+            padding: 16px;
+            border-left: 3px solid;
+        }
+
+        .detail-block.star { border-color: var(--heritage-red); }
+        .detail-block.logic { border-color: var(--rich-purple); }
+        .detail-block.scenario { border-color: var(--legacy-gold); }
+        .detail-block.evaluation { border-color: #34C759; }
+
+        .detail-label {
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .detail-label.star { color: var(--heritage-red); }
+        .detail-label.logic { color: var(--rich-purple); }
+        .detail-label.scenario { color: var(--legacy-gold); }
+        .detail-label.evaluation { color: #34C759; }
+
+        .detail-content {
+            font-size: 14px;
+            color: var(--ios-label);
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 32px;
+            color: var(--ios-secondary-label);
+            font-size: 13px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .level-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .step-progress {
+                flex-wrap: wrap;
+                gap: 16px;
+            }
+            
+            .step-connector {
+                display: none;
+            }
+            
+            .selection-summary {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-section">
+                <img src="logo tou.png" alt="Lee Kum Kee">
+                <div class="logo-text">
+                    <h1>面试官题库</h1>
+                    <h2>Interviewer Question Bank</h2>
+                </div>
+            </div>
+            <span class="version-badge">V&L Assessment v1.0</span>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <!-- Step Progress Indicator -->
+        <div class="step-progress">
+            <div class="step-item active" data-step="1">
+                <div class="step-circle">1</div>
+                <div class="step-label">选择岗位级别</div>
+            </div>
+            <div class="step-connector"></div>
+            <div class="step-item" data-step="2">
+                <div class="step-circle">2</div>
+                <div class="step-label">选择评估维度</div>
+            </div>
+            <div class="step-connector"></div>
+            <div class="step-item" data-step="3">
+                <div class="step-circle">3</div>
+                <div class="step-label">查看面试题目</div>
+            </div>
+        </div>
+
+        <!-- Step 1: Level Selection -->
+        <div class="step-card" id="step1Card">
+            <div class="step-header">
+                <div class="step-number">1</div>
+                <div class="step-title">
+                    <h2>选择面试岗位级别</h2>
+                    <p>Select Position Level</p>
+                </div>
+                <div class="step-status" id="step1Status">请选择</div>
+            </div>
+            <div class="step-content">
+                <div class="level-cards">
+                    <div class="level-card" data-level="IC">
+                        <div class="level-icon"><span>👤</span></div>
+                        <div class="level-name">Individual Contributor</div>
+                        <div class="level-name-en">独立贡献者</div>
+                        <div class="level-desc">评估：价值观 + 动机</div>
+                    </div>
+                    <div class="level-card" data-level="TL">
+                        <div class="level-icon"><span>👥</span></div>
+                        <div class="level-name">Team Leader</div>
+                        <div class="level-name-en">团队领导者</div>
+                        <div class="level-desc">评估：价值观 + 自动波领导力 + 动机</div>
+                    </div>
+                    <div class="level-card" data-level="SL">
+                        <div class="level-icon"><span>🏢</span></div>
+                        <div class="level-name">Senior Leader</div>
+                        <div class="level-name-en">高层管理者</div>
+                        <div class="level-desc">评估：价值观 + 自动波领导力 + 领导变革 + 动机</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 2: Dimension Selection -->
+        <div class="step-card inactive" id="step2Card">
+            <div class="step-header">
+                <div class="step-number">2</div>
+                <div class="step-title">
+                    <h2>选择评估维度</h2>
+                    <p>Select Assessment Dimensions (Multi-select)</p>
+                </div>
+                <div class="step-status" id="step2Status">请先完成上一步</div>
+            </div>
+            <div class="step-content">
+                <div class="framework-intro">
+                    <h3>💡 评估框架说明</h3>
+                    <p id="frameworkDesc">根据所选岗位级别，以下展示该级别对应的评估框架。请勾选您希望在本次面试中重点评估的维度。</p>
+                </div>
+                <div class="framework-categories" id="frameworkCategories">
+                    <!-- Categories will be populated by JavaScript -->
+                </div>
+                
+                <!-- Selection Summary -->
+                <div class="selection-summary" id="selectionSummary" style="display: none;">
+                    <div class="summary-info">
+                        <h4>已选择维度</h4>
+                        <div class="count"><span id="selectedCount">0</span> 个维度 · <span id="questionCount">0</span> 道题目</div>
+                    </div>
+                    <div class="summary-actions">
+                        <button class="btn btn-secondary" id="clearBtn">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 6L6 18M6 6l12 12"/>
+                            </svg>
+                            清除
+                        </button>
+                        <button class="btn btn-primary" id="showResultsBtn">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                            查看题目
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 3: Results -->
+        <div class="results-section" id="resultsSection">
+            <div class="results-header">
+                <div class="results-title">
+                    <h2>📋 面试题目</h2>
+                    <span class="results-count" id="totalQuestions">0 道题目</span>
+                </div>
+                <button class="back-btn" id="backBtn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5M12 19l-7-7 7-7"/>
+                    </svg>
+                    返回修改
+                </button>
+            </div>
+
+            <!-- Toolbar -->
+            <div class="results-toolbar">
+                <div class="toolbar-left">
+                    <div class="search-box">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+                        </svg>
+                        <input type="text" id="searchInput" placeholder="搜索问题关键词...">
+                    </div>
+                    <button class="toolbar-btn" id="expandAllBtn" onclick="toggleExpandAll()">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M7 10l5 5 5-5"/>
+                        </svg>
+                        <span>展开全部</span>
+                    </button>
+                </div>
+                <div class="toolbar-right">
+                    <button class="toolbar-btn" onclick="window.print()">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/>
+                            <rect x="6" y="14" width="12" height="8"/>
+                        </svg>
+                        打印
+                    </button>
+                    <button class="toolbar-btn" onclick="resetAll()">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+                            <path d="M3 3v5h5"/>
+                        </svg>
+                        重新选择
+                    </button>
+                </div>
+            </div>
+
+            <div id="questionGrid">
+                <!-- Questions will be populated by JavaScript -->
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        © 2025 Lee Kum Kee. All Rights Reserved.
+    </footer>
+
+    <script>
+        // Question Data
+        const questionData = {
+            IC: {
+                "si_li_ji_ren": {
+                    name_cn: "思利及人",
+                    name_en: "Si Li Ji Ren",
+                    category: "values",
+                    questions: [
+                        {
+                            initial_prompt: "请分享一次你在手头有重要任务时，突然需要支援其他同事的经历。",
+                            star_framework: "(S) 情境：你当时自身任务的进展阶段、紧急程度与重要性如何？\n(T) 任务：需要你提供支援的具体内容是什么？预计需投入多少时间与精力？\n(A) 行动：你实际采取了哪些协助措施？如何重新规划与安排自身工作？\n(R) 结果：支援任务与你个人任务的最终完成情况如何？产生了哪些具体影响？",
+                            decision_logic: "你当时如何做出决策？在支援同事与完成自身工作之间，权衡的准则是什么？",
+                            scenario_simulation: "若现在遇到类似情况，但支援他人会直接影响你的关键绩效（KRA）达成，你会如何应对？",
+                            evaluation_criteria: "【考察点】在资源冲突中是否具备「我们 > 我」的协作意识，以及在利益权衡中优先决策逻辑。\n【高分表现】清晰阐述通过主动协调实现双赢的具体行动，在压力情境下仍能体现以团队利益为优先的成熟决策。\n【低分表现】表现出以自我为中心，在压力下选择牺牲他人保全个人利益。"
+                        },
+                        {
+                            initial_prompt: "在你过去的工作中，是否曾遇到同事反复向你请教同类问题的情况？你当时是如何处理的？",
+                            star_framework: "(S) 情境：此类问题出现的频率如何？对你及团队的工作效率产生了什么影响？\n(T) 任务：你当时的主要工作目标是什么？处理这些请教是否对你形成了压力？\n(A) 行动：你具体采取了哪些措施应对？（例如：直接解答、编写文档、组织培训等）\n(R) 结果：你所采取措施的实际效果如何？",
+                            decision_logic: "你当时为何选择此种处理方式，而非其他方法？",
+                            scenario_simulation: "若类似情况再次发生，你会从哪些方面优化做法，以更高效地减少重复解答？",
+                            evaluation_criteria: "【考察点】是否具备系统性思维与主动赋能他人（「思利及人」）的意识。\n【高分表现】能主动建立知识体系或机制从根本上解决问题（授人以渔），从个人、团队与组织角度提升整体效率。\n【低分表现】仅被动重复解答以减轻自身打扰，缺乏系统性解决意识，或明确不愿投入额外精力。"
+                        }
+                    ]
+                },
+                "wu_shi": {
+                    name_cn: "务实",
+                    name_en: "Pragmatism",
+                    category: "values",
+                    questions: [
+                        {
+                            initial_prompt: "请分享在过往工作中，面对目标或需求模糊的任务时，你如何有效推进并明确方向的具体案例。",
+                            star_framework: "(S) 情境：该任务的目标模糊性具体体现在哪些方面？存在哪些关键信息缺失或不确定性？\n(T) 任务：你最终需要交付什么具体成果？面临哪些时间或资源限制？\n(A) 行动：你采取了哪些具体措施澄清目标或定义问题？（例如：关键人访谈、数据分析、原型测试等）\n(R) 结果：是否形成了清晰可行的行动计划？最终取得了什么成果？",
+                            decision_logic: "你为何选择这些特定方法来澄清问题？其背后的考量是什么？",
+                            scenario_simulation: "你从此次经历中总结了哪些应对模糊需求的方法论？后续在哪些场景中成功应用了这些方法？",
+                            evaluation_criteria: "【考察点】在不确定性中通过务实行动将模糊问题转化为可执行方案的能力。\n【高分表现】通过系统性探索快速定义问题，展现行动导向与事实驱动思维。\n【低分表现】被动等待指令、依赖猜测行动，或对模糊性表现消极。"
+                        },
+                        {
+                            initial_prompt: "请分享在过往工作中，你如何识别并优化低效的日常操作或重复性任务的具体案例。",
+                            star_framework: "(S) 情境：该操作或任务的具体痛点是什么？导致哪些不必要的精力消耗？\n(T) 任务：你希望通过改进达成什么效果？存在哪些限制条件？\n(A) 行动：你如何验证想法并推动改进？（例如：耗时记录、工具测试、方法验证等）\n(R) 结果：改进方案的实际效果如何？是否达成预期目标？",
+                            decision_logic: "你为何优先改进此环节而非其他？选择依据是什么？",
+                            scenario_simulation: "若在全新环境中遇到类似场景，你将如何设计更具可持续性与可推广性的优化方案？",
+                            evaluation_criteria: "【考察点】通过观察验证与试错持续提升效能的务实习惯。\n【高分表现】以可量化行动验证改进，清晰呈现优化效果，展现行动力与效率意识。\n【低分表现】止步于问题识别与抱怨，缺乏行动，或方案未经证实不切实际。"
+                        }
+                    ]
+                },
+                "cheng_xin": {
+                    name_cn: "诚信",
+                    name_en: "Integrity",
+                    category: "values",
+                    questions: [
+                        {
+                            initial_prompt: "请分享在过往工作中，当数据结果与预期目标存在显著差距时，你的具体处理方式与思考过程。",
+                            star_framework: "(S) 情境：当时项目背景是什么？数据差距的具体表现有哪些？\n(T) 任务：你的汇报对象是谁？他们对数据结果的预期是什么？\n(A) 行动：你如何整理、分析并呈现数据？是否附加了背景说明或根因分析？\n(R) 结果：汇报后取得了什么结果？相关方有何反馈？",
+                            decision_logic: "你为何选择以这种方式呈现数据？准备过程中有哪些关键考量？",
+                            scenario_simulation: "基于此次经历，你总结了哪些向管理层汇报「不利数据」的有效方法与原则？后续在哪些场景中应用了这些经验？",
+                            evaluation_criteria: "【考察点】压力下坚守数据真实性、客观分析根源的能力。\n【高分表现】坚持呈现真实数据，主动分析差距根源并提出改进建议。\n【低分表现】美化数据倾向，归因外部因素，或对差距解释模糊。"
+                        },
+                        {
+                            initial_prompt: "请分享在过往工作中，因突发情况导致无法兑现对同事或客户承诺的的具体处理经历。",
+                            star_framework: "(S) 情境：当时的具体承诺是什么？出现哪些新情况导致履约困难？\n(T) 任务：你认为此时最重要的任务是什么？需要对哪些相关方负责？\n(A) 行动：你采取了哪些具体应对措施？（如主动沟通、替代方案设计等）\n(R) 结果：事件最终如何解决？相关方的反应如何？",
+                            decision_logic: "你当时为何选择这种处理方式？决策时主要考量了哪些因素？",
+                            scenario_simulation: "若现在遇到类似情况，你会在处理方式上做哪些改进？",
+                            evaluation_criteria: "【考察点】承诺重视度与诚信意识，履约困难时的应对表现。\n【高分表现】主动沟通并积极寻求解决方案，展现尊重承诺的态度。\n【低分表现】回避沟通、寻找借口或拖延告知无法履约。"
+                        }
+                    ]
+                },
+                "yong_yuan_chuang_ye": {
+                    name_cn: "永远创业",
+                    name_en: "Constant Entrepreneurship",
+                    category: "values",
+                    questions: [
+                        {
+                            initial_prompt: "请描述你在过往工作中运用创新思路或方法解决长期存在问题的具体经历，并说明你产生这一想法的过程。",
+                            star_framework: "(S) 情境：该问题已存在多长时间？对团队或业务造成了哪些具体困扰？\n(T) 任务：你希望通过新方法达成什么目标？过往的常规处理方式是什么？\n(A) 行动：你具体尝试了哪些创新方法？实施过程中遇到了什么挑战？\n(R) 结果：最终取得了怎样的效果？",
+                            decision_logic: "你当时为何决定寻求改变？哪些因素让你相信存在更好的解决方案？",
+                            scenario_simulation: "若结合当前新技术（如AI）或趋势，这一解决方案有哪些可进化升级的空间？",
+                            evaluation_criteria: "【考察点】持续改进意识与创新突破勇气，主动探索非常规工作外的优化路径的能力。\n【高分表现】展现主动发现问题、设计并实践创新方案的过程，即使未达预期也能提炼经验并持续优化。\n【低分表现】安于现状、畏惧改变，或仅停留于设想而缺乏实际行动。"
+                        },
+                        {
+                            initial_prompt: "请分享你在过往工作中，因优先级变化需暂停已投入较多精力的工作，转而处理更重要任务的具体经历及应对方式。",
+                            star_framework: "(S) 情境：原工作内容是什么？已投入多少资源？调整原因是什么？\n(T) 任务：新的工作方向或任务是什么？面临哪些主要挑战？\n(A) 行动：你如何快速切换工作重心？（例如：工作交接、快速学习、跨团队协调等）\n(R) 结果：此次调整最终成效如何？你从中获得哪些经验？",
+                            decision_logic: "你认为自己能快速适应变化的关键因素是什么？",
+                            scenario_simulation: "若再次面临类似调整，你会在心态或方法上做哪些优化？",
+                            evaluation_criteria: "【考察点】面对计划中断与方向调整时的心态开放性与行为灵活性，能否克服沉没成本心态，快速聚焦新目标。\n【高分表现】展现积极适应态度、快速学习能力与高效执行力，专注新目标推进而非纠结既往投入。\n【低分表现】表现出抵触情绪或被动接受，沉溺于「前功尽弃」心态，影响新任务投入效率。"
+                        }
+                    ]
+                },
+                "100_minus_1": {
+                    name_cn: "100-1=0",
+                    name_en: "100-1=0",
+                    category: "values",
+                    questions: [
+                        {
+                            initial_prompt: "请分享一件你已完成大部分工作，却在后期阶段发现存在改进空间的工作事件，并说明你当时的处理方式。",
+                            star_framework: "(S) 情境：当时的具体任务是什么？已完成多少进度？发现了哪些具体问题或改进点？\n(T) 任务：该任务的交付标准和时间要求是怎样的？\n(A) 行动：你具体采取了哪些措施来处理这些发现？\n(R) 结果：任务最终以什么状态交付？你对成果是否满意？",
+                            decision_logic: "你当时为何决定采取这些行动？在决策时主要考虑了哪些因素？",
+                            scenario_simulation: "后续你是否采取过根本性措施，以避免类似问题在未来工作中再次发生？",
+                            evaluation_criteria: "【考察点】对工作品质的自我要求标准，是否具备不放过细节的极致精神与内在驱动力。\n【高分表现】主动修正瑕疵，展现对品质的高标准和持续改进意识。\n【低分表现】持「差不多」态度，忽视小瑕疵对结果的影响。"
+                        },
+                        {
+                            initial_prompt: "请分享你过去工作中遇到流程环节繁琐但仍需严格执行的经历，并说明你当时的处理方式。",
+                            star_framework: "(S) 情境：当时的具体流程是什么？哪个环节让你感到繁琐或耗时？\n(T) 任务：该流程设计的初衷是什么？需要规避哪些风险？\n(A) 行动：你如何执行该环节？是否在符合要求的前提下尝试提升效率的方法？\n(R) 结果：该环节最终执行效果如何？是否因执行问题引发后续风险？",
+                            decision_logic: "你当时为何选择以这种方式处理该流程环节？",
+                            scenario_simulation: "假设严格遵循流程将导致重要项目延期，而灵活处理可确保交付且看似风险很低，你会如何决策？",
+                            evaluation_criteria: "【考察点】对规则的敬畏心与执行力，以及在无人监督时坚持合规、不因繁琐打折的职业素养。\n【高分表现】严格遵守流程，区分优化与打折，在合规基础上主动改进。\n【低分表现】轻视流程，随意跳过「形式化」环节。"
+                        }
+                    ]
+                },
+                "nei_zai_qu_dong": {
+                    name_cn: "内在驱动",
+                    name_en: "Intrinsic Drivers",
+                    category: "motivation",
+                    questions: [
+                        {
+                            initial_prompt: "回顾你的职业生涯，哪项工作或项目让您获得了最大的成就感和满足感？请详细描述。",
+                            followup_questions: "1. 你认为成功的核心驱动因素是什么？（是充分的准备、团队的协作、技能的突破，还是外部的认可？）\n2. 为什么是这些因素（而非其他）最让您感到满足？",
+                            evaluation_criteria: "【考察点】候选人的核心内在驱动力是什么（例如：解决问题、影响力、创造、学习、认可、团队成功）。其价值观与岗位所能提供的'回报'是否匹配。\n【优秀回答】回答具体、真实。所描述的成就感来源与应聘岗位的核心价值高度契合（例如，研发岗位强调解决技术难题的快乐，客服岗位强调帮助客户带来的满足）。\n【警示信号】回答空洞、泛泛而谈（如'只要完成任务我就有成就感'）。成就感的来源与岗位现实严重不符（如应聘重复性工作却极度渴望新鲜感）。"
+                        },
+                        {
+                            initial_prompt: "在你过往的所有工作经历中，哪一段是你最不喜欢的？为什么？",
+                            followup_questions: "1. 在那个岗位中，最让你感到沮丧或缺乏动力的事情是什么？\n2. 对于这些不喜欢的因素，你当时是如何应对或尝试改善的？\n3. 如果现在的岗位也偶尔出现类似的挑战，你会如何处理？",
+                            evaluation_criteria: "【考察点】核心排斥因素（例如：管理风格、组织文化、沟通模式、业务性质），判断这些负面因素是否正是本岗位或公司文化中的'常态'，从而预判其流失风险。\n【优秀回答】能客观描述'不适配'的原因（如业务方向、管理风格不匹配），而非情绪化抱怨；即便在不喜欢的环境下，仍尝试改善或保持职业水准。\n【警示信号】强烈抱怨前领导、同事或过度诉苦；所讨厌的因素恰好是本岗位的核心属性（如：流程严谨、跨部门协同）；面对不适环境时选择逃避，直接放弃或降低工作标准。"
+                        }
+                    ]
+                },
+                "cheng_zhang_qian_li": {
+                    name_cn: "成长潜力",
+                    name_en: "Growth & Resilience",
+                    category: "motivation",
+                    questions: [
+                        {
+                            initial_prompt: "回顾过去一年，你在哪方面的进步最令自己满意？未来一年，你计划重点提升哪项能力？",
+                            followup_questions: "1. 你的学习路径是怎样的？（是通过实战复盘、系统自学，还是积极寻求导师反馈？）\n2. 当遇到认知瓶颈或学习止步不前时，你通常如何突破？\n3. 你希望公司或团队在你的成长路径上扮演什么样的角色？",
+                            evaluation_criteria: "【考察点】成长心态、自我驱动学习能力、对自身发展的清晰认知。\n【优秀回答】具'目标-行动-反思'闭环，有可迁移的方法论沉淀；职业规划与行业趋势或岗位需求高度匹配。\n【警示信号】过去一年无实质进步；学习态度被动；职业目标模糊或与业务方向严重脱节。"
+                        },
+                        {
+                            initial_prompt: "在过往经历中，面对极大的压力、挑战或挫折时，你是如何应对的？是什么支撑你坚持到底并最终解决问题的？",
+                            followup_questions: "1. 请还原那个最令你感到挫败的瞬间，当时的压力核心源自哪里？\n2. 在几近放弃的时刻，你是如何进行自我心理建设或寻求外部支持的？\n3. 这段经历如何重塑了你现在面对挑战时的心态？",
+                            evaluation_criteria: "【考察点】心理韧性（Resilience）、情绪调节能力以及对目标的承诺感。\n【优秀回答】坦诚压力旧址路程真实，展现出从'挫败'到'复原'的动态调节过程；不推卸责任，能从负面事件中提取积极意义，展现出极强的结果导向意识。\n【警示信号】将失败完全归咎于环境或他人，或者无法描述出具体的心理调节过程（说明可能是在编造）"
+                        }
+                    ]
+                },
+                "zu_zhi_shi_pei": {
+                    name_cn: "组织适配",
+                    name_en: "Organizational Fit",
+                    category: "motivation",
+                    questions: [
+                        {
+                            initial_prompt: "结合你最近一次的绩效评估，被评定最突出的优势（3点）及最需要改进的领域（2点）分别是什么？",
+                            followup_questions: "1. 针对这些待改进项，您具体采取了哪些行动？目前取得了什么进展？\n2. 你认为这些核心优势将如何助力你在李锦记的岗位上取得成功？",
+                            evaluation_criteria: "【考察点】自我察觉深度、客观自省能力，以及面对不足时的改进行动力。\n【优秀回答】评价客观、不避讳真实缺点；优势描述有数据或事实支撑；针对弱点有清晰的改进计划且已初见成效，展现出极强的自我驱动。\n【警示信号】使用套路化回答（如'我的缺点是追求完美'）；无法说出具体的反馈建议；将待改进项归咎于客观环境、前任领导或团队，拒绝承担个人责任。"
+                        },
+                        {
+                            initial_prompt: "你对我们公司以及应聘的这个岗位，最感兴趣的特质是什么？此外，你有哪些想要进一步了解的信息？",
+                            followup_questions: "1. 在了解公司的过程中，有哪些细节（如产品、文化等）最吸引你？\n2. 你期待这些'兴趣点'在未来的实际工作中如何转化为动力？\n3. 对于你刚才提到的某些潜在担忧，你认为理想的解决方案是什么？",
+                            evaluation_criteria: "【考察点】求职的动机强度和对机会的真诚度。其是否做过充分的功课，对岗位有现实的理解。\n【优秀回答】能具体说出公司业务、文化、产品或岗位本身的吸引力，显示出深入的调研，能坦诚且专业地提出合理的担忧。\n【警示信号】回答泛泛（如'公司很大、很好'），仅对职位头衔或薪酬感兴趣。提不出任何问题或提出的问题非常肤浅。"
+                        }
+                    ]
+                }
+            },
+            TL: {
+                "si_li_ji_ren": {
+                    name_cn: "思利及人",
+                    name_en: "Si Li Ji Ren",
+                    category: "values",
+                    questions: [
+                        {
+                            initial_prompt: "请描述一次在你过去的团队管理经历中，你做过的最艰难的资源分配案例（如人力、预算、关键设备等），你当时是如何决策的？",
+                            star_framework: "(S) 情境：当时有哪些项目或成员在争取资源？各自的理由和紧迫性如何？\n(T) 任务：你需要达成的整体团队目标是什么？公司对资源分配是否有明确的指导原则？\n(A) 行动：你采用了哪些流程或标准来做出分配决定？是如何与相关方沟通的？\n(R) 结果：最终的分配方案是什么？这一决定对团队士气和项目结果产生了哪些影响？",
+                            decision_logic: "你为何选择采用这一分配标准？过程中最难平衡的点是什么？",
+                            scenario_simulation: "假设当前面临一个极端局面：A项目由资深高管高度关注但短期价值不明，B项目由一线团队提出、数据清晰且能快速带来收益，你会如何分配资源？",
+                            evaluation_criteria: "【考察点】在资源分配中能否超越部门本位，秉持公平公正、顾全大局的原则，并通过有效沟通减少内耗。\n【高分表现】能够阐述建立透明决策机制，综合考虑公司整体利益与团队士气，并通过沟通达成共识的完整案例。\n【低分表现】表现出偏袒倾向、缺乏明确决策标准，或依靠权威强行推动导致团队矛盾。"
+                        },
+                        {
+                            initial_prompt: "请分享一个你调解团队成员之间因工作分歧产生摩擦或矛盾的经历？你当时是如何介入和处理的？",
+                            star_framework: "(S) 情境：冲突双方是谁？分歧的具体焦点是什么？\n(T) 任务：你认为作为管理者处理这类事情最重要的目标是什么？\n(A) 行动：你具体采取了哪些措施？（例如：如何分别沟通、组织双方对话、提供建议等）\n(R) 结果：事件最终如何解决？双方关系及后续合作情况如何？",
+                            decision_logic: "你为何选择以这种方式处理？在决策过程中最看重哪些因素？",
+                            scenario_simulation: "若类似情况再次发生，但其中一位成员对你的处理非常失望甚至愤怒，你将如何调解与沟通？请简述核心思路。",
+                            evaluation_criteria: "【考察点】洞察冲突深层需求，以促进团队整体和谐与协作效能为目标的能力。\n【高分表现】能展现通过有效沟通促进相互理解、达成共赢解决方案，并最终强化团队协作的案例。\n【低分表现】表现为回避冲突、偏袒一方，或依靠行政命令强行压制。"
+                        }
+                    ]
+                },
+                "wu_shi": {
+                    name_cn: "务实",
+                    name_en: "Pragmatism",
+                    category: "values",
+                    questions: [
+                        {
+                            initial_prompt: "在你过往的团队管理经验中，是否曾遇到公司设定的目标看似过高或与团队当前能力存在明显差距的情况？你当时是如何应对并推动目标达成的？",
+                            star_framework: "(S) 情境：当时的具体目标是什么？你认为该目标具有挑战性的主要原因是什么？\n(T) 任务：你需要向团队传达并带领大家执行这一目标。你认为其中最关键的任务是什么？\n(A) 行动：你具体采取了哪些措施？（例如：如何进行目标拆解、与团队沟通、争取资源、设定阶段性里程碑等）\n(R) 结果：最终目标的达成情况如何？团队在整个过程中经历了哪些关键节点或挑战？",
+                            decision_logic: "你当时为何选择从这一角度切入应对挑战？在争取资源与目标拆解之间，你是如何权衡并做出决策的？",
+                            scenario_simulation: "如果加入我们公司，你会将这一经历中的哪些关键步骤、必须规避的陷阱或必备的沟通动作，作为核心经验分享给团队成员？",
+                            evaluation_criteria: "【考察点】系统拆解抽象目标，并基于现实争取资源的务实能力。\n【高分表现】能清晰阐述如何通过数据拆解目标，将其转化为可行步骤，并通过有效沟通争取关键资源。\n【低分表现】仅向团队转嫁压力，或空谈承诺，缺乏具体执行路径与资源支持。"
+                        },
+                        {
+                            initial_prompt: "请分享一次在你过往经历中，需要快速执行一个你不完全认同或认为存在较大风险的决策的经历。",
+                            star_framework: "(S) 情境：当时的决策背景是怎样的？你的主要顾虑或所识别的潜在风险有哪些？团队内部是否存在不同意见？\n(T) 任务：你所需达成的具体目标是什么？是否存在时间或资源上的限制？\n(A) 行动：你具体采取了哪些步骤以推进执行？（例如：如何调整自身心态、与团队沟通、设立风险控制机制等）\n(R) 结果：最终执行结果如何？你从中总结了哪些经验或教训？",
+                            decision_logic: "你当时为何选择以这样的方式推进？在「高效执行」与「风险控制」之间，你是如何进行权衡的？",
+                            scenario_simulation: "基于这次经历，如总结三条核心工作原则，以确保在尊重上级决策的同时务实控制风险，它们会是什么？",
+                            evaluation_criteria: "【考察点】执行存疑或高风险决策时的执行力、风险平衡能力及务实推进水平，并考察其经验复盘与方法迁移的深度。\n【高分表现】在保留意见的同时，能职业化地推进执行，通过步骤细化、强化沟通和设置风险检查点来控制局面，并提炼出可复用的方法论。\n【低分表现】表现为消极抵触、盲目执行缺乏风控，或因过度保守而错失行动时机。"
+                        }
+                    ]
+                },
+                "cheng_xin": {
+                    name_cn: "诚信",
+                    name_en: "Integrity",
+                    category: "values",
+                    questions: [
+                        {
+                            initial_prompt: "请分享在过往团队管理经历中，当团队决策过程受到成员质疑时的具体案例及你的应对方式。",
+                            star_framework: "(S) 情境：决策涉及的具体事项是什么？团队成员质疑的核心点是什么？\n(T) 任务：你认为处理此类质疑时应遵循哪些核心原则？\n(A) 行动：你如何回应质疑？（例如：公开决策依据、展示评估流程、引入第三方视角等）\n(R) 结果：质疑是否得到有效化解？团队对决策过程的认可度有何变化？",
+                            decision_logic: "你为何选择这种回应方式？在「处理效率」与「程序正义」之间如何权衡？",
+                            scenario_simulation: "基于此经历，你总结出哪些确保团队认可决策的关键步骤与沟通节点？",
+                            evaluation_criteria: "【考察点】程序正义坚守、透明化诚信维护、经验方法论提炼能力。\n【高分表现】通过公开依据、透明流程、客观视角化解质疑，提出可操作透明机制。\n【低分表现】回避压制质疑；透明机制思考表面化，缺乏实施路径。"
+                        },
+                        {
+                            initial_prompt: "请分享过往经历中因团队或个人判断失误导致项目受挫时，你的应对与处理方式。",
+                            star_framework: "(S) 情境：具体判断失误是什么？对项目造成了哪些影响？\n(T) 任务：面临此局面时，你的首要任务是什么？需向哪些相关方承担责任？\n(A) 行动：你采取了哪些具体补救措施？（如问题分析、资源协调、方案调整等）\n(R) 结果：问题最终如何解决？团队与上级对此事的反馈如何？",
+                            decision_logic: "你为何选择此种处理方式？在「坦诚沟通」与「影响控制」间如何平衡？",
+                            scenario_simulation: "从此经历中提炼出哪些核心原则？后续在何种场景中应用了这些经验？",
+                            evaluation_criteria: "【考察点】面对失时的诚信担当与系统补救能力。\n【高分表现】主动承认失误、坦诚沟通、高效补救，形成可迁移的方法论。\n【低分表现】推诿责任、回避问题；应对机制缺乏深度和具体准则。"
+                        }
+                    ]
+                },
+                "yong_yuan_chuang_ye": {
+                    name_cn: "永远创业",
+                    name_en: "Constant Entrepreneurship",
+                    category: "values",
+                    questions: [
+                        {
+                            initial_prompt: "请分享在过往带领团队的经历中，你如何识别并改进长期存在但效率低下的工作方式或流程。",
+                            star_framework: "(S) 情境：该工作方式或流程已运行多久？对团队效率或协作造成哪些具体瓶颈？\n(T) 任务：你如何看待这些既有模式的合理性？团队及公司对此持何种态度？\n(A) 行动：你采取了哪些具体措施推动改进？（例如：流程诊断、方案设计、试点验证等）\n(R) 结果：最终改进成效如何？对团队效率与文化产生了什么影响？",
+                            decision_logic: "你为何决定挑战这一惯性做法？推动过程中遇到的主要阻力是什么？如何应对？",
+                            scenario_simulation: "若再次面对类似情境，你会在推动变革的策略或方法上做哪些优化？",
+                            evaluation_criteria: "【考察点】主动发现改进机会的意识，以及挑战现状、推动创新的系统能力。\n【高分表现】展现从问题识别到方案落地全过程的系统性推进能力，体现创新意识、资源协调与策略性执行。\n【低分表现】安于现状、畏惧改变，或仅停留在抱怨层面；推动方式简单化，缺乏有效策略。"
+                        },
+                        {
+                            initial_prompt: "请分享往带领团队在过产品开发中，面对已确定方案却发现问题或更优路径时，你的思考与应对方式。",
+                            star_framework: "(S) 情境：项目处于何阶段？原方案内容是什么？你发现的具体问题或优化机会是什么？\n(T) 任务：项目核心目标与约束条件（如资源、时间）是什么？\n(A) 行动：你如何验证新想法？（例如：数据测试、原型验证、跨团队沟通等）\n(R) 结果：方案是否调整？此次经历对项目及团队产生什么影响？",
+                            decision_logic: "你为何选择主动提出质疑而非遵循原方案？关键考量是什么？",
+                            scenario_simulation: "若在资源紧张的新产品研发中期发现颠覆性技术路径，但调整将导致返工与延期，你将如何决策？",
+                            evaluation_criteria: "【考察点】挑战现状的勇气、批判性思维与建设性创新能力。\n【高分表现】通过严谨验证与有效沟通推动方案优化，展现数据驱动、风险可控的创新实践。\n【低分表现】畏惧权威、沉默顺从，或仅质疑而无建设性行动；亦或盲目推翻原方案引发混乱。"
+                        }
+                    ]
+                },
+                "100_minus_1": {
+                    name_cn: "100-1=0",
+                    name_en: "100-1=0",
+                    category: "values",
+                    questions: [
+                        {
+                            initial_prompt: "请分享在过往负责的团队项目中，因交付成果存在细节瑕疵导致返工或客户投诉的经历，并说明你当时的应对与处理方式。",
+                            star_framework: "(S) 情境：当时项目的具体交付要求是什么？出现的瑕疵涉及哪些方面？\n(T) 任务：你需要达成的核心质量目标与客户期望是什么？\n(A) 行动：你采取了哪些具体措施进行应对与补救？\n(R) 结果：最终处理结果如何？客户与团队对此有何反馈？",
+                            decision_logic: "你当时为何选择以这种方式处理质量瑕疵？在「快速平息事态」与「彻底解决问题根源」之间如何权衡？",
+                            scenario_simulation: "假设当前需在时间紧迫、资源有限的条件下完成「零瑕疵」交付项目，基于过往经验，你将如何设计项目流程与质量检查机制，从源头杜绝交付瑕疵？",
+                            evaluation_criteria: "【考察点】对质量极致的追求、根因分析能力，以及在压力下坚守「100-1=0」原则的决断力。\n【高分表现】零容忍瑕疵，系统分析根因并改进流程，建立前瞻性质量保障机制。\n【低分表现】妥协于瑕疵，仅临时补救；压力下可能降低标准或存侥幸。"
+                        },
+                        {
+                            initial_prompt: "请分享在过往团队管理经历中，面对执行严格且耗时的公司流程时，你如何确保团队有效落实。",
+                            star_framework: "(S) 情境：当时涉及什么性质的合规要求？哪些环节尤为耗时或繁琐？\n(T) 任务：该流程需规避的核心风险是什么？公司有何明确要求？\n(A) 行动：你采取了哪些具体措施确保团队执行不打折扣？\n(R) 结果：最终执行效果如何？团队是否出现合规疏漏？",
+                            decision_logic: "你当时为何选择这些方式确保执行？在「绝对合规」与「团队效率」之间如何权衡？",
+                            scenario_simulation: "假设需带领团队开拓合规要求复杂、违规后果严重的新市场，且团队缺乏相关经验，你将如何确保100%合规，并将其转化为竞争优势？",
+                            evaluation_criteria: "【考察点】对合规的敬畏心、系统化管控能力。\n【高分表现】零容忍合规态度，建立系统化培训监督机制，将合规转化为竞争优势，从源头建设思维。\n【低分表现】存在合规侥幸心理，执行流于形式，缺乏体系化建设思维。"
+                        }
+                    ]
+                },
+                "xuan_dui_ren_cai": {
+                    name_cn: "选对人才",
+                    name_en: "Choosing Right Talent",
+                    category: "leadership",
+                    questions: [
+                        {
+                            initial_prompt: "请分享你在过往团队管理经历中，一次令你印象深刻的团队成员选拔案例，并说明当时的具体情况。",
+                            star_framework: "(S) 情境：当时团队处于什么发展阶段？该岗位的关键要求是什么？\n(T) 任务：你需要为该岗位寻找具备哪些特质和能力的人才？\n(A) 行动：你具体通过哪些方式评估和选拔候选人？（如：评估标准、面试方法、决策依据等）\n(R) 结果：最终这位成员的表现如何？对团队发展产生了什么影响？",
+                            decision_logic: "你当时如何判断这位候选人是最合适的人选？关键的评估依据有哪些？",
+                            scenario_simulation: "如果现在需要你为一个目标尚不明确的全新跨职能创新项目组建团队，你将如何调整人才选拔标准和方法，以确保选到最合适的人才？",
+                            evaluation_criteria: "【考察点】人才选拔过程中的判断力、评估标准设置及方法论的系统性。\n【高分表现】展示系统性评估框架，关注文化匹配与能力平衡；在不确定性中提出针对性的选拔策略，体现灵活前瞻性。\n【低分表现】依赖直觉或单一标准进行选拔，缺乏系统性思考与多维评估。"
+                        },
+                        {
+                            initial_prompt: "请分享在带领团队过程中，你因何原因调整团队成员工作分工的具体案例。",
+                            star_framework: "(S) 情境：当时团队面临什么具体挑战或目标？原有分工方式存在哪些不足？\n(T) 任务：你希望通过分工调整达成什么目标？\n(A) 行动：你具体通过哪些步骤进行评估和调整？（例如：如何分析成员能力特点、如何重新配置分工）\n(R) 结果：分工调整后，团队效能和成员发展产生了哪些变化？",
+                            decision_logic: "在重新配置人员时，你主要依据哪些因素判断成员与岗位的匹配度？",
+                            scenario_simulation: "假设你需要接手一个长期绩效不佳的团队，且需在短时间内通过人员配置优化提升整体效能，你将如何制定并实施调整方案？",
+                            evaluation_criteria: "【考察点】人才配置方面的系统判断力与方法论应用能力。\n【高分表现】系统评估成员特质与岗位需求的匹配度；针对问题团队提出诊断方法与优化方案，体现系统性思考与实操性。\n【低分表现】配置决策缺乏充分依据，或仅考虑表面因素，影响团队优化效果。"
+                        }
+                    ]
+                },
+                "gao_xin_fen_wei": {
+                    name_cn: "高信氛围",
+                    name_en: "High Trust Environment",
+                    category: "leadership",
+                    questions: [
+                        {
+                            initial_prompt: "请分享在带领团队过程中，处理团队成员间意见分歧或工作摩擦的具体案例。",
+                            star_framework: "(S) 情境：当时团队正在开展什么项目或工作？分歧的具体焦点是什么？\n(T) 任务：你希望通过处理这一分歧达成什么目标？\n(A) 行动：你具体采取了哪些措施来处理分歧？（例如：沟通方式、促进相互理解的方法等）\n(R) 结果：分歧最终如何解决？对团队后续协作产生了什么影响？",
+                            decision_logic: "在处理这一分歧的过程中，你认为最重要的原则是什么？",
+                            scenario_simulation: "假设你现在接手一个历史遗留问题较多、团队成员间存在深层隔阂的团队，你将如何系统性地建立信任、改善团队氛围？",
+                            evaluation_criteria: "【考察点】在处理团队冲突、建立信任氛围方面的理念与系统性方法。\n【高分表现】能够展现促进相互理解、维护心理安全的具体做法；在复杂团队场景中提出系统性的信任重建与氛围改善方案。\n【低分表现】回避冲突、强行压制分歧或表现出明显偏袒，缺乏建设性处理冲突的能力。"
+                        },
+                        {
+                            initial_prompt: "请分享在带领团队过程中，你通常采用哪些具体方式来确保团队内部信息能够及时、有效地共享。",
+                            star_framework: "(S) 情境：你团队的主要工作内容是什么？信息共享对团队运作的重要性如何体现？\n(T) 任务：你希望通过信息共享达成哪些关键目标？需要避免哪些潜在问题？\n(A) 行动：你建立了哪些具体机制或工作习惯来促进信息共享？（例如：会议制度、文档管理规范、沟通工具使用等）\n(R) 结果：这些方式在实际运作中取得了什么效果？",
+                            decision_logic: "你选择这些特定信息共享方式的主要考量是什么？是基于团队特点还是业务需求？",
+                            scenario_simulation: "如果你需要带领一个由不同背景、且无合作经验成员组成的新团队，你将如何设计和实施信息共享机制，以快速建立透明、高效的工作氛围？",
+                            evaluation_criteria: "【考察点】在团队信息共享方面的系统性思考与日常实践能力。\n【高分表现】能够展现完整的信息共享体系，包含正式机制与非正式习惯；针对新团队特点提出定制化方案，体现适应性与前瞻性。\n【低分表现】信息共享方式零散随意、缺乏体系，或难以持续落实，影响团队协作效率。"
+                        }
+                    ]
+                },
+                "gao_xiao_tuan_dui": {
+                    name_cn: "高效团队",
+                    name_en: "Highly Effective Team",
+                    category: "leadership",
+                    questions: [
+                        {
+                            initial_prompt: "请分享在过往带领团队完成项目的经历中，当团队成员对项目重点或推进方式存在不同理解时，你如何处理并协调分歧的具体案例。",
+                            star_framework: "(S) 情境：当时团队执行的是什么项目？成员的不同理解具体表现在哪些方面？\n(T) 任务：你需要带领团队达成的关键目标是什么？在协调分歧过程中希望实现什么结果？\n(A) 行动：你采取了哪些具体方式来协调不同理解？（例如：沟通方式、决策机制、计划调整等）\n(R) 结果：团队最终如何达成一致？项目推进效率和成果受到什么影响？",
+                            decision_logic: "你当时为什么选择这些特定方式来处理成员间的理解差异？是基于团队特点还是项目性质？",
+                            scenario_simulation: "假设当前需带领一个由不同部门及文化背景成员组成的虚拟团队，项目目标复杂多变化，你将如何设计协同机制，确保团队持续对齐目标并保持高效协作？",
+                            evaluation_criteria: "【考察点】在团队目标协同中的沟通、决策与动态调整能力，以及在复杂环境中迁移经验、构建协同框架的能力。\n【高分表现】清晰阐述促进理解与共识的方法；在复杂团队场景中提出系统性协同机制，兼具前瞻性与实操性。\n【低分表现】回避或压制分歧、复杂场景中无法提出可行协调方法，影响团队协作。"
+                        },
+                        {
+                            initial_prompt: "请分享你在带领团队推进业务过程中，如何系统性地帮助团队保持持续进步状态的具体案例。",
+                            star_framework: "(S) 情境：你负责的团队主要承担什么业务类型？团队规模与成员构成有哪些特点？\n(T) 任务：你希望团队在哪些关键维度实现持续进步（如效率、质量、创新能力等）？需要克服哪些典型阻力？\n(A) 行动：你搭建了哪些具体机制或采取了哪些行动推进团队持续优化？（例如流程迭代、反馈闭环、能力提升体系等）\n(R) 结果：这些举措对团队绩效和协作氛围产生了哪些实际影响？是否形成了可复用的经验或模式？",
+                            decision_logic: "你在设计这些推动持续进步的方式时，最核心的考量因素是什么？如何平衡短期目标与长期发展？",
+                            scenario_simulation: "假设当前需带领一个多元文化背景团队，在行业转型期负责一项技术攻坚项目。你将如何设计团队的持续改进体系，以应对技术不确定性与跨文化协作挑战？",
+                            evaluation_criteria: "【考察点】推动团队持续优化、激发集体动能的能力。\n【高分表现】展现目标到落地的全链路方法论；在复杂场景中提出创新方案，注重团队自主迭代能力。\n【低分表现】关注单点优化，依赖外部指令；缺乏系统性机制和自驱力培养，难以持续进步。"
+                        }
+                    ]
+                },
+                "gong_tong_mu_biao": {
+                    name_cn: "共同目标",
+                    name_en: "Common Goal",
+                    category: "leadership",
+                    questions: [
+                        {
+                            initial_prompt: "请分享在带领团队开展重要工作时，你如何确保团队成员对工作方向形成一致理解的具体案例。",
+                            star_framework: "(S) 情境：当时团队承接的重要工作属于什么类型？其背景信息与核心目标是什么？\n(T) 任务：你需要团队成员在哪些关键维度上达成共识？面临哪些主要挑战（如成员背景多元、目标模糊等）？\n(A) 行动：你采取了哪些具体方式促进团队对工作方向的理解与共识建立？是否运用了特定的沟通或协作机制？\n(R) 结果：最终团队是否在目标理解上达成一致？这种共识对工作推进产生了哪些实际影响？",
+                            decision_logic: "你当时选择这些共识建立方式的主要考量是什么？是基于团队成员特点，还是工作性质本身的需求？",
+                            scenario_simulation: "假设当前需带领一个跨部门、跨文化且成员对业务目标认知差异显著的团队，完成一项战略重要但定义模糊的新任务。你将如何设计共识形成流程，确保团队快速凝聚并形成合力？",
+                            evaluation_criteria: "【考察点】在推动团队目标共识中展现的系统性领导力，包括沟通融合、差异整合与共识构建能力。\n【高分表现】基于团队和任务特点设计共识机制，在复杂场景中快速凝聚团队方向。\n【低分表现】共识方式单一僵化，难以应对认知差异；缺乏系统引导，导致方向模糊或协作低效。"
+                        },
+                        {
+                            initial_prompt: "请描述一次团队在执行过程中出现目标理解偏差，你如何及时干预并重新对齐目标的经历。",
+                            star_framework: "(S) 情境：当时出现了什么迹象表明团队对目标理解不一致？对进度或士气造成了什么影响？\n(T) 任务：你发现问题的关键点是什么？你的干预目标是什么？\n(A) 行动：你如何诊断理解偏差的根源？采取了哪些沟通或复盘动作重新对齐？是否调整了目标表述或执行计划？\n(R) 结果：团队是否重新回到共同目标轨道？后续如何预防类似问题？",
+                            decision_logic: "在重新对齐目标时，你如何平衡「坚持原目标」与「根据实际情况调整目标」？",
+                            scenario_simulation: "假设一个项目中途发现原定目标与客户实际需求有出入，但部分成员坚持按原计划执行。你会如何决策？",
+                            evaluation_criteria: "【考察点】及时发现目标偏差并有效干预，维护团队对共同目标的承诺。\n【高分表现】能敏锐识别偏差，通过有效沟通重新凝聚共识，并建立预防机制。\n【低分表现】忽视早期信号，直到问题严重才干预；或强行推行原目标，导致团队抵触。"
+                        }
+                    ]
+                },
+                "you_xiao_shou_quan": {
+                    name_cn: "有效授权",
+                    name_en: "Effective Empowerment",
+                    category: "leadership",
+                    questions: [
+                        {
+                            initial_prompt: "请分享一个你通过有效授权，帮助一位下属突破能力瓶颈并独立承担更大责任的例子。",
+                            star_framework: "(S) 情境：当时该下属的能力状况如何？你为何决定在此任务上授权给他？\n(T) 任务：你希望通过此次授权达成什么业务目标与育人目标？\n(A) 行动：你如何澄清任务目标、边界与期望？提供了哪些资源与支持？如何把握跟进频率与反馈方式？\n(R) 结果：下属的成长体现在哪些方面？对团队梯队建设有何贡献？",
+                            decision_logic: "在授权过程中，你如何平衡「放手锻炼」与「风险控制」？",
+                            scenario_simulation: "假设你授权一项重要任务给下属，但他中途遇到困难却隐瞒不报，导致问题恶化。你会如何应对？",
+                            evaluation_criteria: "【考察点】通过授权激发下属潜能，并提供适当辅导与支持的能力。\n【高分表现】授权目标清晰，辅导到位，下属能力显著提升，且业务目标达成。\n【低分表现】授权后放任不管，或干预过多，挫伤下属积极性。"
+                        },
+                        {
+                            initial_prompt: "请分享你在为团队成员安排重要任务时，如何有效提供支持以帮助其更好完成任务的具体案例。",
+                            star_framework: "(S) 情境：当时安排的具体任务是什么？其目标要求、复杂程度及战略重要性如何？\n(T) 任务：你希望成员达成的关键成果是什么？面临哪些主要挑战（如经验不足、资源限制等）？\n(A) 行动：你采取了哪些具体措施为成员提供支持？是否结合了指导、资源协调或过程跟进等方式？\n(R) 结果：这些支持措施对成员任务完成产生了什么实际效果？",
+                            decision_logic: "你当时基于哪些考量选择这些特定的支持方式？在实施过程中如何平衡指导与自主的空间？",
+                            scenario_simulation: "假设你需要带领一个远程分布、跨文化背景且成员能力差异显著的团队，完成一项需要快速迭代和持续创新的长期项目。你将如何系统构建赋能机制，确保项目全过程的有效推进？",
+                            evaluation_criteria: "【考察点】在任务授权中识别成员需求、设计赋能方案、提供持续支持，并促进成员成长与任务达成的系统性领导力。\n【高分表现】基于成员特点灵活设计赋能方案；在复杂场景中建立有效支持体系，激发潜力并推进项目。\n【低分表现】赋能方式单一缺乏针对性；难以适应变化，影响成员发展和项目自成效。"
+                        }
+                    ]
+                },
+                "jiao_lian_yu_cai": {
+                    name_cn: "教练育才",
+                    name_en: "Coaching & Developing Talent",
+                    category: "leadership",
+                    questions: [
+                        {
+                            initial_prompt: "请分享你在带领团队过程中，如何有效帮助团队成员提升工作技能的具体实践。",
+                            star_framework: "(S) 情境：当时团队成员在哪些具体工作或任务中表现出技能不足？这些能力短板对团队目标的实现产生了什么影响？\n(T) 任务：你希望重点提升团队成员哪些关键技能？这些能力提升对团队效能或业务发展具有怎样的意义？\n(A) 行动：你采取了哪些具体方法来识别技能差距并帮助成员提升？是否结合了培训、辅导或在岗实践等多种方式？\n(R) 结果：经过技能培养后，成员在工作表现、任务完成质量或团队整体目标达成方面有哪些积极变化？",
+                            decision_logic: "你是基于哪些因素选择这些特定的技能提升方法？在设计与实施过程中，如何结合成员个体差异与业务实际需求？",
+                            scenario_simulation: "假设当前你需要带领一个技术迭代快、业务多元且成员能力参差不齐的团队，承担一项战略性项目。你将如何系统规划并实施技能培养，以确保团队整体能力满足项目要求？",
+                            evaluation_criteria: "【考察点】识别团队技能需求、设计并实施有效培养方案，以及在复杂多变环境中持续提升团队能力的系统性领导力。\n【高分表现】精准识别技能差距，设计针对性培养路径；在多变环境中灵活调整策略，有效支持团队应对复杂挑战。\n【低分表现】技能需求判断模糊，培养方法缺乏针对性；难以适应业务变化，导致能力提升不足。"
+                        },
+                        {
+                            initial_prompt: "请分享你在带领团队时，如何系统推动经验与知识积累传承的具体案例。",
+                            star_framework: "(S) 情境：当时团队在哪些关键工作领域积累了重要经验或专业知识？这些知识对团队持续发展具有什么价值？\n(T) 任务：你希望重点实现哪些方面的经验传承？面临哪些主要挑战（如人员流动、知识分散等）？\n(A) 行动：你采取了哪些具体措施促进知识的系统沉淀与有效传承？是否建立了相应的机制或流程？\n(R) 结果：这些措施对团队成员能力提升和工作效率产生了哪些具体影响？",
+                            decision_logic: "你当时基于哪些考量选择这些知识传承方式？在设计与实施过程中如何平衡效率与可持续性？",
+                            scenario_simulation: "假设你需要带领一个人员流动频繁、业务快速迭代且知识体系复杂的团队，完成一项需要综合多领域经验的长期项目。你将如何构建有效的知识传承体系，确保在动态环境中持续积累并传承关键知识，保障项目顺利推进？",
+                            evaluation_criteria: "【考察点】识别知识价值、设计传承机制、构建知识体系，并在复杂环境中保障团队能力延续的系统性领导力。\n【高分表现】基于团队特点设计系统化知识传承方案，在动态环境中确保经验持续积累转移，支撑团队能力稳定。\n【低分表现】知识传承零散缺乏体系，难以应对人员更替和业务迭代，影响团队能力延续。"
+                        }
+                    ]
+                },
+                "nei_zai_qu_dong": {
+                    name_cn: "内在驱动",
+                    name_en: "Intrinsic Drivers",
+                    category: "motivation",
+                    questions: [
+                        {
+                            initial_prompt: "回顾你的职业生涯，哪项工作或项目让您获得了最大的成就感和满足感？请详细描述。",
+                            followup_questions: "1. 你认为成功的核心驱动因素是什么？（是充分的准备、团队的协作、技能的突破，还是外部的认可？）\n2. 为什么是这些因素（而非其他）最让您感到满足？",
+                            evaluation_criteria: "【考察点】候选人的核心内在驱动力是什么（例如：解决问题、影响力、创造、学习、认可、团队成功）。其价值观与岗位所能提供的'回报'是否匹配。\n【优秀回答】回答具体、真实。所描述的成就感来源与应聘岗位的核心价值高度契合（例如，研发岗位强调解决技术难题的快乐，客服岗位强调帮助客户带来的满足）。\n【警示信号】回答空洞、泛泛而谈（如'只要完成任务我就有成就感'）。成就感的来源与岗位现实严重不符（如应聘重复性工作却极度渴望新鲜感）。"
+                        },
+                        {
+                            initial_prompt: "在你过往的所有工作经历中，哪一段是你最不喜欢的？为什么？",
+                            followup_questions: "1. 在那个岗位中，最让你感到沮丧或缺乏动力的事情是什么？\n2. 对于这些不喜欢的因素，你当时是如何应对或尝试改善的？\n3. 如果现在的岗位也偶尔出现类似的挑战，你会如何处理？",
+                            evaluation_criteria: "【考察点】核心排斥因素（例如：管理风格、组织文化、沟通模式、业务性质），判断这些负面因素是否正是本岗位或公司文化中的'常态'，从而预判其流失风险。\n【优秀回答】能客观描述'不适配'的原因（如业务方向、管理风格不匹配），而非情绪化抱怨；即便在不喜欢的环境下，仍尝试改善或保持职业水准。\n【警示信号】强烈抱怨前领导、同事或过度诉苦；所讨厌的因素恰好是本岗位的核心属性（如：流程严谨、跨部门协同）；面对不适环境时选择逃避，直接放弃或降低工作标准。"
+                        }
+                    ]
+                },
+                "cheng_zhang_qian_li": {
+                    name_cn: "成长潜力",
+                    name_en: "Growth & Resilience",
+                    category: "motivation",
+                    questions: [
+                        {
+                            initial_prompt: "回顾过去一年，你在哪方面的进步最令自己满意？未来一年，你计划重点提升哪项能力？",
+                            followup_questions: "1. 你的学习路径是怎样的？（是通过实战复盘、系统自学，还是积极寻求导师反馈？）\n2. 当遇到认知瓶颈或学习止步不前时，你通常如何突破？\n3. 你希望公司或团队在你的成长路径上扮演什么样的角色？",
+                            evaluation_criteria: "【考察点】成长心态、自我驱动学习能力、对自身发展的清晰认知。\n【优秀回答】具'目标-行动-反思'闭环，有可迁移的方法论沉淀；职业规划与行业趋势或岗位需求高度匹配。\n【警示信号】过去一年无实质进步；学习态度被动；职业目标模糊或与业务方向严重脱节。"
+                        },
+                        {
+                            initial_prompt: "在过往经历中，面对极大的压力、挑战或挫折时，你是如何应对的？是什么支撑你坚持到底并最终解决问题的？",
+                            followup_questions: "1. 请还原那个最令你感到挫败的瞬间，当时的压力核心源自哪里？\n2. 在几近放弃的时刻，你是如何进行自我心理建设或寻求外部支持的？\n3. 这段经历如何重塑了你现在面对挑战时的心态？",
+                            evaluation_criteria: "【考察点】心理韧性（Resilience）、情绪调节能力以及对目标的承诺感。\n【优秀回答】坦诚压力旧址路程真实，展现出从'挫败'到'复原'的动态调节过程；不推卸责任，能从负面事件中提取积极意义，展现出极强的结果导向意识。\n【警示信号】将失败完全归咎于环境或他人，或者无法描述出具体的心理调节过程（说明可能是在编造）"
+                        }
+                    ]
+                },
+                "zu_zhi_shi_pei": {
+                    name_cn: "组织适配",
+                    name_en: "Organizational Fit",
+                    category: "motivation",
+                    questions: [
+                        {
+                            initial_prompt: "结合你最近一次的绩效评估，被评定最突出的优势（3点）及最需要改进的领域（2点）分别是什么？",
+                            followup_questions: "1. 针对这些待改进项，您具体采取了哪些行动？目前取得了什么进展？\n2. 你认为这些核心优势将如何助力你在李锦记的岗位上取得成功？",
+                            evaluation_criteria: "【考察点】自我察觉深度、客观自省能力，以及面对不足时的改进行动力。\n【优秀回答】评价客观、不避讳真实缺点；优势描述有数据或事实支撑；针对弱点有清晰的改进计划且已初见成效，展现出极强的自我驱动。\n【警示信号】使用套路化回答（如'我的缺点是追求完美'）；无法说出具体的反馈建议；将待改进项归咎于客观环境、前任领导或团队，拒绝承担个人责任。"
+                        },
+                        {
+                            initial_prompt: "你对我们公司以及应聘的这个岗位，最感兴趣的特质是什么？此外，你有哪些想要进一步了解的信息？",
+                            followup_questions: "1. 在了解公司的过程中，有哪些细节（如产品、文化等）最吸引你？\n2. 你期待这些'兴趣点'在未来的实际工作中如何转化为动力？\n3. 对于你刚才提到的某些潜在担忧，你认为理想的解决方案是什么？",
+                            evaluation_criteria: "【考察点】求职的动机强度和对机会的真诚度。其是否做过充分的功课，对岗位有现实的理解。\n【优秀回答】能具体说出公司业务、文化、产品或岗位本身的吸引力，显示出深入的调研，能坦诚且专业地提出合理的担忧。\n【警示信号】回答泛泛（如'公司很大、很好'），仅对职位头衔或薪酬感兴趣。提不出任何问题或提出的问题非常肤浅。"
+                        }
+                    ]
+                }
+            },
+            SL: {
+                "si_li_ji_ren": {
+                    name_cn: "思利及人",
+                    name_en: "Si Li Ji Ren",
+                    category: "values",
+                    questions: [
+                        {
+                            initial_prompt: "请分享一个你在制定一项对公司有长远意义的重要战略或决策时，需要平衡内部不同业务单元、部门乃至外部合作伙伴等复杂利益相关方诉求的经历。",
+                            star_framework: "(S) 情境：这项战略决策是什么？涉及哪些关键的利益相关方？他们各自的核心诉求和潜在冲突是什么？\n(T) 任务：你的角色和最终目标是什么？\n(A) 行动：你是如何系统地识别和理解所有相关方立场和深层需求的？你如何从行业、市场和社会（3P）的角度定义对公司的'共同目标'？你用了什么流程和方法来促成共识和协作？\n(R) 结果：决策最终如何？各方对决策的接受度如何？对公司产生了什么长远影响？",
+                            decision_logic: "当你明知一个决策对部分利益相关方会造成短期阵痛，但你坚信其长期价值时，你如何坚持并推行？",
+                            scenario_simulation: "假设公司面临一个重大机遇，需要所有业务单元暂时牺牲部分利润，共同投入一个面向未来的新平台，你将如何构思并传达你的战略，以赢得大家的支持？",
+                            evaluation_criteria: "【考察点】在战略层面运用直丌机思维、平衡复杂、多层次的利益关系以做出最优长期决策的能力。\n【高分表现】对利益相关方分析全面深入，能定义出有高度和说服力的共同目标，并展现出促成复杂共识的领导力与影响力。\n【低分表现】决策过程极个别强势方倾斜，缺乏全局视角，无法有效沟通战略意义，导致决策短视或执行受阻。"
+                        },
+                        {
+                            initial_prompt: "请分享一次你处理危机事件的经历，并说明你如何在其中平衡各方利益相关者的需求。",
+                            star_framework: "(S) 情境：当时公司面临的具体危机是什么？涉及哪些关键利益相关方？\n(T) 任务：你认为需要解决的核心问题是什么？在平衡各方需求时面临的主要挑战有哪些？\n(A) 行动：你采取了哪些具体措施来识别并回应不同利益相关方的诉求？是否建立了相应的沟通或协调机制？\n(R) 结果：最终危机处理取得了怎样的结果？对公司的运营、声誉及长期发展产生了哪些影响？",
+                            decision_logic: "在处理多方利益时，你如何判断不同利益相关方需求的优先级？主要的决策依据是什么？",
+                            scenario_simulation: "假设公司当前面临一场公共危机，业务运营严重受阻，同时承受来自政府监管、社会舆论及合作伙伴的多重压力。你将如何制定应对策略，在保障公司核心利益的同时，兼顾各方合理关切，维护企业的社会责任形象？",
+                            evaluation_criteria: "【考察点】在复杂危机中识别多方诉求、平衡利益冲突、承担社会责任，并维护企业长期声誉的系统决策能力。\n【高分表现】系统分析各方关切，在决策中体现社会责任，制度兼顾短期应对与长期发展的可持续策略。\n【低分表现】以企业利益为中心，忽视其他利益相关方诉求；缺乏社会影响考量，损害企业声誉与合作关系。"
+                        }
+                    ]
+                },
+                "wu_shi": {
+                    name_cn: "务实",
+                    name_en: "Pragmatism",
+                    category: "values",
+                    questions: [
+                        {
+                            initial_prompt: "在推动公司战略落地过程中，你如何确保战略规划有效转化为实际业务成果？",
+                            star_framework: "(S) 情境：当时公司制定了怎样的战略规划？其核心目标与关键业务重点是什么？\n(T) 任务：你在推动战略落地过程中承担的主要职责是什么？希望达成的关键成果有哪些？\n(A) 行动：你采取了哪些具体措施确保战略有效执行？是否建立了相应的执行机制或监控体系？\n(R) 结果：最终战略落地的实际成效如何？是否达成预期目标？对业务发展产生了哪些具体影响？",
+                            decision_logic: "你在推动战略落地时，如何判断各项执行措施的有效性？主要的评估依据是什么？",
+                            scenario_simulation: "假设公司当前需要跨界进入全新领域，整合多方资源，且市场前景不明。你将如何确保战略务实落地，避免资源浪费与决策失误，实现新领域的稳健发展？",
+                            evaluation_criteria: "【考察点】对战略目标的精准理解、执行策略的可行性、过程监控的有效性，以及对实际成果的持续关注能力。\n【高分表现】基于现实制定可执行路径，灵活调整注重实际结果；在不确定环境中合理配置资源、控制风险，稳步推进战略。\n【低分表现】执行措施脱离实际，缺乏可操作性；资源与风险评估不足，导致目标落空。"
+                        },
+                        {
+                            initial_prompt: "请分享一次你主导的组织变革经历，并说明你如何推动变革落地与成效实现。",
+                            star_framework: "(S) 情境：当时组织面临哪些具体问题或挑战？此次变革希望达成的核心目标是什么？\n(T) 任务：你在变革过程中承担的主要职责是什么？需要实现哪些关键成果？\n(A) 行动：你采取了哪些务实措施推动变革落地？如何确保方案贴合组织实际并具备可操作性？\n(R) 结果：变革最终取得了哪些实际成效？是否有效解决了初始问题？对组织的长期发展带来了哪些积极影响？",
+                            decision_logic: "你在设计和推动变革时，如何判断哪些措施是务实且必要的？主要的决策依据是什么？",
+                            scenario_simulation: "假设你需要主导一家传统企业快速向数字化、智能化转型，面临业务流程重构、转型窗口期短及市场不确定性高等挑战。你将如何制定变革方案，确保平稳落地并实现长期价值？",
+                            evaluation_criteria: "【考察点】基于组织实际设计变革路径、精准解决问题、平衡变革节奏与组织稳定的系统能力。\n【高分表现】洞察组织痛点，制定精准变革策略，具体推进并兼顾长期效益。\n【低分表现】变革方案脱离实际，节奏失衡；关键问题识别不准，成效有限或引发动荡。"
+                        }
+                    ]
+                },
+                "cheng_xin": {
+                    name_cn: "诚信",
+                    name_en: "Integrity",
+                    category: "values",
+                    questions: [
+                        {
+                            initial_prompt: "请分享一个你在职业生涯中面临的最严峻的商业道德挑战，这个选择关乎重大商业利益与诚信原则的冲突。",
+                            star_framework: "(S) 情境：当时面临的商业诱惑或压力是什么？潜在的道德风险是什么？\n(T) 任务：你需要做出的核心抉择是什么？\n(A) 行动：你如何分析不同选择的后果？你咨询了谁？你最终的决策是什么？你如何向董事会、股东或团队解释你的决定？\n(R) 结果：这个决定对公司短期和长期分别带来了什么影响？",
+                            decision_logic: "是什么最终促使你做出这个（可能牺牲短期利益的）决定？",
+                            scenario_simulation: "如果一项能为公司带来巨额利润的业务，其商业模式游走在法律灰色地带，你会如何决策？",
+                            evaluation_criteria: "【考察点】在面临巨大利益诱惑时，坚守道德底线，并将诚信作为不可动摇商业原则的最高标准。\n【高分表现】能顶住压力，做出符合道德和法律标准的艰难抉择，并能清晰阐述其对公司长期价值的捍卫。\n【低分表现】在利益面前妥协道德标准；或决策过程显示出对道德风险的麻木。"
+                        },
+                        {
+                            initial_prompt: "请结合你的工作经历，分享一次公司遭遇突发负面舆论的事件，并阐述作为高层管理者是如何应对与处理的。",
+                            star_framework: "(S) 情境：当时公司面临的具体负面舆论内容是什么？舆论传播的范围与扩散速度如何？\n(T) 任务：作为高层管理者，你认为当时需要解决的核心问题是什么？面临哪些关键挑战？\n(A) 行动：你采取了哪些具体措施来应对此次舆论危机？如何确保各环节严格受控，防止问题扩大或再次发生？\n(R) 结果：危机处理取得了怎样的结果？客户与公众对公司的反馈有何变化？是否成功维护了公司的信誉与形象？",
+                            decision_logic: "在处理舆论危机的过程中，如何判断哪些沟通内容与方式既符合公司长远利益，又能有效回应公众关切？请说明你的决策依据。",
+                            scenario_simulation: "假设公司当前面临一场涉及全球业务，且公众对整个行业信任度普遍下滑的重大舆论危机，你将如何确保公司在对外沟通与关键决策中，既恪守商业伦理，又坚守诚信原则，从而重建公众对公司的长期信任？",
+                            evaluation_criteria: "【考察点】高压境下平衡信息真实性、公众信任与声誉管理的能力。\n【高分表现】危机中主动核实信息、坚持透明沟通、恪守诚信，有效维护信誉并重建信任。\n【低分表现】隐瞒或歪曲事实，牺牲诚信迎合短期压力，导致信任丧失和声誉受损。"
+                        }
+                    ]
+                },
+                "yong_yuan_chuang_ye": {
+                    name_cn: "永远创业",
+                    name_en: "Constant Entrepreneurship",
+                    category: "values",
+                    questions: [
+                        {
+                            initial_prompt: "请结合你的经历，分享一次公司进行重大战略调整时，你作为管理者如何有效应对并推动变革的过程。",
+                            star_framework: "(S) 情境：当时公司所处的商业环境与背景如何？促成此次战略重塑的关键触发因素有哪些？\n(T) 任务：你在此次战略调整中承担的核心职责是什么？需要带领团队解决哪些关键问题？\n(A) 行动：采取了哪些具体措施，以推动团队理解、接纳并积极参与战略转型？\n(R) 结果：战略重塑后，团队与业务取得了哪些实际成果？是否达成了预期目标？",
+                            decision_logic: "在推动战略落地的过程中，你如何判断哪些措施能够有效激发团队的创业精神与创新活力？请说明你的评估依据。",
+                            scenario_simulation: "假设公司当前面临行业颠覆性变革，原有业务模式受到冲击，亟需在有限时间内重新定义核心业务与战略方向。你将如何带领团队迅速适应变化，持续推动创新，确保公司在全新竞争环境中实现持续生存与发展？",
+                            evaluation_criteria: "【考察点】战略转型中激发团队活力、突破思维定式、推动业务进化的能力。\n【高分表现】主动拥抱变化，激发团队创业精神，快速调整战略并构建新竞争力。\n【低分表现】保守回避风险，难以带动团队创新，导致转型迟缓或错失机遇。"
+                        },
+                        {
+                            initial_prompt: "请分享一次你过去主导或参与拓展新业务领域的实际经历。",
+                            star_framework: "(S) 情境：当时公司处于怎样的业务发展阶段？促成你探索新业务领域或建立跨界合作的关键动因是什么？\n(T) 任务：你在此过程中承担的主要职责是什么？需要突破哪些核心挑战？\n(A) 行动：你采取了哪些具体策略，推动团队突破原有业务思维，构建新的合作模式或价值网络？\n(R) 结果：该新业务拓展或跨界合作取得了哪些可衡量的成果？对公司的长期发展产生了怎样的影响？",
+                            decision_logic: "在推动跨界合作的过程中，你如何评估哪些创新方向或合作机会值得投入？请说明你的决策依据与评估框架。",
+                            scenario_simulation: "假设公司当前需要深度融合多个不同行业的资源与能力，在高度不确定的领域中构建全新的商业模式，你将如何带领团队突破行业思维定式，系统性地构建可持续的跨界价值生态，实现多方共赢与持续创新？",
+                            evaluation_criteria: "【考察点】跨界创新中突破边界、整合资源、创造可持续价值的能力。\n【高分表现】突破行业局限，识别跨界机会，构建创新模式实现协同增值。\n【低分表现】受限于原有思维，难以整合跨界资源，导致创新停滞或价值有限。"
+                        }
+                    ]
+                },
+                "100_minus_1": {
+                    name_cn: "100-1=0",
+                    name_en: "100-1=0",
+                    category: "values",
+                    questions: [
+                        {
+                            initial_prompt: "请分享你在过往工作中制定企业级质量标准的具体实践与经验。",
+                            star_framework: "(S) 情境：当时企业面临哪些具体的质量挑战或市场压力？推动制定企业级质量标准的核心目标是什么？\n(T) 任务：你在质量标准制定过程中承担的主要职责是什么？需要解决哪些关键问题？\n(A) 行动：你采取了哪些具体措施确保标准细节符合最高质量要求？是否建立了相应的评审或验证机制？\n(R) 结果：最终实施的质量标准对产品质量、客户满意度及企业声誉产生了哪些实际影响？",
+                            decision_logic: "你在制定质量标准时，如何判断哪些细节或环节需特别严格把控，以实现'瑕疵零容忍'？主要依据是什么？",
+                            scenario_simulation: "如果当前企业需要在不同文化、法规和市场环境下统一并严格执行质量标准，你将如何确保高标准的质量理念有效落地，既保持严格性，又能灵活适应复杂多变的环境？",
+                            evaluation_criteria: "【考察点】质量细节追求、风险防控与全局一致性管理。\n【高分表现】零容忍理念，系统化设计质量体系，在复杂环境中坚守质量底线。\n【低分表现】忽视细节风险，缺乏全局管理，在复杂环境中妥协质量要求。"
+                        },
+                        {
+                            initial_prompt: "请分享一次你带领团队应对公司突发质量危机的经历。",
+                            star_framework: "(S) 情境：当时公司遭遇的具体质量危机是什么？危机影响的范围和严重程度如何？\n(T) 任务：作为高层管理者，你认为需要解决的核心问题是什么？面临哪些关键挑战？\n(A) 行动：你采取了哪些具体措施领导团队应对危机？如何确保各环节严格受控，防止问题扩大或再次发生？\n(R) 结果：危机处理取得了怎样的结果？客户与公众对公司的反馈有何变化？",
+                            decision_logic: "在处理质量危机的过程中，你如何判断哪些环节或措施必须坚持'零瑕疵'标准？请说明你的决策依据。",
+                            scenario_simulation: "假设公司当前面临因多区域服务系统瘫痪引发的大规模客户投诉，你将如何带领团队在快速响应局部危机的同时，系统性地消除质量隐患，重建客户与利益相关方的长期信任？",
+                            evaluation_criteria: "【考察点】质量零容忍态度、系统化危机处理与质量文化重塑能力。\n【高分表现】展现零瑕疵决心，系统把控危机处理各环节，有效消除隐患并重建信任。\n【低分表现】忽视关键风险、质量妥协、解决不彻底，导致危机反复或信任受损。"
+                        }
+                    ]
+                },
+                "xuan_dui_ren_cai": {
+                    name_cn: "选对人才",
+                    name_en: "Choosing Right Talent",
+                    category: "leadership",
+                    questions: [
+                        {
+                            initial_prompt: "请结合你的管理实践，分享一次你为公司长远发展所进行的关键人才布局。",
+                            star_framework: "(S) 情境：当时公司处于怎样的发展阶段？制定了哪些关键战略目标？这些目标对人才的核心能力与素质提出了哪些新要求？\n(T) 任务：你在战略人才布局中承担的主要职责是什么？需要解决哪些关键人才缺口或结构性问题？\n(A) 行动：你采取了哪些系统性措施，识别、选拔并布局能够支撑战略目标实现的关键人才？\n(R) 结果：最终布局的人才如何推动了公司战略目标的推进？对组织能力建设产生了哪些实际影响？",
+                            decision_logic: "你在识别与选拔人才的过程中，如何判断哪些能力与素质是支撑公司战略目标实现的关键要素？请说明你的评估维度和决策依据。",
+                            scenario_simulation: "如果公司当前面临一项颠覆性战略转型，需要在有限时间内组建一支跨领域、跨文化且具备高度创新能力的团队，你将如何确保所选拔的人才不仅满足当前专业需求，更能在未来持续支撑公司的战略演进与组织变革？",
+                            evaluation_criteria: "【考察点】基于战略目标的人才识别、选拔梯队建设能力。\n【高分表现】前瞻性识别关键人才，围绕战略构建人才梯队，支撑组织发展。\n【低分表现】人才选拔与战略脱节，缺乏潜力评估和梯队建设，影响长期发展。"
+                        },
+                        {
+                            initial_prompt: "请分享你在过往经历中，如何有效管理决策团队，确保其决策兼具高效性与战略前瞻性，并符合公司的长期利益。",
+                            star_framework: "(S) 情境：当时决策团队所处的业务背景与主要挑战是什么？在成员结构、专业能力或决策流程方面存在哪些具体问题？\n(T) 任务：作为该团队的负责人，你认为需要解决的核心问题是什么？\n(A) 行动：你采取了哪些具体措施，以提升团队决策效率并确保其与公司长期战略保持一致？\n(R) 结果：这些改进对团队决策质量及公司业务发展带来了哪些实际成效？",
+                            decision_logic: "在构建与管理决策团队的过程中，你如何评估成员构成与决策机制的有效性？请说明你判断其能否兼顾效率与长期价值的依据。",
+                            scenario_simulation: "若当前你需带领一个背景多元、且处于高度复杂与不确定市场环境中的决策团队，你将如何确保团队不仅能够应对即时挑战，还能通过高效协作与系统性决策，持续支撑公司的稳健发展与战略实现？",
+                            evaluation_criteria: "【考察点】基于长期利益的决策团队构建与决策机制设计能力。\n【高分表现】精准识别决策成员能力结构，建立科学决策机制，有效协调不同观点。\n【低分表现】团队组建或机制设计存在偏差，导致决策低效或偏离长期利益。"
+                        }
+                    ]
+                },
+                "gao_xin_fen_wei": {
+                    name_cn: "高信氛围",
+                    name_en: "High Trust Environment",
+                    category: "leadership",
+                    questions: [
+                        {
+                            initial_prompt: "请分享一个你所在的组织层面（如部门间、管理层与员工间）出现信任危机，你作为领导者如何介入并修复信任的经历。",
+                            star_framework: "(S) 情境：信任危机的具体表现和根源是什么？\n(T) 任务：你设定的修复目标是什么？\n(A) 行动：你如何诊断问题的核心？你采取了哪些具体、可见的行动来重塑信任（如改变政策、公开沟通、自我检讨）？你如何确保过程的透明和公正？\n(R) 结果：信任关系得到了多大程度的修复？有哪些证据可以证明？",
+                            decision_logic: "修复组织信任与建立个人信任，最大的不同是什么？",
+                            scenario_simulation: "如果一次公司重组导致部分员工对未来充满不确定性和不信任，你将如何领导管理层应对？",
+                            evaluation_criteria: "【考察点】诊断并系统化修复组织层面信任折裂的战略性领导能力。\n【高分表现】能准确洞察信任破裂的根源，并采取系统性、透明的组织级干预措施，以身作则推动信任重键。\n【低分表现】忽视问题的严重性，采取零散或表面的沟通举措，缺乏实质性改变，无法挽回信任。"
+                        },
+                        {
+                            initial_prompt: "请分享一个你过往带领决策团队推进跨部门战略项目时，处理团队成员意见冲突的实际案例。",
+                            star_framework: "(S) 情境：该战略项目的核心目标是什么？引发团队成员意见分歧的关键因素有哪些？\n(T) 任务：作为团队负责人，你认为需要解决的核心矛盾或关键挑战是什么？\n(A) 行动：你采取了哪些具体措施来识别冲突根源、促进理解互信，并引导团队达成共识？\n(R) 结果：这些干预措施带来了哪些积极变化？团队参与度、讨论质量及最终项目决策与执行效果如何？",
+                            decision_logic: "你当时如何评估所采取措施的有效性？在处理此类意见冲突时，你最重视的核心目标与原则是什么？",
+                            scenario_simulation: "假设你当前带领一个多元背景团队，成员因专业差异存在信任隔阂，你将如何推动他们在保持专业独立性的同时，建立互信协作机制，以支持复杂环境下的高效决策？",
+                            evaluation_criteria: "【考察点】评估候选人识别团队协作障碍、设计有效机制促进深度沟通与信任建立，并推动高质量团队决策的系统性能力。\n【高分表现】能够精准识别影响团队信任的关键要素，在复杂情境中灵活运用沟通与协作策略，有效引导团队达成共识并形成高质量决策。\n【低分表现】对团队协作问题识别不清，干预措施缺乏针对性或实效，难以在多元背景下建立信任基础，影响团队协同与决策效能。"
+                        }
+                    ]
+                },
+                "gao_xiao_tuan_dui": {
+                    name_cn: "高效团队",
+                    name_en: "Highly Effective Team",
+                    category: "leadership",
+                    questions: [
+                        {
+                            initial_prompt: "请结合过往经历，分享在公司业务调整期间，你如何主动优化团队结构与运作模式，以支撑新的业务需求。",
+                            star_framework: "(S) 情境：当时公司业务处于何种发展阶段？面临哪些内外部变化，促使团队必须进行结构调整与模式优化？\n(T) 任务：你在此次团队调整中承担什么角色？设定的核心目标是什么？希望团队在结构或协作方式上实现哪些关键转变？\n(A) 行动：你如何诊断团队现状与业务需求的差距？通过哪些方法确定调整方向？在实施过程中采取了哪些具体措施以保障顺利过渡？\n(R) 结果：团队结构和运作模式优化后，在协作效率、目标达成或组织活力等方面取得了哪些可衡量的成果？",
+                            decision_logic: "你当时是基于哪些关键因素，最终确定这样的调整路径与实施方案？在推动过程中，如何平衡'组织稳定'与'变革力度'？",
+                            scenario_simulation: "假设你现在加入一家处于高度竞争、业务模式持续迭代的新兴企业，团队背景多元、架构松散。你将如何系统性地重塑团队结构与运作机制，以快速适应业务变化并构建持续战斗力？",
+                            evaluation_criteria: "【考察点】在复杂多变环境中，诊断团队问题、设计系统性组织解决方案，并有效推动落地与持续优化的能力。\n【高分表现】能够深入分析业务与团队的匹配差距，提出逻辑清晰、针对性强的整体方案，有效协调资源、化解阻力，实现团队效能显著提升。\n【低分表现】问题诊断浮于表面，调整方向模糊或脱离业务实际；缺乏过程中缺乏节奏控制与风险预案，导致团队动荡或成效不彰。"
+                        },
+                        {
+                            initial_prompt: "请分享你在过往经历中，面对多个团队协作不畅、各自为战的局面，你是如何有效促进跨团队高效协作，共同完成复杂目标的。",
+                            star_framework: "(S) 情境：当时涉及哪些关键团队？共同承担的复杂目标是什么？团队协作不畅的具体表现有哪些？\n(T) 任务：作为管理者，你认为需要解决的核心协作障碍是什么？希望达成怎样的协作状态？\n(A) 行动：你采取了哪些具体措施识别协作瓶颈、打破团队壁垒？是否建立了新的协作机制或沟通流程？\n(R) 结果：这些措施实施后，团队协作效率是否提升？目标达成情况如何？是否形成了可持续的协作模式？",
+                            decision_logic: "你在推动协作过程中，最核心的出发点是什么？你认为促成团队间主动支持、资源共享的关键因素有哪些？",
+                            scenario_simulation: "假设当前公司同时推进多个战略级项目，各项目涉及高度专业化的团队，且存在明显的专业壁垒。你将如何系统设计协作机制，确保多项目并行环境下的高效协同与整体战略推进？",
+                            evaluation_criteria: "【考察点】识别跨团队协作障碍、设计有效协同机制、推动建立互信互助协作文化的能力。\n【高分表现】能够精准定位协作障碍的深层原因，通过机制设计与主动沟通有效打破团队壁垒，推动形成高效、可持续的跨团队协作模式。\n【低分表现】对协作问题归因表面化，措施缺乏系统性；难以触及团队协作的深层障碍，导致改进效果有限或不可持续。"
+                        }
+                    ]
+                },
+                "gong_tong_mu_biao": {
+                    name_cn: "共同目标",
+                    name_en: "Common Goal",
+                    category: "leadership",
+                    questions: [
+                        {
+                            initial_prompt: "请结合过往经历，举例说明你如何带领团队将企业战略有效转化为具体可行的执行计划。",
+                            star_framework: "(S) 情境：当时企业的战略目标是什么？该目标对团队执行计划提出了哪些具体的成果要求？\n(T) 任务：在战略解码与落地过程中，你承担的主要职责是什么？希望达成的关键目标是什么？\n(A) 行动：你采取了哪些具体步骤，将战略目标分解为可执行的团队计划？如何确保执行路径与战略方向保持一致？\n(R) 结果：最终团队执行计划的完成情况如何？是否有效支撑了战略目标的实现？在执行过程中是否出现偏离，你是如何应对的？",
+                            decision_logic: "你当时为什么选择这样的方法和流程来制定执行计划？在设计和推进过程中，主要考量了哪些关键因素？",
+                            scenario_simulation: "假设你现在加入一家快速扩张的企业，负责组建并带领一个跨部门团队，执行新业务领域的拓展战略。面对团队成员业务不熟、跨部门协作不畅的情况，你将如何快速打开局面，确保战略有效落地？",
+                            evaluation_criteria: "【考察点】战略解码、系统规划、团队领导及战略执行力。\n【高分表现】清晰阐述战略转化路径，有效整合资源推进执行，取得可验证成果。\n【低分表现】战略理解模糊，规划执行缺乏系统性，应对挑战被动，难以推进效果。"
+                        },
+                        {
+                            initial_prompt: "请分享在过往经历中，当组织历重大变革后，你如何有效引导团队形成共识、朝着共同目标协同努力。",
+                            star_framework: "(S) 情境：当时组织变革的具体背景是什么？变革前后业务重心与运作模式发生了哪些关键变化？\n(T) 任务：你在推动团队形成共同目标的过程中扮演什么角色？承担哪些核心职责？希望实现哪些具体成果？\n(A) 行动：你采取了哪些关键举措，帮助不同团队理解变革意义、建立共同方向？是否设计了特定的沟通或协作机制？\n(R) 结果：最终团队成员对共同目标的认同度如何？是否在实际工作中体现出更强的协同性与目标一致性？",
+                            decision_logic: "你制定共同目标及相关推动策略时，主要是基于哪些方面的考量？在目标设定与执行路径设计中如何平衡不同团队的利益与诉求？",
+                            scenario_simulation: "假设你加入一家刚完成大规模跨国并购的企业，各管理团队原有文化与工作模式差异显著，并购后战略整合与业务协同挑战突出。你将如何系统推动文化融合与目标统一，实现整体战略的有效落地？",
+                            evaluation_criteria: "【考察点】文化诊断与融合、目标共建、跨团队协同能力。\n【高分表现】精准识别文化差异，提出系统性整合方案，有效推动共识达成与战略协同。\n【低分表现】忽视文化复杂性，策略缺乏系统性，难以化解团队分歧，影响整合成效。"
+                        }
+                    ]
+                },
+                "you_xiao_shou_quan": {
+                    name_cn: "有效授权",
+                    name_en: "Effective Empowerment",
+                    category: "leadership",
+                    questions: [
+                        {
+                            initial_prompt: "请分享在过往重大业务转型项目中，你如何帮助团队成员快速承接关键职责，并通过合理的权责分配推动转型有效落地。",
+                            star_framework: "(S) 情境：当时业务转型的具体背景与目标是什么？哪些关键职责需要团队成员快速承担？\n(T) 任务：作为高层管理者，你认为需要解决的核心问题是什么？在权责分配方面希望达成哪些关键目标？\n(A) 行动：你采取了哪些具体措施进行权责分配？如何确保被授权人充分理解职责并具备相应能力？\n(R) 结果：授权后团队成员的履职效果如何？是否出现授权失控、责任模糊或协作不畅等问题？",
+                            decision_logic: "你当时选择这种授权方式的主要依据是什么？在授权设计与推进过程中，最关注哪些核心要素？",
+                            scenario_simulation: "假设当前你负责一个涉及多地区业务单元、且需探索全新领域的重大转型项目。你将如何激发各团队的主动性与创新力，同时确保转型方向不偏离、整体风险可控？",
+                            evaluation_criteria: "【考察点】基于转型项目特点、团队能力及风险等级，合理设计授权范围、规则与配套支持的体系化能力。\n【高分表现】精准识别需求，设计差异化授权方案，平衡活力与控制。\n【低分表现】授权脱离实际，一刀切或过度集权；授权与能力风险不匹配，影响转型效果。"
+                        },
+                        {
+                            initial_prompt: "请分享你在推动组织变革过程中，如何通过设计有效的主行动框架，在强化前线团队决策能力的同时，确保整体战略方向的一致性。",
+                            star_framework: "(S) 情境：当时组织面临哪些具体挑战，使得打破层级壁垒、强化前线决策成为必要？\n(T) 任务：你认为实现组织扁平化和授权转型的核心障碍是什么？主要存在于哪些层面？\n(A) 行动：你采取了哪些具体措施，逐步扩大一线团队的决策空间？是否建立了相应的权责界定机制或决策指引？\n(R) 结果：授权后前线团队的决策效率与质量是否得到提升？你如何通过机制设计，确保授权过程中的战略执行不偏离主线？",
+                            decision_logic: "你如何判断和把握授权节奏？在推动管理者从'管控者'向'赋能者'转变的过程中，你提供了哪些关键支持？",
+                            scenario_simulation: "假设你需要主导一家采用高度集中管控模式的企业转型，因新兴市场要求极快的本地响应能力，又能充分激发区域自主性的授权与治理体系？",
+                            evaluation_criteria: "【考察点】评估候选人基于组织转型需求，合理设计授权范围、规则与支持机制，平衡自主创新与战略协同的系统能力。\n【高分表现】能够精准识别不同团队的能力与风险特征，设计差异化的授权方案与配套机制，有效推动组织完成从'管控'到'赋能'的转型，实现活力与协同的统一。\n【低分表现】授权方案脱离团队能力与业务风险实际，出现'过度放权'或'授权不足'；缺乏系统性配套机制，导致战略脱轨执行失控或组织活力不足。"
+                        }
+                    ]
+                },
+                "jiao_lian_yu_cai": {
+                    name_cn: "教练育才",
+                    name_en: "Coaching & Developing Talent",
+                    category: "leadership",
+                    questions: [
+                        {
+                            initial_prompt: "在新业务项目启动阶段，面对团队成员能力不一的现状，你将如何有效帮助团队提升能力，以确保项目顺利推进？",
+                            star_framework: "(S) 情境：请描述该新业务项目的基本情况与目标。哪些具体工作要求团队成员必须快速提升相关能力？\n(T) 任务：你在团队能力培养方面的主要目标是什么？期望团队成员在哪些方面实现明显进步？\n(A) 行动：你采取了哪些具体方法来识别能力差距，并帮助团队成员系统提升所需技能？\n(R) 结果：通过这些努力，团队成员的能力发生了哪些可观察的变化？这些变化对项目进展带来了什么实际影响？",
+                            decision_logic: "你为什么选择这些特定的培养方式？背后的判断依据和优先级考量是什么？",
+                            scenario_simulation: "假设公司即将进入一个全新、高难度且竞争激烈的业务领域，你将如何规划并实施团队能力建设，帮助成员快速适应变化，并建立起在新领域中的持续竞争优势？",
+                            evaluation_criteria: "【考察点】识别能力短板、制定培养策略、推动能力提升的系统性人才发展能力。\n【高分表现】清晰阐述新业务人才培养逻辑，采取有效措施取得可验证成果，方案兼具针对性与前瞻性。\n【低分表现】思路模糊，培养方式缺乏针对性；未能结合实际设计有效路径，难以应对新场景人才挑战。"
+                        },
+                        {
+                            initial_prompt: "当公司进行业务调整，关键岗位出现频繁人员变动时，你如何确保岗位经验的有效传承与新接手同事的快速融入？",
+                            star_framework: "(S) 情境：请说明当时业务调整的具体背景。哪些关键岗位受到人员变动的影响？这些岗位对业务运营的重要性如何体现？\n(T) 任务：你在推进关键岗位经验传承方面的核心目标是什么？期望实现怎样的传承效果？\n(A) 行动：你采取了哪些具体措施，系统性地促进岗位经验的识别、梳理与传递？\n(R) 结果：最终经验传承的成效如何？新同事在接手后的适应速度与工作表现有何变化？",
+                            decision_logic: "你选择这些经验传递方式的背后考量是什么？是基于怎样的判断与优先级安排？",
+                            scenario_simulation: "假设公司即将进入一个缺乏现成经验的跨行业新领域，你将如何在新团队中系统建立经验的沉淀与传承机制，以支持业务的稳步拓展？",
+                            evaluation_criteria: "【考察点】经验传承重视度、方法有效性及构建经验管理体系的能力。\n【高分表现】清晰阐述经验传承实践成效，提出系统可行的新场景经验建设方案。\n【低分表现】经验传承零散缺乏体系，支撑岗位过渡不足，无法应对新领域经验构建。"
+                        }
+                    ]
+                },
+                "yi_yuan_jing_wei_qu_dong": {
+                    name_cn: "以愿景为驱动",
+                    name_en: "Vision-driven",
+                    category: "leading_change",
+                    questions: [
+                        {
+                            initial_prompt: "请分享在过往经历中，当企业进入战略转型期需要重新明确发展方向时，你如何与团队共同构建并描绘未来发展蓝图。",
+                            star_framework: "(S) 情境：当时企业面临哪些具体的外部环境变化与内部发展瓶颈？这些因素如何共同推动企业进入战略转型阶段？\n(T) 任务：你在推动转型过程中承担的核心职责是什么？需要解决的关键战略问题有哪些？\n(A) 行动：你采取了哪些具体方法与团队共同探讨、形成并传达未来发展蓝图？是否建立了相应的共创机制或沟通路径？\n(R) 结果：最终形成的'发展蓝图'对团队的方向认同、士气提升与行动投入产生了哪些实际影响？",
+                            decision_logic: "在描绘未来发展蓝图时，你如何平衡'解决现实问题'与'激发未来期待'？背后的设计逻辑与关键取舍是什么？",
+                            scenario_simulation: "假设你加入一家长期依赖单一业务模式、员工对转型普遍焦虑的企业，需要制定引领未来5-10年发展的新愿景，并推动团队从'被动应对'转向'主动拥抱未来'。你将如何系统推进这一过程？",
+                            evaluation_criteria: "【考察点】战略转型期诊断核心问题、构建共识愿景、激发团队念并系统推动变革的能力。\n【高分表现】精准分析企业挑战，基于实际制定兼具现实性与感召力的愿景，并通过有效沟通驱动转型。\n【低分表现】问题识别不清，愿景脱离实际；沟通无效导致团队认同不足，影响转型成效。"
+                        },
+                        {
+                            initial_prompt: "请分享一次你在工作中面临重大挑战且团队士气较为低落的经历，并说明你如何带领团队走出困境。",
+                            star_framework: "(S) 情境：当时团队面临的具体挑战是什么？哪些因素导致了士气低落？\n(T) 任务：在此情境下，你认为自己的核心任务是什么？需要达成的关键目标有哪些？\n(A) 行动：你采取了哪些具体措施应对挑战？是否运用了特别的方法或策略来重塑团队信心？\n(R) 结果：最终团队的状态发生了怎样的转变？你在提升士气与推动问题解决方面取得了哪些实际成效？",
+                            decision_logic: "你当时为什么选择这些具体的行动方案？背后的思考与判断依据是什么？",
+                            scenario_simulation: "假设公司当前面临行业剧变、市场份额大幅下滑、传统业务模式失效，团队陷入迷茫与焦虑。基于你过往应对危机的经验，你将如何重新凝聚团队，共同探索新的发展方向并重拾战斗力？",
+                            evaluation_criteria: "【考察点】危机领导力：诊断团队状态、重塑信心、引领变革的能力。\n【高分表现】清晰阐述通过愿景传递与机制调整重塑团队的已验证成果；在新情境中提出系统创新的落地策略。\n【低分表现】经历描述模糊，措施缺乏针对性；面对新危机时思路局限，策略脱离实际。"
+                        }
+                    ]
+                },
+                "yi_yong_hu_wei_zhong_xin": {
+                    name_cn: "以用户为中心",
+                    name_en: "User-centric",
+                    category: "leading_change",
+                    questions: [
+                        {
+                            initial_prompt: "请分享在过往经历中，当企业需要根据市场变化调整核心战略方向时，你如何确保新战略能够真正贴合用户需求。",
+                            star_framework: "(S) 情境：当时市场发生了哪些关键变化？企业原有战略在哪些方面未能有效满足用户需求？\n(T) 任务：你在推动战略调整过程中承担的核心职责是什么？希望达成哪些关键目标？\n(A) 行动：你采取了哪些具体方法来确保新战略方向与用户需求保持一致？如何验证这些方法的有效性？\n(R) 结果：新战略实施后，用户反馈和市场表现发生了哪些积极变化？",
+                            decision_logic: "在制定用户导向战略时，你如何判断不同用户需求的优先级？如何平衡细分用户群体的差异化需求与企业整体战略目标？",
+                            scenario_simulation: "假设企业要进入一个新兴市场，用户需求高度个性化且变化迅速，但内部存在传统业务思维惯性。你将如何制定该市场的用户战略，并推动组织建立真正的用户文化？",
+                            evaluation_criteria: "【考察点】用户洞察转化为战略的能力、需求分析方法有效性、推动战略转型的领导力。\n【高分表现】系统阐述用户导向战略制定过程，展现深度洞察与数据分析折能，提出创新可行的市场进入策略及文化转型方法。\n【低分表现】需求理解表面化，缺乏系统调研方法；战略制定中未能平衡用户需求与商业目标；面对新环境时思路僵化。"
+                        },
+                        {
+                            initial_prompt: "请分享你在过往工作中经历的一次重大业务挑战，并说明你如何有效应对该挑战。",
+                            star_framework: "(S) 情境：当时业务所处的具体领域和背景是什么？挑战出现的初期有哪些具体表现或信号？\n(T) 任务：面对这一挑战，你的主要职责和目标是什么？需要解决哪些核心问题？\n(A) 行动：你采取了哪些具体措施应对挑战？在用户层面实施了哪些关键举措？\n(R) 结果：最终应对挑战的结果如何？用户反馈和业务表现发生了哪些变化？",
+                            decision_logic: "在应对挑战过程中，若团队内部对关键决策存在分歧，你如何推动沟通并达成共识？",
+                            scenario_simulation: "假设当前公司面临市场环境突变，竞争对手推出颠覆性产品，导致用户规模持续流失。你将如何带领团队将这一危机转化为发展机遇？",
+                            evaluation_criteria: "【考察点】在危机中坚持以用户为中心的应对策略、有效领导团队的能力，以及在全新复杂场景下进行反思与经验迁移的能力。\n【高分表现】能系统阐述用户导向的危机应对方案，展现卓越领导力，提出可行的危机转化路径。\n【低分表现】应对措施缺乏用户视角，团队协作效果不佳；面对新危机时思路混乱或脱离实际，难以提出有效的转化策略。"
+                        }
+                    ]
+                },
+                "zhan_xian_min_jie_bian_tong": {
+                    name_cn: "展现敏捷变通",
+                    name_en: "Demonstrate Agility & Adaptability",
+                    category: "leading_change",
+                    questions: [
+                        {
+                            initial_prompt: "请分享一次在过往经历中，因外部环境发生重大变化而需要调整公司既定战略的情况，并说明你当时的应对方式。",
+                            star_framework: "(S) 情境：当时外部环境发生了哪些具体变化？哪些关键因素使原有战略不再适用？\n(T) 任务：面对环境突变，你承担的主要职责是什么？需要达成的核心目标有哪些？\n(A) 行动：你采取了哪些具体措施推动战略调整？是否建立了相应的应急机制或转型路径？\n(R) 结果：战略调整后取得了哪些成效？是否有效应对了环境变化带来的挑战？",
+                            decision_logic: "你当时为什么选择这些行动方案来推动战略调整？背后的关键考量与决策依据是什么？",
+                            scenario_simulation: "假设当前行业突然出台颠覆性政策，现有业务模式受到巨大冲击，基于你的经验，你会采取哪些不同于以往的决策与行动？",
+                            evaluation_criteria: "【考察点】环境剧变下的战略敏捷性、系统性决策与变革领导力。\n【高分表现】清晰阐述战略调整过程，展现前瞻性思维与差异化应对能力，体现持续迭代的领导力。\n【低分表现】战略调整措述模糊，行动缺乏系统性；经验复用能力不足，新场景应对思路局限。"
+                        },
+                        {
+                            initial_prompt: "请分享你在过往工作中，面对市场形势极不明朗、需要在短时间内做出重大决策的经历。",
+                            star_framework: "(S) 情境：当时市场存在哪些具体的不确定性？哪些因素要求你必须快速做出关键决策？\n(T) 任务：你此次决策的核心目标是什么？需要平衡哪些关键利益或风险？\n(A) 行动：你通过哪些渠道收集信息、咨询哪些关键人员？是否建立了快速研判机制？\n(R) 结果：最终决策带来了哪些业务成果？对公司短期及长期发展产生了什么影响？",
+                            decision_logic: "你当时选择该决策路径的主要依据是什么？在信息有限的情况下如何评估不同选项的潜在价值与风险？",
+                            scenario_simulation: "假设当前行业面临颠覆性技术变革，竞争对手推出创新产品，市场格局即将重塑。你需要在两周内决定是否投入重大资源进行新技术研发，请阐述你的决策框架与实施路径。",
+                            evaluation_criteria: "【考察点】在高度不确定性环境中，快速整合信息、理性决策并承担风险的系统能力与领导魄力。\n【高分表现】清晰还原决策场景，展现结构化分析与果断决策能力；在新挑战中提出兼顾短期行动与长期布局的系统策略。\n【低分表现】决策场景描述模糊，分析缺乏系统性；面对新问题时思路僵化，依赖直觉，缺乏可复用的决策方法。"
+                        }
+                    ]
+                },
+                "zhui_qiu_zhuo_yue_ji_xiao": {
+                    name_cn: "追求卓越绩效",
+                    name_en: "Strive for Excellence",
+                    category: "leading_change",
+                    questions: [
+                        {
+                            initial_prompt: "请分享在过往工作中，你如何带领团队通过对标行业优秀企业来推动组织提升的具体经历。",
+                            star_framework: "(S) 情境：当时企业处于哪个发展阶段？面临哪些关键挑战或瓶颈？促使你决定开展对标学习的主要原因是什么？\n(T) 任务：你希望通过此次对标学习达成哪些具体目标？\n(A) 行动：你如何系统了解标杆企业的优势？在分析后制定了怎样的改进计划？如何推动团队有效落实？\n(R) 结果：对标学习后，企业在业务流程、组织能力或绩效表现等方面取得了哪些具体提升？",
+                            decision_logic: "你选择特定标杆企业及学习重点时，主要基于哪些考量？为何认为这些方面对企业绩效提升具有关键作用？",
+                            scenario_simulation: "假设企业进入一个全新行业，缺乏可直接对标的成熟企业，但市场对绩效要求极高。你将如何设定卓越绩效标准，并系统推动团队实现突破？",
+                            evaluation_criteria: "【考察点】识别学习标杆、转化最佳实践、推动绩效提升的系统能力，以及在无参照环境下自主定义卓越标准的前瞻性。\n【高分表现】完整呈现标杆学习闭环，展现精准洞察与转化力；在新场景中能创造性设定高价值目标并规划可行路径。\n【低分表现】对标过程缺乏系统性，学习重点模糊；外部经验转化不足，或无参照时目标设定脱离实际。"
+                        },
+                        {
+                            initial_prompt: "请分享你主动对公司核心业务的生产或运营管理环节进行系统性优化与改进的相关经验。",
+                            star_framework: "(S) 情境：你所负责的核心业务是什么？该业务环节原有的运行流程存在哪些具体问题？你观察到哪些可优化的空间？\n(T) 任务：你发起此次流程优化的核心目标是什么？希望达成哪些关键改进？\n(A) 行动：你采取了哪些具体措施推动流程优化？如何确保优化方案既贴合业务实际，又具备落地可行性？\n(R) 结果：优化后该业务环节的关键绩效指标（KPIs）有哪些显著变化？是否达成预期目标？",
+                            decision_logic: "你当初为何选择该特定环节作为优化切入点？在制定优化方案时，如何平衡'效率提升'与'风险控制'之间的关系？",
+                            scenario_simulation: "假设公司核心业务进入一个技术快速迭代的新领域，原有流程经验不再适用。基于你过往优化关键流程的经验，你将如何推动构建新的高效流程体系？",
+                            evaluation_criteria: "【考察点】主动识别优化机会、系统推进流程改进，并在新环境中重构高效流程的能力。\n【高分表现】清晰阐述端到端优化逻辑，措施精准有效，平衡效率与风险，体现持续改进能力。\n【低分表现】目标模糊，措施缺乏针对性；难以平衡效率与风险，或缺乏新场景下的流程构建能力。"
+                        }
+                    ]
+                },
+                "nei_zai_qu_dong": {
+                    name_cn: "内在驱动",
+                    name_en: "Intrinsic Drivers",
+                    category: "motivation",
+                    questions: [
+                        {
+                            initial_prompt: "回顾你的职业生涯，哪项工作或项目让您获得了最大的成就感和满足感？请详细描述。",
+                            followup_questions: "1. 你认为成功的核心驱动因素是什么？（是充分的准备、团队的协作、技能的突破，还是外部的认可？）\n2. 为什么是这些因素（而非其他）最让您感到满足？",
+                            evaluation_criteria: "【考察点】候选人的核心内在驱动力是什么（例如：解决问题、影响力、创造、学习、认可、团队成功）。其价值观与岗位所能提供的'回报'是否匹配。\n【优秀回答】回答具体、真实。所描述的成就感来源与应聘岗位的核心价值高度契合（例如，研发岗位强调解决技术难题的快乐，客服岗位强调帮助客户带来的满足）。\n【警示信号】回答空洞、泛泛而谈（如'只要完成任务我就有成就感'）。成就感的来源与岗位现实严重不符（如应聘重复性工作却极度渴望新鲜感）。"
+                        },
+                        {
+                            initial_prompt: "在你过往的所有工作经历中，哪一段是你最不喜欢的？为什么？",
+                            followup_questions: "1. 在那个岗位中，最让你感到沮丧或缺乏动力的事情是什么？\n2. 对于这些不喜欢的因素，你当时是如何应对或尝试改善的？\n3. 如果现在的岗位也偶尔出现类似的挑战，你会如何处理？",
+                            evaluation_criteria: "【考察点】核心排斥因素（例如：管理风格、组织文化、沟通模式、业务性质），判断这些负面因素是否正是本岗位或公司文化中的'常态'，从而预判其流失风险。\n【优秀回答】能客观描述'不适配'的原因（如业务方向、管理风格不匹配），而非情绪化抱怨；即便在不喜欢的环境下，仍尝试改善或保持职业水准。\n【警示信号】强烈抱怨前领导、同事或过度诉苦；所讨厌的因素恰好是本岗位的核心属性（如：流程严谨、跨部门协同）；面对不适环境时选择逃避，直接放弃或降低工作标准。"
+                        }
+                    ]
+                },
+                "cheng_zhang_qian_li": {
+                    name_cn: "成长潜力",
+                    name_en: "Growth & Resilience",
+                    category: "motivation",
+                    questions: [
+                        {
+                            initial_prompt: "回顾过去一年，你在哪方面的进步最令自己满意？未来一年，你计划重点提升哪项能力？",
+                            followup_questions: "1. 你的学习路径是怎样的？（是通过实战复盘、系统自学，还是积极寻求导师反馈？）\n2. 当遇到认知瓶颈或学习止步不前时，你通常如何突破？\n3. 你希望公司或团队在你的成长路径上扮演什么样的角色？",
+                            evaluation_criteria: "【考察点】成长心态、自我驱动学习能力、对自身发展的清晰认知。\n【优秀回答】具'目标-行动-反思'闭环，有可迁移的方法论沉淀；职业规划与行业趋势或岗位需求高度匹配。\n【警示信号】过去一年无实质进步；学习态度被动；职业目标模糊或与业务方向严重脱节。"
+                        },
+                        {
+                            initial_prompt: "在过往经历中，面对极大的压力、挑战或挫折时，你是如何应对的？是什么支撑你坚持到底并最终解决问题的？",
+                            followup_questions: "1. 请还原那个最令你感到挫败的瞬间，当时的压力核心源自哪里？\n2. 在几近放弃的时刻，你是如何进行自我心理建设或寻求外部支持的？\n3. 这段经历如何重塑了你现在面对挑战时的心态？",
+                            evaluation_criteria: "【考察点】心理韧性（Resilience）、情绪调节能力以及对目标的承诺感。\n【优秀回答】坦诚压力旧址路程真实，展现出从'挫败'到'复原'的动态调节过程；不推卸责任，能从负面事件中提取积极意义，展现出极强的结果导向意识。\n【警示信号】将失败完全归咎于环境或他人，或者无法描述出具体的心理调节过程（说明可能是在编造）"
+                        }
+                    ]
+                },
+                "zu_zhi_shi_pei": {
+                    name_cn: "组织适配",
+                    name_en: "Organizational Fit",
+                    category: "motivation",
+                    questions: [
+                        {
+                            initial_prompt: "结合你最近一次的绩效评估，被评定最突出的优势（3点）及最需要改进的领域（2点）分别是什么？",
+                            followup_questions: "1. 针对这些待改进项，您具体采取了哪些行动？目前取得了什么进展？\n2. 你认为这些核心优势将如何助力你在李锦记的岗位上取得成功？",
+                            evaluation_criteria: "【考察点】自我察觉深度、客观自省能力，以及面对不足时的改进行动力。\n【优秀回答】评价客观、不避讳真实缺点；优势描述有数据或事实支撑；针对弱点有清晰的改进计划且已初见成效，展现出极强的自我驱动。\n【警示信号】使用套路化回答（如'我的缺点是追求完美'）；无法说出具体的反馈建议；将待改进项归咎于客观环境、前任领导或团队，拒绝承担个人责任。"
+                        },
+                        {
+                            initial_prompt: "你对我们公司以及应聘的这个岗位，最感兴趣的特质是什么？此外，你有哪些想要进一步了解的信息？",
+                            followup_questions: "1. 在了解公司的过程中，有哪些细节（如产品、文化等）最吸引你？\n2. 你期待这些'兴趣点'在未来的实际工作中如何转化为动力？\n3. 对于你刚才提到的某些潜在担忧，你认为理想的解决方案是什么？",
+                            evaluation_criteria: "【考察点】求职的动机强度和对机会的真诚度。其是否做过充分的功课，对岗位有现实的理解。\n【优秀回答】能具体说出公司业务、文化、产品或岗位本身的吸引力，显示出深入的调研，能坦诚且专业地提出合理的担忧。\n【警示信号】回答泛泛（如'公司很大、很好'），仅对职位头衔或薪酬感兴趣。提不出任何问题或提出的问题非常肤浅。"
+                        }
+                    ]
+                }
+            }
+        };
+
+        // Framework availability by level
+        const frameworkByLevel = {
+            IC: {
+                values: true,
+                leadership: false,
+                leading_change: false,
+                motivation: true
+            },
+            TL: {
+                values: true,
+                leadership: true,
+                leading_change: false,
+                motivation: true
+            },
+            SL: {
+                values: true,
+                leadership: true,
+                leading_change: true,
+                motivation: true
+            }
+        };
+
+        // Category metadata
+        const categoryMeta = {
+            values: { name_cn: "价值观", name_en: "Values", icon: "🎯" },
+            leadership: { name_cn: "自动波领导力", name_en: "Autopilot Leadership", icon: "👥" },
+            leading_change: { name_cn: "领导变革", name_en: "Leading Change", icon: "🚀" },
+            motivation: { name_cn: "动机", name_en: "Motivation", icon: "💡" }
+        };
+
+        // Dimension icons
+        const dimensionIcons = {
+            "思利及人": "🤝", "务实": "🎯", "诚信": "💎", "永远创业": "🚀", "100-1=0": "⭐",
+            "选对人才": "👥", "高信氛围": "🏠", "高效团队": "⚡", "共同目标": "🎪",
+            "有效授权": "🔑", "教练育才": "🌱", "以愿景为驱动": "🔭", "以用户为中心": "❤️",
+            "展现敏捷变通": "🦋", "追求卓越绩效": "🏆", "动机": "💡"
+        };
+
+        // State
+        let selectedLevel = null;
+        let selectedDimensions = new Set();
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            initLevelCards();
+            initButtons();
+        });
+
+        function initLevelCards() {
+            document.querySelectorAll('.level-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    // Update selection
+                    document.querySelectorAll('.level-card').forEach(c => c.classList.remove('selected'));
+                    this.classList.add('selected');
+                    selectedLevel = this.dataset.level;
+                    
+                    // Clear previous dimension selections
+                    selectedDimensions.clear();
+                    
+                    // Update UI
+                    updateStepProgress(1);
+                    document.getElementById('step1Status').textContent = getLevelName(selectedLevel);
+                    document.getElementById('step1Status').classList.add('selected');
+                    
+                    // Enable Step 2
+                    document.getElementById('step2Card').classList.remove('inactive');
+                    document.getElementById('step2Status').textContent = '请选择维度';
+                    
+                    // Render framework
+                    renderFramework();
+                    
+                    // Hide results
+                    document.getElementById('resultsSection').classList.remove('visible');
+                });
+            });
+        }
+
+        function getLevelName(level) {
+            const names = { IC: 'Individual Contributor 独立贡献者', TL: 'Team Leader 团队领导者', SL: 'Senior Leader 高层管理者' };
+            return names[level] || level;
+        }
+
+        function updateStepProgress(currentStep) {
+            document.querySelectorAll('.step-item').forEach((item, idx) => {
+                const stepNum = idx + 1;
+                item.classList.remove('active', 'completed');
+                if (stepNum < currentStep) {
+                    item.classList.add('completed');
+                } else if (stepNum === currentStep) {
+                    item.classList.add('active');
+                }
+            });
+            
+            document.querySelectorAll('.step-connector').forEach((conn, idx) => {
+                conn.classList.toggle('completed', idx < currentStep - 1);
+            });
+        }
+
+        function renderFramework() {
+            const container = document.getElementById('frameworkCategories');
+            const availability = frameworkByLevel[selectedLevel];
+            const levelData = questionData[selectedLevel];
+            
+            let html = '';
+            
+            Object.entries(categoryMeta).forEach(([catKey, catMeta]) => {
+                const isAvailable = availability[catKey];
+                const dimensions = Object.entries(levelData)
+                    .filter(([key, dim]) => dim.category === catKey)
+                    .map(([key, dim]) => ({ key, ...dim }));
+                
+                if (dimensions.length === 0 && !isAvailable) return;
+                
+                html += `
+                    <div class="framework-category ${isAvailable ? '' : 'unavailable'}">
+                        <div class="category-header">
+                            <div class="category-icon ${catKey}">${catMeta.icon}</div>
+                            <div class="category-info">
+                                <div class="category-name">${catMeta.name_cn}</div>
+                                <div class="category-name-en">${catMeta.name_en}</div>
+                            </div>
+                            <span class="category-badge ${isAvailable ? 'available' : 'unavailable'}">
+                                ${isAvailable ? (catKey === 'motivation' ? '✓ 适用于 All' : `✓ 适用于 ${selectedLevel}`) : `不适用于 ${selectedLevel}`}
+                            </span>
+                        </div>
+                        ${isAvailable && dimensions.length > 0 ? `
+                            <div class="dimension-list">
+                                ${dimensions.map(dim => `
+                                    <div class="dimension-chip" data-dimension="${dim.key}">
+                                        <div class="check-icon">
+                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                                <polyline points="20 6 9 17 4 12"></polyline>
+                                            </svg>
+                                        </div>
+                                        <span>${dim.name_cn}</span>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        ` : ''}
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = html;
+            
+            // Add click handlers to chips
+            container.querySelectorAll('.dimension-chip').forEach(chip => {
+                chip.addEventListener('click', function() {
+                    const dim = this.dataset.dimension;
+                    const isSelected = this.classList.toggle('selected');
+                    
+                    if (isSelected) {
+                        selectedDimensions.add(dim);
+                    } else {
+                        selectedDimensions.delete(dim);
+                    }
+                    
+                    updateSelectionSummary();
+                });
+            });
+        }
+
+        function updateSelectionSummary() {
+            const summary = document.getElementById('selectionSummary');
+            const countEl = document.getElementById('selectedCount');
+            const questionCountEl = document.getElementById('questionCount');
+            
+            if (selectedDimensions.size > 0) {
+                summary.style.display = 'flex';
+                countEl.textContent = selectedDimensions.size;
+                
+                // Count questions
+                let totalQuestions = 0;
+                const levelData = questionData[selectedLevel];
+                selectedDimensions.forEach(dimKey => {
+                    if (levelData[dimKey]) {
+                        totalQuestions += levelData[dimKey].questions.length;
+                    }
+                });
+                questionCountEl.textContent = totalQuestions;
+                
+                document.getElementById('step2Status').textContent = `已选 ${selectedDimensions.size} 个维度`;
+                document.getElementById('step2Status').classList.add('selected');
+                updateStepProgress(2);
+            } else {
+                summary.style.display = 'none';
+                document.getElementById('step2Status').textContent = '请选择维度';
+                document.getElementById('step2Status').classList.remove('selected');
+            }
+        }
+
+        function initButtons() {
+            document.getElementById('clearBtn').addEventListener('click', function() {
+                selectedDimensions.clear();
+                document.querySelectorAll('.dimension-chip').forEach(chip => {
+                    chip.classList.remove('selected');
+                });
+                updateSelectionSummary();
+            });
+            
+            document.getElementById('showResultsBtn').addEventListener('click', showResults);
+            document.getElementById('backBtn').addEventListener('click', hideResults);
+        }
+
+        function showResults() {
+            if (selectedDimensions.size === 0) return;
+            
+            const levelData = questionData[selectedLevel];
+            let totalQuestions = 0;
+            let html = '';
+            
+            selectedDimensions.forEach(dimKey => {
+                const dim = levelData[dimKey];
+                if (dim) {
+                    totalQuestions += dim.questions.length;
+                    html += renderDimensionGroup(dim, dimKey);
+                }
+            });
+            
+            document.getElementById('totalQuestions').textContent = `${totalQuestions} 道题目`;
+            document.getElementById('questionGrid').innerHTML = html;
+            document.getElementById('resultsSection').classList.add('visible');
+            
+            updateStepProgress(3);
+            document.getElementById('step2Card').classList.add('completed');
+            
+            // Add expand handlers
+            document.querySelectorAll('.dimension-header').forEach(header => {
+                header.addEventListener('click', function() {
+                    this.closest('.dimension-group').classList.toggle('expanded');
+                });
+            });
+            
+            // Scroll to results
+            document.getElementById('resultsSection').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function hideResults() {
+            document.getElementById('resultsSection').classList.remove('visible');
+            document.getElementById('step2Card').classList.remove('completed');
+            updateStepProgress(2);
+        }
+
+        function renderDimensionGroup(dim, dimKey) {
+            const icon = dimensionIcons[dim.name_cn] || '📋';
+            
+            return `
+                <div class="dimension-group expanded">
+                    <div class="dimension-header">
+                        <div class="dimension-info">
+                            <div class="dimension-icon ${dim.category}">${icon}</div>
+                            <div class="dimension-title">
+                                <h3>${dim.name_cn}</h3>
+                                <p>${dim.name_en}</p>
+                            </div>
+                        </div>
+                        <div class="dimension-meta">
+                            <span class="question-count">${dim.questions.length} 道题目</span>
+                            <svg class="expand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="questions-container">
+                        ${dim.questions.map((q, idx) => renderQuestionCard(q, idx + 1)).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderQuestionCard(question, number) {
+            let detailsHtml = '';
+
+            if (question.star_framework) {
+                detailsHtml += `
+                    <div class="detail-block star">
+                        <div class="detail-label star">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
+                            </svg>
+                            第一层追问 · STAR框架
+                        </div>
+                        <div class="detail-content">${question.star_framework}</div>
+                    </div>
+                `;
+            }
+
+            if (question.followup_questions) {
+                detailsHtml += `
+                    <div class="detail-block star">
+                        <div class="detail-label star">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
+                            </svg>
+                            追问问题
+                        </div>
+                        <div class="detail-content">${question.followup_questions.replace(/\n/g, '<br>')}</div>
+                    </div>
+                `;
+            }
+
+            if (question.decision_logic) {
+                detailsHtml += `
+                    <div class="detail-block logic">
+                        <div class="detail-label logic">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                            </svg>
+                            第二层追问 · 决策逻辑
+                        </div>
+                        <div class="detail-content">${question.decision_logic}</div>
+                    </div>
+                `;
+            }
+
+            if (question.scenario_simulation) {
+                detailsHtml += `
+                    <div class="detail-block scenario">
+                        <div class="detail-label scenario">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/>
+                            </svg>
+                            第三层追问 · 情景推演
+                        </div>
+                        <div class="detail-content">${question.scenario_simulation}</div>
+                    </div>
+                `;
+            }
+
+            if (question.evaluation_criteria) {
+                detailsHtml += `
+                    <div class="detail-block evaluation">
+                        <div class="detail-label evaluation">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            评估要点
+                        </div>
+                        <div class="detail-content">${question.evaluation_criteria.replace(/\n/g, '<br>')}</div>
+                    </div>
+                `;
+            }
+
+            // Build copy text
+            let copyText = `问题：${question.initial_prompt}`;
+            if (question.star_framework) copyText += `\n\nSTAR框架追问：${question.star_framework}`;
+            if (question.followup_questions) copyText += `\n\n追问问题：${question.followup_questions}`;
+            if (question.decision_logic) copyText += `\n\n决策逻辑追问：${question.decision_logic}`;
+            if (question.scenario_simulation) copyText += `\n\n情景推演：${question.scenario_simulation}`;
+            if (question.evaluation_criteria) copyText += `\n\n评估要点：${question.evaluation_criteria}`;
+
+            return `
+                <div class="question-card" data-question="${encodeURIComponent(copyText)}">
+                    <div class="question-header">
+                        <div class="question-number">${number}</div>
+                        <button class="copy-btn" onclick="copyQuestion(this)">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                                <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
+                            </svg>
+                            复制
+                        </button>
+                    </div>
+                    <div class="question-main">${question.initial_prompt}</div>
+                    ${detailsHtml ? `<div class="question-details">${detailsHtml}</div>` : ''}
+                </div>
+            `;
+        }
+
+        // Copy Question Function
+        function copyQuestion(btn) {
+            const card = btn.closest('.question-card');
+            const text = decodeURIComponent(card.dataset.question);
+
+            navigator.clipboard.writeText(text).then(() => {
+                btn.classList.add('copied');
+                btn.innerHTML = `
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="20 6 9 17 4 12"/>
+                    </svg>
+                    已复制
+                `;
+
+                setTimeout(() => {
+                    btn.classList.remove('copied');
+                    btn.innerHTML = `
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
+                        </svg>
+                        复制
+                    `;
+                }, 2000);
+            });
+        }
+
+        // Toggle Expand/Collapse All
+        let allExpanded = true;
+        function toggleExpandAll() {
+            const btn = document.getElementById('expandAllBtn');
+            const groups = document.querySelectorAll('.dimension-group');
+
+            allExpanded = !allExpanded;
+
+            groups.forEach(group => {
+                if (allExpanded) {
+                    group.classList.add('expanded');
+                } else {
+                    group.classList.remove('expanded');
+                }
+            });
+
+            btn.innerHTML = allExpanded
+                ? `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 10l5 5 5-5"/></svg><span>收起全部</span>`
+                : `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 10l5 5 5-5"/></svg><span>展开全部</span>`;
+        }
+
+        // Reset All Selections
+        function resetAll() {
+            // Clear selections
+            selectedLevel = null;
+            selectedDimensions.clear();
+
+            // Reset UI
+            document.querySelectorAll('.level-card').forEach(c => c.classList.remove('selected'));
+            document.querySelectorAll('.dimension-chip').forEach(c => c.classList.remove('selected'));
+
+            // Hide results and step 2
+            document.getElementById('resultsSection').classList.remove('visible');
+            document.getElementById('step2Card').classList.add('inactive');
+            document.getElementById('step2Card').classList.remove('completed');
+            document.getElementById('step1Status').textContent = '请选择';
+
+            // Reset progress
+            updateStepProgress(1);
+
+            // Clear search
+            document.getElementById('searchInput').value = '';
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Search Function
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            if (searchInput) {
+                searchInput.addEventListener('input', function() {
+                    const query = this.value.toLowerCase().trim();
+                    const cards = document.querySelectorAll('.question-card');
+                    const groups = document.querySelectorAll('.dimension-group');
+
+                    if (!query) {
+                        // Show all
+                        cards.forEach(card => {
+                            card.style.display = '';
+                            // Remove highlights
+                            card.querySelectorAll('.highlight').forEach(h => {
+                                h.outerHTML = h.textContent;
+                            });
+                        });
+                        groups.forEach(group => group.style.display = '');
+                        return;
+                    }
+
+                    groups.forEach(group => {
+                        const groupCards = group.querySelectorAll('.question-card');
+                        let hasVisible = false;
+
+                        groupCards.forEach(card => {
+                            const mainText = card.querySelector('.question-main').textContent.toLowerCase();
+                            const detailsText = card.querySelector('.question-details')?.textContent.toLowerCase() || '';
+
+                            if (mainText.includes(query) || detailsText.includes(query)) {
+                                card.style.display = '';
+                                hasVisible = true;
+
+                                // Highlight matching text in main question
+                                const mainEl = card.querySelector('.question-main');
+                                const originalText = mainEl.textContent;
+                                const regex = new RegExp(`(${query})`, 'gi');
+                                mainEl.innerHTML = originalText.replace(regex, '<span class="highlight">$1</span>');
+                            } else {
+                                card.style.display = 'none';
+                            }
+                        });
+
+                        // Hide group if no visible cards
+                        group.style.display = hasVisible ? '' : 'none';
+
+                        // Expand groups with matches
+                        if (hasVisible) {
+                            group.classList.add('expanded');
+                        }
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>

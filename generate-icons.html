@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generate PWA Icons - LKK Interview Q Bank</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; padding: 20px; background: #f5f5f5; }
+        h1 { color: #333; }
+        .container { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); max-width: 600px; }
+        canvas { border: 1px solid #ddd; border-radius: 8px; margin: 10px 0; display: block; }
+        .instructions { background: #E02923; color: white; padding: 15px 20px; border-radius: 8px; margin-bottom: 20px; }
+        .instructions ol { margin: 10px 0 0 0; padding-left: 20px; }
+        .preview-row { display: flex; gap: 20px; align-items: flex-end; flex-wrap: wrap; }
+        .size-label { font-size: 12px; color: #666; margin-top: 5px; }
+        .loading { color: #666; font-style: italic; }
+    </style>
+</head>
+<body>
+    <h1>PWA Icon Generator</h1>
+    <div class="instructions">
+        <strong>Instructions:</strong>
+        <ol>
+            <li>Wait for the icons to load below</li>
+            <li>Right-click on each icon → "Save image as..."</li>
+            <li>Save as <code>icon-192.png</code> and <code>icon-512.png</code></li>
+            <li>Save them in the same folder as index.html</li>
+        </ol>
+    </div>
+
+    <div class="container">
+        <h2 style="color: #E02923; margin-top: 0;">LKK Logo Icons</h2>
+        <p id="status" class="loading">Loading logo...</p>
+        <div class="preview-row">
+            <div>
+                <canvas id="icon192" width="192" height="192"></canvas>
+                <div class="size-label">192 × 192 (icon-192.png)</div>
+            </div>
+            <div>
+                <canvas id="icon512" width="512" height="512"></canvas>
+                <div class="size-label">512 × 512 (icon-512.png)</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const logo = new Image();
+        logo.crossOrigin = 'anonymous';
+
+        logo.onload = function() {
+            document.getElementById('status').textContent = 'Icons ready! Right-click to save.';
+            document.getElementById('status').style.color = '#22C55E';
+            document.getElementById('status').style.fontStyle = 'normal';
+            document.getElementById('status').style.fontWeight = 'bold';
+
+            drawIcon(document.getElementById('icon192'), 192);
+            drawIcon(document.getElementById('icon512'), 512);
+        };
+
+        logo.onerror = function() {
+            document.getElementById('status').textContent = 'Error: Could not load logo tou.png. Make sure it is in the same folder.';
+            document.getElementById('status').style.color = '#E02923';
+        };
+
+        logo.src = 'logo tou.png';
+
+        function drawIcon(canvas, size) {
+            const ctx = canvas.getContext('2d');
+
+            // White background
+            ctx.fillStyle = '#FFFFFF';
+            ctx.fillRect(0, 0, size, size);
+
+            // Calculate logo dimensions to fit nicely with padding
+            const padding = size * 0.1;
+            const maxWidth = size - (padding * 2);
+            const maxHeight = size - (padding * 2);
+
+            // Calculate scale to fit logo while maintaining aspect ratio
+            const scale = Math.min(maxWidth / logo.width, maxHeight / logo.height);
+            const logoWidth = logo.width * scale;
+            const logoHeight = logo.height * scale;
+
+            // Center the logo
+            const x = (size - logoWidth) / 2;
+            const y = (size - logoHeight) / 2;
+
+            // Draw the logo
+            ctx.drawImage(logo, x, y, logoWidth, logoHeight);
+        }
+    </script>
+</body>
+</html>

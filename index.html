@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <title>LEE KUM KEE | 面试题库 Interview Question Bank v1.0</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -45,179 +48,6 @@
             --transition-normal: 0.25s ease;
         }
 
-        /* Dark Mode Theme */
-        [data-theme="dark"] {
-            --ios-bg: #1c1c1e;
-            --ios-card-bg: #2c2c2e;
-            --ios-separator: #48484a;
-            --ios-label: #ffffff;
-            --ios-secondary-label: #ffffff;
-            --ios-tertiary-label: #a1a1a6;
-
-            --bright-eggshell: #3a3a3c;
-            --bright-eggshell-light: #2c2c2e;
-
-            --shadow-sm: 0 1px 2px rgba(0,0,0,0.3);
-            --shadow-md: 0 4px 12px rgba(0,0,0,0.4);
-            --shadow-lg: 0 8px 24px rgba(0,0,0,0.5);
-            --shadow-card: 0 2px 8px rgba(0,0,0,0.3);
-        }
-
-        [data-theme="dark"] .step-card,
-        [data-theme="dark"] .breadcrumb,
-        [data-theme="dark"] .results-section,
-        [data-theme="dark"] .question-card {
-            background: var(--ios-card-bg);
-        }
-
-        [data-theme="dark"] .level-card {
-            background: #3a3a3c;
-        }
-
-        [data-theme="dark"] .step-progress {
-            background: var(--ios-card-bg);
-        }
-
-        [data-theme="dark"] .dimension-group {
-            background: var(--ios-card-bg);
-        }
-
-        [data-theme="dark"] .dimension-chip {
-            background: #3a3a3c;
-            border-color: #58585a;
-            color: #ffffff;
-        }
-
-        [data-theme="dark"] .framework-intro {
-            background: linear-gradient(135deg, #2c2c2e 0%, #1c1c1e 100%);
-        }
-
-        [data-theme="dark"] .detail-block {
-            background: #3a3a3c;
-        }
-
-        [data-theme="dark"] .search-box {
-            background: #3a3a3c;
-            border-color: #58585a;
-        }
-
-        [data-theme="dark"] .search-box input {
-            color: #ffffff;
-        }
-
-        [data-theme="dark"] .search-box input::placeholder {
-            color: #8e8e93;
-        }
-
-        [data-theme="dark"] .toolbar-btn {
-            background: #3a3a3c;
-            border-color: #58585a;
-            color: #ffffff;
-        }
-
-        [data-theme="dark"] .copy-btn {
-            background: #3a3a3c;
-            border-color: #58585a;
-            color: #ffffff;
-        }
-
-        [data-theme="dark"] .copy-all-btn {
-            background: #3a3a3c;
-            border-color: var(--legacy-gold);
-            color: #ffffff;
-        }
-
-        [data-theme="dark"] .back-btn {
-            background: #3a3a3c;
-            color: #ffffff;
-        }
-
-        [data-theme="dark"] .question-count {
-            background: #48484a;
-            color: #ffffff;
-        }
-
-        [data-theme="dark"] .expand-icon {
-            color: #8e8e93;
-        }
-
-        [data-theme="dark"] .category-badge.unavailable {
-            background: #48484a;
-            color: #a1a1a6;
-        }
-
-        [data-theme="dark"] .scoring-rubric-btn {
-            background: #3a3a3c;
-            color: #ffffff;
-        }
-
-        [data-theme="dark"] .scoring-rubric-content {
-            background: #2c2c2e;
-        }
-
-        [data-theme="dark"] .score-row {
-            border-color: #48484a;
-        }
-
-        [data-theme="dark"] .score-desc {
-            color: #ffffff;
-        }
-
-        /* Level Card 选中状态 - 深色背景 */
-        [data-theme="dark"] .level-card.selected {
-            background: #3a3a3c;
-            border-color: var(--heritage-red);
-        }
-
-        [data-theme="dark"] .level-card.selected .level-name {
-            color: var(--heritage-red);
-        }
-
-        [data-theme="dark"] .level-card.selected .level-name-en,
-        [data-theme="dark"] .level-card.selected .level-desc {
-            color: #a1a1a6;
-        }
-
-        [data-theme="dark"] .level-card.selected .level-icon {
-            background: var(--heritage-red);
-        }
-
-        /* Category Header - 深色背景 */
-        [data-theme="dark"] .category-header {
-            background: #3a3a3c;
-        }
-
-        [data-theme="dark"] .category-name {
-            color: #ffffff;
-        }
-
-        [data-theme="dark"] .category-name-en {
-            color: #a1a1a6;
-        }
-
-        /* Framework Category 背景 */
-        [data-theme="dark"] .framework-category {
-            background: #2c2c2e;
-        }
-
-        /* Selection Summary - Bright Eggshell for dark mode visibility */
-        [data-theme="dark"] .selection-summary .summary-info {
-            color: #FFEBCF;
-        }
-
-        /* Dark mode: Purple text → Bright Eggshell */
-        [data-theme="dark"] .step-status.selected {
-            color: #FFEBCF;
-        }
-
-        [data-theme="dark"] .level-card .level-stats {
-            color: #FFEBCF;
-        }
-
-        [data-theme="dark"] .step-item.completed .step-label {
-            color: #FFEBCF;
-        }
-
         * {
             margin: 0;
             padding: 0;
@@ -233,14 +63,17 @@
             min-height: 100vh;
         }
 
-        /* Header */
+        /* Header - iOS Glassmorphism */
         .header {
-            background: linear-gradient(135deg, var(--heritage-red) 0%, var(--heritage-red-dark) 100%);
+            background: rgba(224, 41, 35, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             padding: 14px 24px;
             position: sticky;
             top: 0;
             z-index: 100;
             box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
 
         .header-content {
@@ -258,13 +91,62 @@
         }
 
         .logo-section img {
-            height: 44px;
+            height: 48px;
             width: auto;
-            background: rgba(255,255,255,0.95);
-            padding: 6px 10px;
-            border-radius: 10px;
+            /* 无背景 - 直接显示在 header 上 */
+            background: transparent;
+            padding: 0;
+            border-radius: 0;
+            box-shadow: none;
+            border: none;
+            transition: all 0.2s ease;
+        }
+
+        /* Logo Hover 效果 - 轻微放大 */
+        .logo-section img:hover {
+            transform: scale(1.02);
+        }
+
+        /* Logo Tooltip - iOS Style */
+        .logo-section {
+            position: relative;
+        }
+
+        .logo-tooltip {
+            position: absolute;
+            bottom: -36px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.75);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 500;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.2s ease;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .logo-tooltip::before {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-bottom: 6px solid rgba(0, 0, 0, 0.75);
+        }
+
+        .logo-section:hover .logo-tooltip {
+            opacity: 1;
+            visibility: visible;
         }
 
         .logo-text h1 {
@@ -313,60 +195,6 @@
             border: 1px solid rgba(255,255,255,0.3);
             border-radius: 8px;
             overflow: hidden;
-        }
-
-        .controls-divider {
-            width: 1px;
-            height: 20px;
-            background: rgba(255,255,255,0.3);
-        }
-
-        .theme-toggle {
-            background: transparent;
-            border: none;
-            border-radius: 0;
-            padding: 8px 10px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all var(--transition-fast);
-        }
-
-        .theme-toggle:hover {
-            background: rgba(255,255,255,0.2);
-        }
-
-        .theme-toggle svg {
-            width: 18px;
-            height: 18px;
-            stroke: white;
-        }
-
-        .theme-toggle .moon-icon {
-            display: none;
-        }
-
-        [data-theme="dark"] .theme-toggle .sun-icon {
-            display: none;
-        }
-
-        [data-theme="dark"] .theme-toggle .moon-icon {
-            display: block;
-        }
-
-        [data-theme="dark"] .header-controls {
-            background: rgba(255,255,255,0.1);
-            border-color: rgba(255,255,255,0.2);
-        }
-
-        [data-theme="dark"] .controls-divider {
-            background: rgba(255,255,255,0.2);
-        }
-
-        [data-theme="dark"] .version-badge {
-            background: rgba(255,255,255,0.05);
-            color: rgba(255,255,255,0.6);
         }
 
         /* Language Switcher */
@@ -450,17 +278,17 @@
             font-weight: 300;
         }
 
-        /* Step Progress Indicator */
+        /* Step Progress Indicator - iOS Style */
         .step-progress {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 0;
             margin-bottom: 32px;
-            padding: 24px;
+            padding: 32px;
             background: white;
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-card);
+            border-radius: 20px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
         }
 
         .step-item {
@@ -473,15 +301,15 @@
         }
 
         .step-circle {
-            width: 48px;
-            height: 48px;
+            width: 56px;
+            height: 56px;
             border-radius: 50%;
-            background: var(--ios-bg);
-            border: 3px solid var(--ios-separator);
+            background: #f5f5f7;
+            border: none;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 18px;
+            font-size: 20px;
             font-weight: 700;
             color: var(--ios-tertiary-label);
             transition: all var(--transition-normal);
@@ -490,10 +318,9 @@
         }
 
         .step-item.active .step-circle {
-            background: var(--heritage-red);
-            border-color: var(--heritage-red);
+            background: linear-gradient(135deg, var(--heritage-red) 0%, var(--heritage-red-light) 100%);
             color: white;
-            box-shadow: 0 4px 12px rgba(224, 41, 35, 0.3);
+            box-shadow: 0 6px 20px rgba(224, 41, 35, 0.35);
         }
 
         .step-item.completed .step-circle {
@@ -521,8 +348,9 @@
 
         .step-connector {
             flex: 1;
-            height: 3px;
-            background: var(--ios-separator);
+            height: 4px;
+            background: #e5e5ea;
+            border-radius: 2px;
             margin: 0 -20px;
             margin-bottom: 28px;
             position: relative;
@@ -530,7 +358,7 @@
         }
 
         .step-connector.completed {
-            background: var(--rich-purple);
+            background: linear-gradient(90deg, var(--rich-purple) 0%, var(--rich-purple-light) 100%);
         }
 
         /* Step Cards */
@@ -615,41 +443,44 @@
         }
 
         .level-card {
-            background: var(--ios-bg);
+            background: white;
             border: 2px solid transparent;
-            border-radius: var(--radius-md);
-            padding: 24px;
+            border-radius: 20px;
+            padding: 28px 24px;
             cursor: pointer;
-            transition: all var(--transition-normal);
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             text-align: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.06);
         }
 
         .level-card:hover {
-            background: var(--bright-eggshell-light);
-            transform: translateY(-2px);
+            transform: translateY(-4px) scale(1.01);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.04);
         }
 
         .level-card.selected {
-            background: white;
-            border-color: var(--heritage-red);
-            box-shadow: 0 4px 16px rgba(224, 41, 35, 0.15);
+            background: linear-gradient(white, white) padding-box,
+                        linear-gradient(135deg, var(--heritage-red), var(--heritage-red-light)) border-box;
+            border: 2px solid transparent;
+            box-shadow: 0 8px 32px rgba(224, 41, 35, 0.15), 0 2px 8px rgba(224, 41, 35, 0.1);
         }
 
         .level-icon {
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
-            background: white;
+            width: 72px;
+            height: 72px;
+            border-radius: 22px;
+            background: linear-gradient(135deg, #f8f8f8 0%, #ffffff 100%);
             margin: 0 auto 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 28px;
-            box-shadow: var(--shadow-sm);
+            font-size: 32px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.8);
         }
 
         .level-card.selected .level-icon {
-            background: var(--heritage-red);
+            background: linear-gradient(135deg, var(--heritage-red) 0%, var(--heritage-red-light) 100%);
+            box-shadow: 0 4px 12px rgba(224, 41, 35, 0.3);
         }
 
         .level-card.selected .level-icon span {
@@ -715,6 +546,274 @@
             font-size: 13px;
             color: var(--ios-secondary-label);
             line-height: 1.6;
+        }
+
+        .vl-resource-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 10px;
+            padding: 6px 12px;
+            font-size: 13px;
+            color: var(--legacy-gold);
+            text-decoration: none;
+            background: var(--bright-eggshell-light);
+            border-radius: var(--radius-sm);
+            transition: all var(--transition-fast);
+        }
+
+        .vl-resource-link:hover {
+            background: var(--legacy-gold);
+            color: white;
+        }
+
+        .vl-resource-link svg {
+            flex-shrink: 0;
+        }
+
+        .framework-tip {
+            margin-top: 12px;
+            padding: 12px 16px;
+            background: rgba(224, 166, 61, 0.1);
+            border-radius: var(--radius-sm);
+            border-left: 3px solid var(--legacy-gold);
+        }
+
+        .framework-tip strong {
+            color: var(--legacy-gold);
+        }
+
+        .guide-toggle-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 16px;
+            padding: 10px 16px;
+            background: white;
+            border: 1px solid var(--ios-separator);
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            font-size: 13px;
+            color: var(--rich-purple);
+            font-weight: 500;
+            transition: all var(--transition-fast);
+        }
+
+        .guide-toggle-btn:hover {
+            background: var(--bright-eggshell-light);
+            border-color: var(--rich-purple);
+        }
+
+        .guide-toggle-btn svg {
+            stroke: var(--rich-purple);
+        }
+
+        .guide-toggle-btn .guide-arrow {
+            margin-left: auto;
+            transition: transform var(--transition-normal);
+        }
+
+        .guide-toggle-btn.expanded .guide-arrow {
+            transform: rotate(180deg);
+        }
+
+        .selection-guide {
+            display: none;
+            margin-top: 16px;
+            padding: 20px;
+            background: white;
+            border: 1px solid var(--ios-separator);
+            border-radius: var(--radius-md);
+        }
+
+        .selection-guide.visible {
+            display: block;
+        }
+
+        .guide-section {
+            margin-bottom: 20px;
+        }
+
+        .guide-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .guide-section h4 {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--ios-label);
+            margin-bottom: 8px;
+        }
+
+        .guide-note {
+            font-size: 12px;
+            color: var(--ios-tertiary-label);
+            margin-bottom: 12px;
+        }
+
+        .guide-table-container {
+            overflow-x: auto;
+        }
+
+        .guide-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12px;
+        }
+
+        .guide-table th,
+        .guide-table td {
+            padding: 10px 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--ios-separator);
+        }
+
+        .guide-table th {
+            background: var(--ios-bg);
+            font-weight: 600;
+            color: var(--ios-label);
+            white-space: nowrap;
+        }
+
+        .guide-table td {
+            color: var(--ios-secondary-label);
+            line-height: 1.5;
+        }
+
+        .guide-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .guide-table .job-family {
+            font-weight: 500;
+            color: var(--ios-label);
+            white-space: nowrap;
+        }
+
+        .guide-table .core-values {
+            color: var(--heritage-red);
+        }
+
+        .guide-table .leadership {
+            color: var(--rich-purple);
+        }
+
+        .guide-table .change-leadership {
+            color: var(--legacy-gold);
+        }
+
+        /* STAR Quick Guide - Step 3 说明类卡片风格 */
+        .star-guide-intro {
+            background: linear-gradient(135deg, var(--bright-eggshell-light) 0%, white 100%);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            margin: 16px 0;
+            border-left: 4px solid var(--legacy-gold);
+        }
+
+        .star-guide-intro h3 {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--ios-label);
+            margin-bottom: 12px;
+        }
+
+        .star-guide-intro p {
+            font-size: 13px;
+            color: var(--ios-secondary-label);
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
+
+        .star-guide-intro p strong {
+            color: var(--ios-label);
+        }
+
+        .star-guide-structure {
+            margin: 16px 0;
+        }
+
+        .star-guide-structure-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--ios-label);
+            margin-bottom: 10px;
+        }
+
+        .star-guide-items {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .star-guide-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 13px;
+            color: var(--ios-secondary-label);
+            line-height: 1.5;
+        }
+
+        .star-guide-item strong {
+            color: var(--ios-label);
+        }
+
+        .star-guide-intro .star-guide-tip {
+            margin-top: 12px;
+            padding: 10px 14px;
+            background: rgba(224, 166, 61, 0.1);
+            border-radius: var(--radius-sm);
+        }
+
+        .interviewer-guide-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 12px;
+            padding: 6px 12px;
+            font-size: 13px;
+            color: var(--legacy-gold);
+            text-decoration: none;
+            background: transparent;
+            border-radius: var(--radius-sm);
+            transition: all var(--transition-fast);
+        }
+
+        .interviewer-guide-link:hover {
+            background: var(--legacy-gold);
+            color: white;
+        }
+
+        .interviewer-guide-link svg {
+            flex-shrink: 0;
+        }
+
+        /* ATS Reminder Card - 说明类卡片风格 */
+        .ats-reminder {
+            background: linear-gradient(135deg, var(--bright-eggshell-light) 0%, white 100%);
+            border-radius: var(--radius-md);
+            padding: 16px 20px;
+            margin: 24px 0 16px;
+            border-left: 4px solid var(--legacy-gold);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .ats-reminder-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .ats-reminder-text {
+            font-size: 14px;
+            color: var(--ios-label);
+            line-height: 1.5;
+        }
+
+        .ats-reminder-text strong {
+            color: var(--legacy-gold);
         }
 
         .framework-categories {
@@ -813,17 +912,6 @@
             color: white;
         }
 
-        [data-theme="dark"] .select-all-btn {
-            border-color: var(--heritage-red-light);
-            color: var(--heritage-red-light);
-        }
-
-        [data-theme="dark"] .select-all-btn:hover,
-        [data-theme="dark"] .select-all-btn.all-selected {
-            background: var(--heritage-red);
-            color: white;
-        }
-
         .dimension-list {
             padding: 16px;
             display: flex;
@@ -835,33 +923,35 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            padding: 10px 16px;
+            padding: 12px 20px;
             background: white;
-            border: 2px solid var(--ios-separator);
-            border-radius: 24px;
+            border: 1.5px solid rgba(0,0,0,0.08);
+            border-radius: 100px;
             cursor: pointer;
-            transition: all var(--transition-fast);
-            font-size: 14px;
+            transition: all 0.2s ease;
+            font-size: 15px;
+            font-weight: 500;
             color: var(--ios-label);
         }
 
         .dimension-chip:hover {
-            border-color: var(--heritage-red-light);
-            background: var(--bright-eggshell-light);
+            background: rgba(224, 41, 35, 0.06);
+            border-color: rgba(224, 41, 35, 0.3);
         }
 
         .dimension-chip.selected {
             background: var(--heritage-red);
             border-color: var(--heritage-red);
             color: white;
-            box-shadow: 0 2px 8px rgba(224, 41, 35, 0.3);
+            box-shadow: 0 4px 12px rgba(224, 41, 35, 0.25);
         }
 
         .dimension-chip .check-icon {
-            width: 18px;
-            height: 18px;
+            width: 20px;
+            height: 20px;
             border-radius: 50%;
-            border: 2px solid var(--ios-separator);
+            background: rgba(0,0,0,0.06);
+            border: none;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -870,11 +960,44 @@
 
         .dimension-chip.selected .check-icon {
             background: white;
-            border-color: white;
+            animation: checkPop 0.2s ease;
+        }
+
+        @keyframes checkPop {
+            0% { transform: scale(0); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
         }
 
         .dimension-chip.selected .check-icon svg {
             stroke: var(--heritage-red);
+        }
+
+        /* Motivation Explanation - Minimal iOS Style */
+        .motivation-explain {
+            padding: 12px 16px;
+            margin: 0 16px 8px 16px;
+            border-bottom: 1px solid var(--ios-separator);
+            font-size: 13px;
+            color: var(--ios-secondary-label);
+            line-height: 1.6;
+        }
+
+        .motivation-explain .explain-title {
+            font-weight: 500;
+            color: var(--ios-label);
+            margin-bottom: 6px;
+        }
+
+        .motivation-explain .explain-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 16px;
+        }
+
+        .motivation-explain .explain-item {
+            font-size: 12px;
+            color: var(--ios-secondary-label);
         }
 
         /* Selection Summary */
@@ -1082,13 +1205,20 @@
             display: block;
         }
 
-        /* Question Cards */
+        /* Question Cards - iOS Style */
         .question-card {
-            background: var(--ios-bg);
-            border-radius: var(--radius-md);
-            padding: 20px;
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
             margin-bottom: 12px;
             position: relative;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+            border: 1px solid rgba(0,0,0,0.04);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .question-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
         }
 
         .question-card:last-child {
@@ -1106,12 +1236,12 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 28px;
-            height: 28px;
-            background: var(--heritage-red);
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--heritage-red) 0%, var(--heritage-red-light) 100%);
             color: white;
-            border-radius: 50%;
-            font-size: 13px;
+            border-radius: 10px;
+            font-size: 14px;
             font-weight: 600;
             flex-shrink: 0;
         }
@@ -1172,10 +1302,11 @@
         }
 
         .question-main {
-            font-size: 16px;
+            font-size: 17px;
             font-weight: 500;
             color: var(--ios-label);
-            line-height: 1.6;
+            line-height: 1.65;
+            letter-spacing: -0.01em;
             margin: 12px 0 16px 0;
         }
 
@@ -1288,31 +1419,88 @@
 
         /* Print Styles */
         @media print {
-            .header, .step-progress, .step-card, .results-toolbar, .footer, .copy-btn {
+            /* Hide non-essential elements */
+            .header, .step-progress, .step-card, .results-toolbar, .footer,
+            .copy-btn, .back-btn, .mobile-bottom-bar, .breadcrumb,
+            .star-guide-intro, .ats-reminder, .scoring-rubric, .toggle-details-btn {
                 display: none !important;
             }
 
+            /* Show results section */
             .results-section {
                 display: block !important;
                 padding: 0 !important;
             }
 
+            /* Expand all questions */
+            .questions-container {
+                display: block !important;
+            }
+
+            .question-details {
+                display: block !important;
+                max-height: none !important;
+            }
+
+            /* Page break control */
             .dimension-group {
                 break-inside: avoid;
                 page-break-inside: avoid;
+                margin-bottom: 20px;
             }
 
             .question-card {
                 break-inside: avoid;
                 page-break-inside: avoid;
+                box-shadow: none !important;
+                border: 1px solid #ddd !important;
+                margin-bottom: 12px;
             }
 
-            .questions-container {
-                display: block !important;
-            }
-
+            /* Clean background */
             body {
                 background: white !important;
+                font-size: 11pt;
+            }
+
+            .main-container {
+                max-width: 100% !important;
+                padding: 0 !important;
+            }
+
+            /* Dimension group header styling for print */
+            .dimension-header {
+                background: #f5f5f5 !important;
+                border: 1px solid #ddd !important;
+            }
+
+            /* Print header with title */
+            .results-header {
+                border-bottom: 2px solid #333;
+                padding-bottom: 10px;
+                margin-bottom: 20px;
+            }
+
+            .results-title h2 {
+                font-size: 16pt;
+            }
+
+            /* Question number styling */
+            .question-number {
+                background: #333 !important;
+                color: white !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            /* Ensure text is readable */
+            .question-content, .question-text, .follow-up-item {
+                color: #000 !important;
+            }
+
+            /* Add page margin */
+            @page {
+                margin: 1.5cm;
             }
         }
 
@@ -1337,12 +1525,6 @@
             color: var(--heritage-red);
             font-weight: 500;
             box-shadow: 0 1px 2px rgba(224, 41, 35, 0.1);
-        }
-
-        [data-theme="dark"] .highlight {
-            background: linear-gradient(120deg, rgba(255, 235, 207, 0.2) 0%, rgba(255, 235, 207, 0.3) 100%);
-            color: #FFEBCF;
-            box-shadow: 0 1px 2px rgba(255, 235, 207, 0.1);
         }
 
         /* Scoring Rubric Styles */
@@ -1384,7 +1566,7 @@
         }
 
         .scoring-rubric-content {
-            display: none;
+            display: block;
             margin-top: 12px;
             background: white;
             border-radius: var(--radius-md);
@@ -1392,8 +1574,8 @@
             box-shadow: var(--shadow-sm);
         }
 
-        .scoring-rubric-content.visible {
-            display: block;
+        .scoring-rubric-content.hidden {
+            display: none;
         }
 
         .score-row {
@@ -1445,8 +1627,8 @@
         }
 
         .detail-block {
-            background: white;
-            border-radius: var(--radius-sm);
+            background: var(--ios-bg);
+            border-radius: 12px;
             padding: 16px;
             border-left: 3px solid;
         }
@@ -1459,6 +1641,8 @@
         .detail-label {
             font-size: 12px;
             font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
             margin-bottom: 8px;
             display: flex;
             align-items: center;
@@ -1476,6 +1660,53 @@
             line-height: 1.6;
         }
 
+        /* Toggle button - hidden on desktop by default */
+        .details-toggle {
+            display: none;
+        }
+
+        /* Mobile Bottom Bar - hidden on desktop by default */
+        .mobile-bottom-bar {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--card-bg);
+            border-top: 1px solid rgba(0,0,0,0.08);
+            padding: 8px 16px;
+            padding-bottom: calc(8px + env(safe-area-inset-bottom, 0px));
+            z-index: 1000;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.08);
+        }
+
+        .mobile-bar-btn {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            padding: 8px 4px;
+            background: transparent;
+            border: none;
+            color: var(--heritage-red);
+            font-size: 11px;
+            font-weight: 500;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background 0.2s ease;
+        }
+
+        .mobile-bar-btn:hover,
+        .mobile-bar-btn:active {
+            background: rgba(224, 41, 35, 0.08);
+        }
+
+        .mobile-bar-btn svg {
+            width: 22px;
+            height: 22px;
+        }
+
         /* Footer */
         .footer {
             text-align: center;
@@ -1484,9 +1715,14 @@
             font-size: 13px;
         }
 
-        /* Animations & Micro-interactions */
+        /* Animations & Micro-interactions - iOS Style */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
@@ -1496,26 +1732,36 @@
         }
 
         .results-section.visible {
-            animation: fadeIn 0.3s ease-out;
+            animation: fadeInUp 0.4s ease;
         }
 
         .dimension-group {
-            animation: fadeIn 0.3s ease-out;
+            animation: fadeInUp 0.4s ease;
         }
 
+        .step-card {
+            animation: fadeInUp 0.4s ease;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        /* Button press effect - iOS style */
         .level-card:active {
-            transform: scale(0.98);
+            transform: scale(0.97);
         }
 
         .dimension-chip:active {
-            transform: scale(0.96);
+            transform: scale(0.97);
+        }
+
+        button:active {
+            transform: scale(0.97);
         }
 
         .btn:active,
         .toolbar-btn:active,
         .copy-btn:active,
         .copy-all-btn:active {
-            transform: scale(0.96);
+            transform: scale(0.97);
         }
 
         .level-card.selected {
@@ -1524,10 +1770,6 @@
 
         .dimension-chip.selected {
             animation: pulse 0.2s ease-out;
-        }
-
-        .step-card {
-            transition: opacity 0.3s ease, transform 0.3s ease;
         }
 
         .step-card.inactive {
@@ -1581,25 +1823,389 @@
             border: 0;
         }
 
-        /* Responsive */
+        /* ========================================
+           RESPONSIVE DESIGN - Mobile First
+           ======================================== */
+
+        /* Base touch targets - ensure 44px minimum for all interactive elements */
+        .lang-btn,
+        .toolbar-btn,
+        .copy-btn,
+        .expand-btn {
+            min-height: 44px;
+            min-width: 44px;
+        }
+
+        .dimension-chip {
+            min-height: 44px;
+        }
+
+        /* Tablet breakpoint (768px) */
         @media (max-width: 768px) {
             .level-cards {
                 grid-template-columns: 1fr;
             }
-            
+
             .step-progress {
-                flex-wrap: wrap;
-                gap: 16px;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0;
+                padding: 24px;
             }
-            
+
+            .step-item {
+                flex-direction: row;
+                align-items: center;
+                gap: 16px;
+                padding: 16px 0;
+            }
+
             .step-connector {
                 display: none;
             }
-            
+
+            /* Vertical connector for mobile */
+            .step-item:not(:last-child)::after {
+                content: '';
+                position: absolute;
+                left: 28px;
+                top: 72px;
+                width: 3px;
+                height: calc(100% - 56px);
+                background: #e5e5ea;
+                border-radius: 2px;
+            }
+
+            .step-item.completed:not(:last-child)::after {
+                background: linear-gradient(180deg, var(--rich-purple) 0%, var(--rich-purple-light) 100%);
+            }
+
+            .step-item {
+                position: relative;
+            }
+
+            .step-circle {
+                flex-shrink: 0;
+            }
+
+            .step-content {
+                text-align: left;
+            }
+
             .selection-summary {
                 flex-direction: column;
                 gap: 16px;
                 text-align: center;
+            }
+
+            /* Header mobile optimization */
+            .header {
+                padding: 12px 16px;
+            }
+
+            .header-left h1 {
+                font-size: 16px;
+            }
+
+            .logo-container img {
+                height: 32px;
+            }
+
+            .version-badge {
+                display: none;
+            }
+
+            .header-right {
+                gap: 8px;
+            }
+
+            /* Dimension chips - better touch targets */
+            .dimension-chip {
+                padding: 14px 18px;
+                font-size: 14px;
+            }
+
+            /* Question cards - reduce padding on mobile */
+            .question-card {
+                padding: 20px 16px;
+            }
+
+            .question-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+
+            .question-actions {
+                width: 100%;
+                justify-content: flex-end;
+            }
+
+            /* Detail blocks - full width on mobile */
+            .detail-block {
+                padding: 14px;
+            }
+
+            /* Main container padding */
+            .main-container {
+                padding: 16px;
+            }
+
+            .step-card {
+                padding: 20px 16px;
+            }
+        }
+
+        /* Mobile breakpoint (480px) */
+        @media (max-width: 480px) {
+            /* Header further compacted */
+            .header {
+                padding: 10px 12px;
+            }
+
+            .header-left h1 {
+                font-size: 14px;
+            }
+
+            .logo-container img {
+                height: 28px;
+            }
+
+            .lang-btn {
+                padding: 8px 10px;
+                font-size: 12px;
+            }
+
+            /* Level cards - full width with reduced padding */
+            .level-card {
+                padding: 20px 16px;
+            }
+
+            .level-icon {
+                width: 56px;
+                height: 56px;
+                border-radius: 16px;
+                font-size: 24px;
+            }
+
+            .level-title {
+                font-size: 16px;
+            }
+
+            /* Step titles - more compact */
+            .step-title h2 {
+                font-size: 15px;
+            }
+
+            .step-title p {
+                font-size: 12px;
+            }
+
+            /* Step progress - more compact */
+            .step-progress {
+                padding: 16px;
+            }
+
+            .step-circle {
+                width: 48px;
+                height: 48px;
+                font-size: 18px;
+            }
+
+            .step-label {
+                font-size: 12px;
+            }
+
+            /* Dimension titles - more compact */
+            .dimension-title h3 {
+                font-size: 14px;
+            }
+
+            .dimension-title p {
+                font-size: 11px;
+            }
+
+            /* Category names - more compact */
+            .category-name {
+                font-size: 14px;
+            }
+
+            .category-name-en {
+                font-size: 11px;
+            }
+
+            /* STAR Guide - more compact */
+            .star-guide-intro h3 {
+                font-size: 14px;
+            }
+
+            .star-guide-intro p {
+                font-size: 12px;
+            }
+
+            .star-guide-structure-title {
+                font-size: 12px;
+            }
+
+            .star-guide-item {
+                font-size: 12px;
+            }
+
+            /* Dimension chips - wrap better */
+            .dimension-list {
+                gap: 8px;
+            }
+
+            .dimension-chip {
+                padding: 12px 14px;
+                font-size: 12px;
+            }
+
+            /* Questions - more compact */
+            .question-main {
+                font-size: 14px;
+            }
+
+            .detail-label {
+                font-size: 10px;
+            }
+
+            .detail-content {
+                font-size: 12px;
+            }
+
+            /* ATS Reminder - more compact */
+            .ats-reminder-text {
+                font-size: 12px;
+            }
+
+            /* Mobile collapsible details */
+            .details-toggle {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 6px;
+                width: 100%;
+                padding: 12px;
+                margin-top: 12px;
+                background: var(--ios-bg);
+                border: 1px solid rgba(0,0,0,0.06);
+                border-radius: 10px;
+                color: var(--heritage-red);
+                font-size: 13px;
+                font-weight: 500;
+                cursor: pointer;
+                transition: all 0.2s ease;
+            }
+
+            .details-toggle:hover {
+                background: rgba(224, 41, 35, 0.06);
+            }
+
+            .details-toggle svg {
+                transition: transform 0.3s ease;
+            }
+
+            .details-toggle.expanded svg {
+                transform: rotate(180deg);
+            }
+
+            .question-details {
+                display: none;
+                animation: slideDown 0.3s ease;
+            }
+
+            .question-details.show {
+                display: flex;
+            }
+
+            @keyframes slideDown {
+                from {
+                    opacity: 0;
+                    transform: translateY(-10px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            /* Toolbar - full width buttons */
+            .questions-toolbar {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .toolbar-left,
+            .toolbar-right {
+                width: 100%;
+                justify-content: center;
+            }
+
+            /* View questions button - full width */
+            .view-questions-btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            /* Toast notifications - bottom center (above mobile bar) */
+            .toast-container {
+                left: 12px;
+                right: 12px;
+                bottom: 24px;
+            }
+
+            .toast {
+                max-width: 100%;
+            }
+
+            /* Mobile bottom bar - hidden for cleaner reading experience */
+            .mobile-bottom-bar {
+                display: none;
+            }
+
+            /* Hide desktop toolbar buttons on mobile (use bottom bar instead) */
+            .toolbar-right {
+                display: none;
+            }
+
+            .toolbar-left {
+                flex-direction: column;
+            }
+        }
+
+        /* Small mobile (360px) */
+        @media (max-width: 360px) {
+            .header-left h1 {
+                font-size: 12px;
+            }
+
+            .logo-container img {
+                height: 24px;
+            }
+
+            .level-icon {
+                width: 48px;
+                height: 48px;
+                font-size: 20px;
+            }
+
+            .step-circle {
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
+            }
+        }
+
+        /* Large screens (1024px+) */
+        @media (min-width: 1024px) {
+            .level-cards {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .main-container {
+                max-width: 1200px;
+                margin: 0 auto;
             }
         }
 
@@ -1719,12 +2325,6 @@
             }
         }
 
-        /* Dark mode toast */
-        [data-theme="dark"] .toast {
-            background: #2A2A2A;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 2px 8px rgba(0, 0, 0, 0.3);
-        }
-
         /* Mobile responsive toast */
         @media (max-width: 480px) {
             .toast-container {
@@ -1746,12 +2346,13 @@
     <!-- Header -->
     <header class="header" role="banner">
         <div class="header-content">
-            <div class="logo-section">
-                <img src="logo tou.png" alt="Lee Kum Kee">
+            <div class="logo-section" onclick="resetAll()" style="cursor: pointer;">
+                <img src="halo-logo.png" alt="Lee Kum Kee">
                 <div class="logo-text">
-                    <h1>面试官题库</h1>
-                    <h2>Interviewer Question Bank</h2>
+                    <h1>面试题库</h1>
+                    <h2 id="headerTagline">选对人才 · Choosing the Right Talent</h2>
                 </div>
+                <span class="logo-tooltip" id="logoTooltip">返回首页</span>
             </div>
             <div class="header-right">
                 <span class="version-badge">V&L Assessment v1.0</span>
@@ -1761,16 +2362,6 @@
                         <button class="lang-btn" data-lang="zh-HK" onclick="setLanguage('zh-HK')">繁</button>
                         <button class="lang-btn" data-lang="en" onclick="setLanguage('en')">EN</button>
                     </div>
-                    <span class="controls-divider"></span>
-                    <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="切换深色模式">
-                        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="5"/>
-                            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
-                        </svg>
-                        <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
-                        </svg>
-                    </button>
                 </div>
             </div>
         </div>
@@ -1863,6 +2454,39 @@
                 <div class="framework-intro">
                     <h3>💡 评估框架说明</h3>
                     <p id="frameworkDesc">根据所选岗位级别，以下展示该级别对应的评估框架。请勾选您希望在本次面试中重点评估的维度。</p>
+                    <a href="https://lkkhk.sharepoint.com/sites/ValuesandLeadershipResourcesLibrary/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FValuesandLeadershipResourcesLibrary%2FShared%20Documents%2FReading%20Materials%20%E9%98%85%E8%AF%BB%E6%9D%90%E6%96%99%2FV%26L%20Behavioral%20Interpretation%20Guide%20V%26L%E9%87%8A%E4%B9%89%E5%92%8C%E8%A1%8C%E4%B8%BA%E6%8C%87%E5%BC%95&viewid=6bd45a4d%2D5450%2D44cb%2Da2c1%2Dd5b8c91fba89&FolderCTID=0x0120001C542A399498AC46918EC52C3F103EF4" class="vl-resource-link" id="vlResourceLink" target="_blank">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                            <polyline points="15 3 21 3 21 9"></polyline>
+                            <line x1="10" y1="14" x2="21" y2="3"></line>
+                        </svg>
+                        <span id="vlResourceText">了解更多 V&L 详情</span>
+                    </a>
+                    <p class="framework-tip" id="frameworkTip">
+                        <strong>💎 深度优于广度</strong> — 建议聚焦 2-3 个价值观要素 + 2-3 个领导力要素深入考察。选择前建议与 HR BP 确认该岗位的关键评估重点。
+                    </p>
+                    <button class="guide-toggle-btn" id="guideToggleBtn" onclick="toggleSelectionGuide()">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                        </svg>
+                        <span id="guideToggleText">查看选择指引</span>
+                        <svg class="guide-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="selection-guide" id="selectionGuide">
+                        <div class="guide-section">
+                            <h4 id="guideTitle1">📋 各职位族核心评估要素参考</h4>
+                            <p class="guide-note" id="guideNote">以下表格根据您选择的岗位级别显示对应的价值观和领导力要素建议，仅供参考。</p>
+                            <div class="guide-table-container" id="guideTableContainer">
+                                <!-- Table will be populated by JavaScript based on selected level -->
+                            </div>
+                        </div>
+                        <div class="guide-section">
+                            <h4 id="guideTitle2">🔄 交叉观察提示</h4>
+                            <p id="guideCrossObserve">在考察核心要素时，可同时观察候选人在其他要素上的行为表现，进行交叉验证。</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="framework-categories" id="frameworkCategories">
                     <!-- Categories will be populated by JavaScript -->
@@ -1905,6 +2529,30 @@
                     </svg>
                     返回修改
                 </button>
+            </div>
+
+            <!-- STAR Quick Guide - 说明类卡片风格 -->
+            <div class="star-guide-intro">
+                <h3 id="starGuideTitle">📖 题目设计说明</h3>
+                <p id="starGuidePrinciple"><strong>核心理念</strong>：行为事件访谈法 (BEI) — 过去的行为是预测未来表现的最佳指标</p>
+                <div class="star-guide-structure">
+                    <p class="star-guide-structure-title" id="starGuideStructureTitle">题目结构</p>
+                    <div class="star-guide-items">
+                        <div class="star-guide-item" id="starGuideItem1">🎯 <strong>开放提问</strong> — 引导候选人分享具体经历</div>
+                        <div class="star-guide-item" id="starGuideItem2">📋 <strong>STAR追问</strong> — Situation情境 → Task任务 → Action行动 → Result结果</div>
+                        <div class="star-guide-item" id="starGuideItem3">🔍 <strong>决策逻辑</strong> — 深挖思考过程与判断依据</div>
+                        <div class="star-guide-item" id="starGuideItem4">🎭 <strong>情境模拟</strong> — 验证能力迁移与应变能力</div>
+                    </div>
+                </div>
+                <p class="star-guide-tip" id="starGuideTip">💡 <strong>追问技巧</strong>：多问"当时"、"具体"、"为什么"，少问"如果"、"一般"、"通常"</p>
+                <a href="https://lkkhk-my.sharepoint.com/my?id=%2Fpersonal%2Femma%5Fhe%5Flkk%5Fcom%2FDocuments%2FTA%2FTA%20Operations%2FInterviewer%20Enablement%2FModule%201%20%2D%20Interviewer%20Guide&viewid=bd818647%2D8474%2D4d83%2Db1e5%2D579429427b46" class="interviewer-guide-link" id="interviewerGuideLink" target="_blank">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                        <polyline points="15 3 21 3 21 9"></polyline>
+                        <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                    <span id="interviewerGuideLinkText">了解更多面试技巧</span>
+                </a>
             </div>
 
             <!-- Toolbar -->
@@ -1951,13 +2599,50 @@
             <div id="questionGrid">
                 <!-- Questions will be populated by JavaScript -->
             </div>
+
+            <!-- ATS Reminder -->
+            <div class="ats-reminder">
+                <span class="ats-reminder-icon">📝</span>
+                <p class="ats-reminder-text" id="atsReminderText"><strong>面试完成提醒</strong>：请前往 ATS 系统填写面试评估表，记录评分与反馈。</p>
+            </div>
         </div>
     </main>
 
     <footer class="footer">
-        © <span id="footerYear">2025</span> Lee Kum Kee. All Rights Reserved.
+        © <span id="footerYear">2025</span> Lee Kum Kee. All Rights Reserved. <strong>INTERNAL USE ONLY</strong>
     </footer>
     <script>document.getElementById('footerYear').textContent = new Date().getFullYear();</script>
+
+    <!-- Mobile Bottom Toolbar (hidden on desktop) -->
+    <div class="mobile-bottom-bar" id="mobileBottomBar">
+        <button class="mobile-bar-btn" onclick="exportToPDF()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+                <path d="M14 2v6h6M12 18v-6M9 15l3 3 3-3"/>
+            </svg>
+            <span id="mobileExportPdf">PDF</span>
+        </button>
+        <button class="mobile-bar-btn" onclick="exportToWord()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+                <path d="M14 2v6h6M9 13h6M9 17h6"/>
+            </svg>
+            <span id="mobileExportWord">Word</span>
+        </button>
+        <button class="mobile-bar-btn" onclick="resetAll()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+                <path d="M3 3v5h5"/>
+            </svg>
+            <span id="mobileResetBtn">重选</span>
+        </button>
+        <button class="mobile-bar-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 15l-6-6-6 6"/>
+            </svg>
+            <span id="mobileScrollTop">顶部</span>
+        </button>
+    </div>
 
     <script>
         // ==================== LANGUAGE SYSTEM ====================
@@ -1967,10 +2652,10 @@
         const translations = {
             'zh-CN': {
                 // Header
-                pageTitle: '面试官题库',
-                pageSubtitle: 'Interviewer Question Bank',
+                pageTitle: '面试题库',
+                pageSubtitle: '选对人才 · Choosing the Right Talent',
                 skipLink: '跳转到主要内容',
-                toggleDarkMode: '切换深色模式',
+                logoTooltip: '返回首页',
 
                 // Breadcrumb
                 home: '首页',
@@ -2006,6 +2691,7 @@
                 completeFirstStep: '请先完成上一步',
                 frameworkTitle: '💡 评估框架说明',
                 frameworkDesc: '根据所选岗位级别，以下展示该级别对应的评估框架。请勾选您希望在本次面试中重点评估的要素。',
+                vlResourceLink: '了解更多 V&L 详情',
                 selectedDimensions: '已选择要素',
                 dimensionCount: '个要素',
                 questionCountLabel: '道题目',
@@ -2040,19 +2726,37 @@
                 changeLeadership: '领导变革',
                 motivation: '动机',
 
-                // Dimension names
+                // Motivation explanation
+                motivationExplain: '💡 评估候选人内在驱动是否与公司方向一致',
+                motivationIntrinsic: '内在驱动 - 核心动力来源',
+                motivationGrowth: '成长潜力 - 学习能力与韧性',
+                motivationFit: '组织适配 - 职业发展与岗位方向的匹配度',
+
+                // Dimension names - Values
                 si_li_ji_ren: '思利及人',
                 wu_shi: '务实',
                 cheng_xin: '诚信',
                 yong_yuan_chuang_ye: '永远创业',
-                li_nian: '理念',
-                pin_zhi: '品质',
-                ren_xing: '韧性',
-                mu_biao_da_cheng: '目标达成',
-                tuan_dui_guan_li: '团队管理',
-                zheng_zhi: '正直',
-                bian_ge_ling_dao: '变革领导',
-                zhan_lue_si_wei: '战略思维',
+                '100_minus_1': '100-1=0',
+
+                // Dimension names - Leadership
+                xuan_dui_ren_cai: '选对人才',
+                gao_xin_fen_wei: '高信氛围',
+                gao_xiao_tuan_dui: '高效团队',
+                gong_tong_mu_biao: '共同目标',
+                you_xiao_shou_quan: '有效授权',
+                jiao_lian_yu_cai: '教练育才',
+
+                // Dimension names - Change Leadership
+                yi_yuan_jing_wei_qu_dong: '以愿景为驱动',
+                yi_yong_hu_wei_zhong_xin: '以用户为中心',
+                zhan_xian_min_jie_bian_tong: '展现敏捷变通',
+                zhui_qiu_zhuo_yue_ji_xiao: '追求卓越绩效',
+
+                // Dimension names - Motivation
+                nei_zai_qu_dong: '内在驱动',
+                cheng_zhang_qian_li: '成长潜力',
+                zu_zhi_shi_pei: '组织适配',
                 dong_ji: '动机',
 
                 // Scoring levels
@@ -2071,6 +2775,12 @@
                 copyBtn: '复制',
                 copyAllBtn: '复制全部',
                 questionPrefix: '问题',
+                showDetails: '展开详情',
+                hideDetails: '收起详情',
+
+                // Mobile bottom bar
+                mobileReset: '重选',
+                mobileTop: '顶部',
 
                 // Toast messages
                 toastCopySuccess: '复制成功',
@@ -2081,14 +2791,37 @@
                 toastResetSuccess: '已重置',
                 toastResetMessage: '选择已清除，请重新开始',
                 toastError: '操作失败',
-                toastErrorMessage: '请稍后重试'
+                toastErrorMessage: '请稍后重试',
+
+                // Selection guide
+                showGuide: '查看选择指引',
+                hideGuide: '收起选择指引',
+                frameworkTip: '💎 深度优于广度 — 建议聚焦 2-3 个价值观要素 + 2-3 个领导力要素深入考察。选择前建议与 HR BP 确认该岗位的关键评估重点。',
+                guideTitle1: '📋 各职位族核心评估要素参考',
+                guideNote: '以下表格根据您选择的岗位级别显示对应的价值观和领导力要素建议，仅供参考。',
+                guideTitle2: '🔄 交叉观察提示',
+                guideCrossObserve: '在考察核心要素时，可同时观察候选人在其他要素上的行为表现，进行交叉验证。',
+
+                // STAR Quick Guide
+                starGuideTitle: '📖 题目设计说明',
+                starGuidePrinciple: '<strong>核心理念</strong>：行为事件访谈法 (BEI) — 过去的行为是预测未来表现的最佳指标',
+                starGuideStructureTitle: '题目结构',
+                starGuideItem1: '🎯 <strong>开放提问</strong> — 引导候选人分享具体经历',
+                starGuideItem2: '📋 <strong>STAR追问</strong> — Situation情境 → Task任务 → Action行动 → Result结果',
+                starGuideItem3: '🔍 <strong>决策逻辑</strong> — 深挖思考过程与判断依据',
+                starGuideItem4: '🎭 <strong>情境模拟</strong> — 验证能力迁移与应变能力',
+                starGuideTip: '💡 <strong>追问技巧</strong>：多问"当时"、"具体"、"为什么"，少问"如果"、"一般"、"通常"',
+                interviewerGuideLink: '了解更多面试技巧',
+
+                // ATS Reminder
+                atsReminder: '<strong>面试完成提醒</strong>：请前往 ATS 系统填写面试评估表，记录评分与反馈。'
             },
             'zh-HK': {
                 // Header
-                pageTitle: '面試官題庫',
-                pageSubtitle: 'Interviewer Question Bank',
+                pageTitle: '面試題庫',
+                pageSubtitle: '選對人才 · Choosing the Right Talent',
                 skipLink: '跳轉到主要內容',
-                toggleDarkMode: '切換深色模式',
+                logoTooltip: '返回首頁',
 
                 // Breadcrumb
                 home: '首頁',
@@ -2124,6 +2857,7 @@
                 completeFirstStep: '請先完成上一步',
                 frameworkTitle: '💡 評估框架說明',
                 frameworkDesc: '根據所選崗位級別，以下展示該級別對應的評估框架。請勾選您希望在本次面試中重點評估的要素。',
+                vlResourceLink: '了解更多 V&L 詳情',
                 selectedDimensions: '已選擇要素',
                 dimensionCount: '個要素',
                 questionCountLabel: '道題目',
@@ -2157,6 +2891,12 @@
                 leadership: '自動波領導力',
                 changeLeadership: '領導變革',
                 motivation: '動機',
+
+                // Motivation explanation
+                motivationExplain: '💡 評估候選人內在驅動是否與公司方向一致',
+                motivationIntrinsic: '內在驅動 - 核心動力來源',
+                motivationGrowth: '成長潛力 - 學習能力與韌性',
+                motivationFit: '組織適配 - 職業發展與崗位方向的匹配度',
 
                 // Dimension names
                 si_li_ji_ren: '思利及人',
@@ -2203,6 +2943,12 @@
                 copyBtn: '複製',
                 copyAllBtn: '複製全部',
                 questionPrefix: '問題',
+                showDetails: '展開詳情',
+                hideDetails: '收起詳情',
+
+                // Mobile bottom bar
+                mobileReset: '重選',
+                mobileTop: '頂部',
 
                 // Toast messages
                 toastCopySuccess: '複製成功',
@@ -2213,14 +2959,37 @@
                 toastResetSuccess: '已重置',
                 toastResetMessage: '選擇已清除，請重新開始',
                 toastError: '操作失敗',
-                toastErrorMessage: '請稍後重試'
+                toastErrorMessage: '請稍後重試',
+
+                // Selection guide
+                showGuide: '查看選擇指引',
+                hideGuide: '收起選擇指引',
+                frameworkTip: '💎 深度優於廣度 — 建議聚焦 2-3 個價值觀要素 + 2-3 個領導力要素深入考察。選擇前建議與 HR BP 確認該崗位的關鍵評估重點。',
+                guideTitle1: '📋 各職位族核心評估要素參考',
+                guideNote: '以下表格根據您選擇的崗位級別顯示對應的價值觀和領導力要素建議，僅供參考。',
+                guideTitle2: '🔄 交叉觀察提示',
+                guideCrossObserve: '在考察核心要素時，可同時觀察候選人在其他要素上的行為表現，進行交叉驗證。',
+
+                // STAR Quick Guide
+                starGuideTitle: '📖 題目設計說明',
+                starGuidePrinciple: '<strong>核心理念</strong>：行為事件訪談法 (BEI) — 過去的行為是預測未來表現的最佳指標',
+                starGuideStructureTitle: '題目結構',
+                starGuideItem1: '🎯 <strong>開放提問</strong> — 引導候選人分享具體經歷',
+                starGuideItem2: '📋 <strong>STAR追問</strong> — Situation情境 → Task任務 → Action行動 → Result結果',
+                starGuideItem3: '🔍 <strong>決策邏輯</strong> — 深挖思考過程與判斷依據',
+                starGuideItem4: '🎭 <strong>情境模擬</strong> — 驗證能力遷移與應變能力',
+                starGuideTip: '💡 <strong>追問技巧</strong>：多問「當時」、「具體」、「為什麼」，少問「如果」、「一般」、「通常」',
+                interviewerGuideLink: '了解更多面試技巧',
+
+                // ATS Reminder
+                atsReminder: '<strong>面試完成提醒</strong>：請前往 ATS 系統填寫面試評估表，記錄評分與反饋。'
             },
             'en': {
                 // Header
-                pageTitle: 'Interviewer Question Bank',
-                pageSubtitle: 'Interviewer Question Bank',
+                pageTitle: 'Interview Question Bank',
+                pageSubtitle: 'Choosing the Right Talent',
                 skipLink: 'Skip to main content',
-                toggleDarkMode: 'Toggle dark mode',
+                logoTooltip: 'Back to Home',
 
                 // Breadcrumb
                 home: 'Home',
@@ -2256,6 +3025,7 @@
                 completeFirstStep: 'Please complete the previous step',
                 frameworkTitle: '💡 Assessment Framework',
                 frameworkDesc: 'Based on the selected position level, the following shows the corresponding assessment framework. Please select the elements you wish to focus on in this interview.',
+                vlResourceLink: 'Learn more about V&L',
                 selectedDimensions: 'Selected Elements',
                 dimensionCount: 'elements',
                 questionCountLabel: 'Questions',
@@ -2289,6 +3059,12 @@
                 leadership: 'Autopilot Leadership',
                 changeLeadership: 'Leading Change',
                 motivation: 'Motivation',
+
+                // Motivation explanation
+                motivationExplain: '💡 Assess if candidate\'s intrinsic drivers align with company direction',
+                motivationIntrinsic: 'Intrinsic Drivers - Core motivation sources',
+                motivationGrowth: 'Growth & Resilience - Learning ability & resilience',
+                motivationFit: 'Organizational Fit - Career & role alignment',
 
                 // Dimension names (fixed official translations)
                 si_li_ji_ren: 'Si Li Ji Ren',
@@ -2327,6 +3103,12 @@
                 copyBtn: 'Copy',
                 copyAllBtn: 'Copy All',
                 questionPrefix: 'Question',
+                showDetails: 'Show Details',
+                hideDetails: 'Hide Details',
+
+                // Mobile bottom bar
+                mobileReset: 'Reset',
+                mobileTop: 'Top',
 
                 // Toast messages
                 toastCopySuccess: 'Copied',
@@ -2337,7 +3119,30 @@
                 toastResetSuccess: 'Reset Complete',
                 toastResetMessage: 'Selections cleared, please start again',
                 toastError: 'Error',
-                toastErrorMessage: 'Please try again later'
+                toastErrorMessage: 'Please try again later',
+
+                // Selection guide
+                showGuide: 'View Selection Guide',
+                hideGuide: 'Hide Selection Guide',
+                frameworkTip: '💎 Depth over breadth — Focus on 2-3 value elements + 2-3 leadership elements for in-depth assessment. Consult HR BP to confirm key assessment priorities for the role.',
+                guideTitle1: '📋 Core Assessment Elements by Job Family',
+                guideNote: 'The table below shows recommended core values and leadership elements based on your selected position level, for reference only.',
+                guideTitle2: '🔄 Cross-Observation Tips',
+                guideCrossObserve: 'When assessing core elements, you can also observe candidate behavior on other elements for cross-validation.',
+
+                // STAR Quick Guide
+                starGuideTitle: '📖 Question Design Guide',
+                starGuidePrinciple: '<strong>Core Principle</strong>: Behavioral Event Interview (BEI) — Past behavior is the best predictor of future performance',
+                starGuideStructureTitle: 'Question Structure',
+                starGuideItem1: '🎯 <strong>Open Questions</strong> — Guide candidates to share specific experiences',
+                starGuideItem2: '📋 <strong>STAR Probing</strong> — Situation → Task → Action → Result',
+                starGuideItem3: '🔍 <strong>Decision Logic</strong> — Explore thinking process and decision rationale',
+                starGuideItem4: '🎭 <strong>Scenario Simulation</strong> — Validate capability transfer and adaptability',
+                starGuideTip: '💡 <strong>Probing Tips</strong>: Ask more "at that time", "specifically", "why"; ask less "if", "generally", "usually"',
+                interviewerGuideLink: 'Learn more interview techniques',
+
+                // ATS Reminder
+                atsReminder: '<strong>Interview Complete Reminder</strong>: Please go to ATS system to fill in the interview evaluation form with your ratings and feedback.'
             }
         };
 
@@ -2410,7 +3215,7 @@
             document.querySelector('.logo-text h1').textContent = getText('pageTitle');
             document.querySelector('.logo-text h2').textContent = getText('pageSubtitle');
             document.querySelector('.skip-link').textContent = getText('skipLink');
-            document.getElementById('themeToggle').setAttribute('aria-label', getText('toggleDarkMode'));
+            document.getElementById('logoTooltip').textContent = getText('logoTooltip');
 
             // Breadcrumb
             document.querySelector('[data-step="0"]').textContent = getText('home');
@@ -2452,6 +3257,7 @@
             document.querySelector('#step2Card .step-title p').textContent = getText('step2Subtitle');
             document.querySelector('.framework-intro h3').textContent = getText('frameworkTitle');
             document.getElementById('frameworkDesc').textContent = getText('frameworkDesc');
+            document.getElementById('vlResourceText').textContent = getText('vlResourceLink');
             document.querySelector('.selection-summary .summary-info h4').textContent = getText('selectedDimensions');
             document.getElementById('clearBtn').innerHTML = `
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -2482,6 +3288,10 @@
             document.getElementById('exportWordText').textContent = getText('exportWord');
             document.getElementById('resetAllText').textContent = getText('resetAll');
 
+            // Mobile bottom bar
+            document.getElementById('mobileResetBtn').textContent = getText('mobileReset');
+            document.getElementById('mobileScrollTop').textContent = getText('mobileTop');
+
             // Count labels - handle English singular/plural
             const dimCount = selectedDimensions ? selectedDimensions.size : 0;
             document.getElementById('dimensionLabel').textContent = currentLang === 'en'
@@ -2498,6 +3308,50 @@
             }
             if (!selectedLevel) {
                 status2.textContent = getText('completeFirstStep');
+            }
+
+            // Selection guide
+            const frameworkTip = document.getElementById('frameworkTip');
+            if (frameworkTip) {
+                frameworkTip.innerHTML = getText('frameworkTip');
+            }
+            const guideToggleText = document.getElementById('guideToggleText');
+            if (guideToggleText) {
+                const guideVisible = document.getElementById('selectionGuide')?.classList.contains('visible');
+                guideToggleText.textContent = guideVisible ? getText('hideGuide') : getText('showGuide');
+            }
+            const guideTitle1 = document.getElementById('guideTitle1');
+            if (guideTitle1) guideTitle1.textContent = getText('guideTitle1');
+            const guideNote = document.getElementById('guideNote');
+            if (guideNote) guideNote.textContent = getText('guideNote');
+            const guideTitle2 = document.getElementById('guideTitle2');
+            if (guideTitle2) guideTitle2.textContent = getText('guideTitle2');
+            const guideCrossObserve = document.getElementById('guideCrossObserve');
+            if (guideCrossObserve) guideCrossObserve.textContent = getText('guideCrossObserve');
+
+            // Update STAR Quick Guide
+            const starGuideTitle = document.getElementById('starGuideTitle');
+            if (starGuideTitle) starGuideTitle.textContent = getText('starGuideTitle');
+            const starGuidePrinciple = document.getElementById('starGuidePrinciple');
+            if (starGuidePrinciple) starGuidePrinciple.innerHTML = getText('starGuidePrinciple');
+            const starGuideStructureTitle = document.getElementById('starGuideStructureTitle');
+            if (starGuideStructureTitle) starGuideStructureTitle.textContent = getText('starGuideStructureTitle');
+            for (let i = 1; i <= 4; i++) {
+                const item = document.getElementById('starGuideItem' + i);
+                if (item) item.innerHTML = getText('starGuideItem' + i);
+            }
+            const starGuideTip = document.getElementById('starGuideTip');
+            if (starGuideTip) starGuideTip.innerHTML = getText('starGuideTip');
+            const interviewerGuideLinkText = document.getElementById('interviewerGuideLinkText');
+            if (interviewerGuideLinkText) interviewerGuideLinkText.textContent = getText('interviewerGuideLink');
+
+            // Update ATS Reminder
+            const atsReminderText = document.getElementById('atsReminderText');
+            if (atsReminderText) atsReminderText.innerHTML = getText('atsReminder');
+
+            // Re-render the selection guide table when language changes
+            if (selectedLevel) {
+                renderSelectionGuide();
             }
 
             // Update level stats
@@ -5795,6 +6649,119 @@
 
             // Update breadcrumb
             updateBreadcrumb(currentStep);
+
+            // Update selection guide table
+            renderSelectionGuide();
+        }
+
+        // Job Family Guide Data
+        const jobFamilyGuide = {
+            IC: [
+                { family: 'tech', familyName: { 'zh-CN': '技术研发', 'zh-HK': '技術研發', 'en': 'Tech & R&D' }, values: ['yong_yuan_chuang_ye', 'wu_shi', '100_minus_1'], leadership: [], change: [] },
+                { family: 'marketing', familyName: { 'zh-CN': '市场营销', 'zh-HK': '市場營銷', 'en': 'Marketing' }, values: ['si_li_ji_ren', 'cheng_xin', 'yong_yuan_chuang_ye'], leadership: [], change: [] },
+                { family: 'operations', familyName: { 'zh-CN': '运营管理', 'zh-HK': '運營管理', 'en': 'Operations' }, values: ['wu_shi', 'cheng_xin', '100_minus_1'], leadership: [], change: [] },
+                { family: 'finance', familyName: { 'zh-CN': '财务管理', 'zh-HK': '財務管理', 'en': 'Finance' }, values: ['cheng_xin', 'wu_shi', '100_minus_1'], leadership: [], change: [] },
+                { family: 'hr', familyName: { 'zh-CN': '人力资源', 'zh-HK': '人力資源', 'en': 'HR' }, values: ['si_li_ji_ren', 'wu_shi', 'yong_yuan_chuang_ye'], leadership: [], change: [] },
+                { family: 'customer', familyName: { 'zh-CN': '客户服务', 'zh-HK': '客戶服務', 'en': 'Customer Service' }, values: ['si_li_ji_ren', 'cheng_xin', '100_minus_1'], leadership: [], change: [] },
+                { family: 'admin', familyName: { 'zh-CN': '行政管理', 'zh-HK': '行政管理', 'en': 'Admin' }, values: ['wu_shi', 'cheng_xin', 'si_li_ji_ren'], leadership: [], change: [] }
+            ],
+            TL: [
+                { family: 'tech', familyName: { 'zh-CN': '技术研发', 'zh-HK': '技術研發', 'en': 'Tech & R&D' }, values: ['wu_shi', '100_minus_1'], leadership: ['you_xiao_shou_quan', 'gao_xiao_tuan_dui'], change: [] },
+                { family: 'marketing', familyName: { 'zh-CN': '市场营销', 'zh-HK': '市場營銷', 'en': 'Marketing' }, values: ['si_li_ji_ren', 'cheng_xin'], leadership: ['gong_tong_mu_biao', 'gao_xin_fen_wei'], change: [] },
+                { family: 'operations', familyName: { 'zh-CN': '运营管理', 'zh-HK': '運營管理', 'en': 'Operations' }, values: ['wu_shi', 'cheng_xin', '100_minus_1'], leadership: ['gao_xiao_tuan_dui'], change: [] },
+                { family: 'finance', familyName: { 'zh-CN': '财务管理', 'zh-HK': '財務管理', 'en': 'Finance' }, values: ['cheng_xin', '100_minus_1'], leadership: ['xuan_dui_ren_cai'], change: [] },
+                { family: 'hr', familyName: { 'zh-CN': '人力资源', 'zh-HK': '人力資源', 'en': 'HR' }, values: ['si_li_ji_ren', 'wu_shi'], leadership: ['gao_xin_fen_wei', 'jiao_lian_yu_cai'], change: [] },
+                { family: 'admin', familyName: { 'zh-CN': '行政管理', 'zh-HK': '行政管理', 'en': 'Admin' }, values: ['wu_shi', 'cheng_xin'], leadership: ['gao_xiao_tuan_dui'], change: [] }
+            ],
+            SL: [
+                { family: 'tech', familyName: { 'zh-CN': '技术研发', 'zh-HK': '技術研發', 'en': 'Tech & R&D' }, values: ['yong_yuan_chuang_ye', 'wu_shi'], leadership: ['you_xiao_shou_quan', 'jiao_lian_yu_cai'], change: ['yi_yuan_jing_wei_qu_dong'] },
+                { family: 'marketing', familyName: { 'zh-CN': '市场营销', 'zh-HK': '市場營銷', 'en': 'Marketing' }, values: ['si_li_ji_ren', 'cheng_xin'], leadership: ['gong_tong_mu_biao', 'gao_xin_fen_wei'], change: ['yi_yong_hu_wei_zhong_xin'] },
+                { family: 'operations', familyName: { 'zh-CN': '运营管理', 'zh-HK': '運營管理', 'en': 'Operations' }, values: ['wu_shi', '100_minus_1'], leadership: ['gao_xiao_tuan_dui'], change: ['zhan_xian_min_jie_bian_tong'] },
+                { family: 'finance', familyName: { 'zh-CN': '财务管理', 'zh-HK': '財務管理', 'en': 'Finance' }, values: ['cheng_xin', '100_minus_1'], leadership: ['xuan_dui_ren_cai'], change: ['yi_yong_hu_wei_zhong_xin'] },
+                { family: 'hr', familyName: { 'zh-CN': '人力资源', 'zh-HK': '人力資源', 'en': 'HR' }, values: ['si_li_ji_ren', 'wu_shi'], leadership: ['gao_xin_fen_wei', 'jiao_lian_yu_cai'], change: ['zhui_qiu_zhuo_yue_ji_xiao'] }
+            ]
+        };
+
+        // Toggle selection guide visibility
+        function toggleSelectionGuide() {
+            const guide = document.getElementById('selectionGuide');
+            const btn = document.getElementById('guideToggleBtn');
+            const textSpan = document.getElementById('guideToggleText');
+
+            guide.classList.toggle('visible');
+            btn.classList.toggle('expanded');
+
+            if (guide.classList.contains('visible')) {
+                textSpan.textContent = getText('hideGuide') || '收起选择指引';
+            } else {
+                textSpan.textContent = getText('showGuide') || '查看选择指引';
+            }
+        }
+
+        // Render selection guide table based on selected level
+        function renderSelectionGuide() {
+            const container = document.getElementById('guideTableContainer');
+            if (!selectedLevel || !jobFamilyGuide[selectedLevel]) {
+                container.innerHTML = '';
+                return;
+            }
+
+            const data = jobFamilyGuide[selectedLevel];
+            const hasLeadership = selectedLevel !== 'IC';
+            const hasChange = selectedLevel === 'SL';
+
+            // Table headers
+            const headers = {
+                'zh-CN': {
+                    jobFamily: '职位族',
+                    coreValues: '价值观',
+                    leadership: '自动波领导力',
+                    change: '领导变革'
+                },
+                'zh-HK': {
+                    jobFamily: '職位族',
+                    coreValues: '價值觀',
+                    leadership: '自動波領導力',
+                    change: '領導變革'
+                },
+                'en': {
+                    jobFamily: 'Job Family',
+                    coreValues: 'Values',
+                    leadership: 'Autopilot Leadership',
+                    change: 'Leading Change'
+                }
+            };
+            const h = headers[currentLang] || headers['zh-CN'];
+
+            let html = `<table class="guide-table">
+                <thead>
+                    <tr>
+                        <th>${h.jobFamily}</th>
+                        <th>${h.coreValues}</th>
+                        ${hasLeadership ? `<th>${h.leadership}</th>` : ''}
+                        ${hasChange ? `<th>${h.change}</th>` : ''}
+                    </tr>
+                </thead>
+                <tbody>`;
+
+            // Helper to translate element keys
+            const translateElements = (keys) => {
+                if (!keys || keys.length === 0) return '-';
+                const separator = currentLang === 'en' ? ', ' : '、';
+                return keys.map(key => getText(key)).join(separator);
+            };
+
+            data.forEach(row => {
+                html += `<tr>
+                    <td class="job-family">${row.familyName[currentLang] || row.familyName['zh-CN']}</td>
+                    <td class="core-values">${translateElements(row.values)}</td>
+                    ${hasLeadership ? `<td class="leadership">${translateElements(row.leadership)}</td>` : ''}
+                    ${hasChange ? `<td class="change-leadership">${translateElements(row.change)}</td>` : ''}
+                </tr>`;
+            });
+
+            html += '</tbody></table>';
+            container.innerHTML = html;
         }
 
         function renderFramework() {
@@ -5835,6 +6802,16 @@
                             </span>
                             ${isAvailable && dimensions.length > 0 ? `<button class="select-all-btn" data-category="${catKey}" data-dimensions="${dimKeys.join(',')}" onclick="toggleSelectAllCategory(this)">${getText('selectAllCategory')}</button>` : ''}
                         </div>
+                        ${catKey === 'motivation' && isAvailable ? `
+                            <div class="motivation-explain">
+                                <div class="explain-title">${getText('motivationExplain')}</div>
+                                <div class="explain-items">
+                                    <span class="explain-item">• ${getText('motivationIntrinsic')}</span>
+                                    <span class="explain-item">• ${getText('motivationGrowth')}</span>
+                                    <span class="explain-item">• ${getText('motivationFit')}</span>
+                                </div>
+                            </div>
+                        ` : ''}
                         ${isAvailable && dimensions.length > 0 ? `
                             <div class="dimension-list" role="group" aria-label="${catName}">
                                 ${dimensions.map(dim => {
@@ -6002,8 +6979,9 @@
                 });
             });
             
-            // Scroll to results
-            document.getElementById('resultsSection').scrollIntoView({ behavior: 'smooth' });
+            // Scroll to STAR guide (so users see the question design guide first)
+            document.querySelector('.star-guide-intro').scrollIntoView({ behavior: 'smooth' });
+
         }
 
         function hideResults() {
@@ -6033,7 +7011,7 @@
 
                 scoringRubricHtml = `
                     <div class="scoring-rubric-container">
-                        <button class="scoring-rubric-btn" onclick="toggleScoringRubric(this)">
+                        <button class="scoring-rubric-btn expanded" onclick="toggleScoringRubric(this)">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M9 12l2 2 4-4"/>
                                 <path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9c1.73 0 3.35.5 4.72 1.36"/>
@@ -6074,27 +7052,20 @@
                         </div>
                         <div class="dimension-meta">
                             <span class="question-count">${dim.questions.length} ${qCountLabel}</span>
-                            <button class="copy-all-btn" onclick="event.stopPropagation(); copyAllQuestions('${dimKey}')">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
-                                    <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
-                                </svg>
-                                ${copyAllText}
-                            </button>
                             <svg class="expand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <polyline points="6 9 12 15 18 9"></polyline>
                             </svg>
                         </div>
                     </div>
                     <div class="questions-container">
-                        ${dim.questions.map((q, idx) => renderQuestionCard(q, idx + 1)).join('')}
+                        ${dim.questions.map((q, idx) => renderQuestionCard(q, idx + 1, dimName)).join('')}
                     </div>
                     ${scoringRubricHtml}
                 </div>
             `;
         }
 
-        function renderQuestionCard(question, number) {
+        function renderQuestionCard(question, number, dimensionName = '') {
             let detailsHtml = '';
 
             // Get translated question text for each field
@@ -6175,13 +7146,24 @@
                 `;
             }
 
-            // Build copy text
-            let copyText = `${getText('questionPrefix')}：${initialPrompt}`;
+            // Build copy text with dimension name prefix
+            let copyText = dimensionName ? `[${dimensionName}]\n\n` : '';
+            copyText += `${getText('questionPrefix')}：${initialPrompt}`;
             if (starFramework) copyText += `\n\n${getText('starLabel')}：${starFramework}`;
             if (followupQuestions) copyText += `\n\n${getText('followupLabel')}：${followupQuestions}`;
             if (decisionLogic) copyText += `\n\n${getText('decisionLabel')}：${decisionLogic}`;
             if (scenarioSimulation) copyText += `\n\n${getText('scenarioLabel')}：${scenarioSimulation}`;
             if (evaluationCriteria) copyText += `\n\n${getText('evaluationLabel')}：${evaluationCriteria}`;
+
+            // Generate toggle button HTML for mobile (only if there are details)
+            const toggleBtn = detailsHtml ? `
+                <button class="details-toggle" onclick="toggleDetails(this)">
+                    <span class="toggle-text">${getText('showDetails')}</span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <polyline points="6 9 12 15 18 9"/>
+                    </svg>
+                </button>
+            ` : '';
 
             return `
                 <div class="question-card" data-question="${encodeURIComponent(copyText)}">
@@ -6196,6 +7178,7 @@
                         </button>
                     </div>
                     <div class="question-main">${initialPrompt}</div>
+                    ${toggleBtn}
                     ${detailsHtml ? `<div class="question-details">${detailsHtml}</div>` : ''}
                 </div>
             `;
@@ -6227,6 +7210,23 @@
                     `;
                 }, 2000);
             });
+        }
+
+        // Toggle question details (mobile only)
+        function toggleDetails(btn) {
+            const card = btn.closest('.question-card');
+            const details = card.querySelector('.question-details');
+            const textSpan = btn.querySelector('.toggle-text');
+
+            if (details.classList.contains('show')) {
+                details.classList.remove('show');
+                btn.classList.remove('expanded');
+                textSpan.textContent = getText('showDetails');
+            } else {
+                details.classList.add('show');
+                btn.classList.add('expanded');
+                textSpan.textContent = getText('hideDetails');
+            }
         }
 
         // Copy All Questions in a Dimension
@@ -6410,32 +7410,6 @@
             showToast('success', 'toastExportSuccess', 'toastExportWordMessage');
         }
 
-        // Theme Toggle (Dark Mode)
-        function toggleTheme() {
-            const html = document.documentElement;
-            const currentTheme = html.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-
-            html.setAttribute('data-theme', newTheme);
-            localStorage.setItem('lkk_theme', newTheme);
-
-            // Announce to screen readers
-            announceToScreenReader(newTheme === 'dark' ? '已切换到深色模式' : '已切换到浅色模式');
-        }
-
-        // Initialize theme on page load
-        function initTheme() {
-            const savedTheme = localStorage.getItem('lkk_theme');
-            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            const theme = savedTheme || (prefersDark ? 'dark' : 'light');
-
-            if (theme === 'dark') {
-                document.documentElement.setAttribute('data-theme', 'dark');
-            }
-        }
-
-        // Initialize theme immediately
-        initTheme();
 
         // Breadcrumb Navigation
         function updateBreadcrumb(step) {
@@ -6542,7 +7516,7 @@
         function toggleScoringRubric(btn) {
             btn.classList.toggle('expanded');
             const content = btn.nextElementSibling;
-            content.classList.toggle('visible');
+            content.classList.toggle('hidden');
         }
 
         // Session Storage - Save State
@@ -6710,7 +7684,7 @@
                                 if (detailsEl) {
                                     detailsEl.querySelectorAll('.detail-block').forEach(block => {
                                         highlightText(block, query);
-                                    });
+                                });
                                 }
                             } else {
                                 card.style.display = 'none';
